@@ -1,20 +1,10 @@
-*.class
-**/Project/cocos2d/
-**/Project/pro.android/
-**/Project/proj.ios_mac/
-**/Project/proj.linux/
-**/Project/proj.win8.1-universal/
-**/Project/proj.win32/
-*.cocos-project.json
-CMakeLists
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+/Project/cocos2d/
+/Project/pro.android/
+/Project/proj.ios_mac/
+/Project/proj.linux/
+/Project/proj.win8.1-universal/
+/Project/proj.win32/
+/Project/CMakeLists.txt
+*.json
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
