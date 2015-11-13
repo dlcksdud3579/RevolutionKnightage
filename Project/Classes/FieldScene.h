@@ -32,10 +32,6 @@ public:
 	virtual void onTouchMoved(Touch* touch, Event* event);
 	virtual void onTouchEnded(Touch* touch, Event* event);
 
-	void openInven();
-	void openStatus();
-	void openSkill();
-	void openOption();
 
 
 	CREATE_FUNC(FieldScene);

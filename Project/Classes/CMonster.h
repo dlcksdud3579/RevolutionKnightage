@@ -7,6 +7,7 @@ class CMonster :public CObject
 public:
 
 private:
-
+	int HP;
+	int Speed;
 };
 #endif

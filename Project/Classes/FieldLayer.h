@@ -23,6 +23,8 @@ public:
 
 	CREATE_FUNC(FieldLayer);
 
+	void moveCharacter();
+
 	void moveRight();
 	void moveLeft();
 	void moveUp();

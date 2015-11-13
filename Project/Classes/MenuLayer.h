@@ -14,9 +14,6 @@ public:
 	virtual bool init();
 	CREATE_FUNC(MenuLayer);
 
-
-
-
 	virtual void onEnter();
 	virtual void onExit();
 
