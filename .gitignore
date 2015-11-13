@@ -5,8 +5,8 @@
 **/Project/proj.linux/
 **/Project/proj.win8.1-universal/
 **/Project/proj.win32/
-..cocos-project.json
-.CMakeLists
+*.cocos-project.json
+CMakeLists
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
