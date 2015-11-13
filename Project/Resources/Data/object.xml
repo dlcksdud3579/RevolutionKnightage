@@ -1,0 +1,16 @@
+<result>
+  <objects>
+    <object>
+      <key>0</key>
+      <name></name>
+      <moveable>false</moveable>
+      <type>2</type>
+    </object>
+    <object>
+      <key>1</key>
+      <name></name>
+      <moveable>true</moveable>
+      <type>2</type>
+    </object>
+  </objects>
+</result>

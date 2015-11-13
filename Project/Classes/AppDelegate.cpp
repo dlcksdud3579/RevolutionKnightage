@@ -1,5 +1,7 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "FieldScene.h"
+#include "StaticContentsContainer.h"
+#include "DynamicContentsContainer.h"
 
 USING_NS_CC;
 
@@ -34,8 +36,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::create("My Game");
-        director->setOpenGLView(glview);
+		if (!glview) {
+			glview = GLViewImpl::createWithRect("My Game", Rect(0, 0, 1280, 720));
+			director->setOpenGLView(glview);
+		}
     }
 
     // turn on display FPS
@@ -47,10 +51,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+	
+	StaticContentsContainer::readxml();  // 처음 파일을 읽는다. 
 
-    // run
-    director->runWithScene(scene);
+	CMap* tempMap = StaticContentsContainer::getMapMap()->find("test")->second;
+	DynamicContentsContainer::getInstance()->setMap(tempMap);
+
+	auto fieldScene = FieldScene::createScene();  // 테스트를 위한 씬 
+
+	director->runWithScene(fieldScene);      // 처음으로 불러올 씬을 부름 
 
     return true;
 }
