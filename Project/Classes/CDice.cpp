@@ -17,7 +17,16 @@ int CDice::rollDice()
 	int value;
 	srand(time(NULL));
 	value = rand() % (getType() + 1);
+	this->setNumber(getNumber() - 1);
 	return value;
 }
 
 
+int  CDice::rollDice(int type)
+{
+	int value;
+	srand(time(NULL));
+	value = rand() % (type + 1);
+	this->setNumber(getNumber() - 1);
+	return value;
+}

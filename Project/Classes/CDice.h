@@ -7,6 +7,7 @@ public:
 	CDice();
 	CDice(int a_number,int a_type);
 	int rollDice();
+	int rollDice(int type);
 
 	void setNumber(int a_number){ m_number = a_number; }
 	int getNumber(){ return m_number; }
