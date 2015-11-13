@@ -1,5 +1,5 @@
-#ifndef _INVENLAYER_H_
-#define _INVENLAYER_H_
+#ifndef _STATUSLAYER_H_
+#define _STATUSLAYER_H_
 
 #include "cocos2d.h"
 
@@ -8,11 +8,11 @@ USING_NS_CC;
 
 using namespace std;
 
-class InvenLayer : public cocos2d::LayerColor
+class StatusLayer : public cocos2d::LayerColor
 {
 public:
 	virtual bool init();
-	CREATE_FUNC(InvenLayer);
+	CREATE_FUNC(StatusLayer);
 
 	bool isOpenFlag(){ return m_OpenFlag; }
 	void setOpenFlag(bool a_OpenFlag) { this->m_OpenFlag = a_OpenFlag; }
@@ -24,8 +24,8 @@ public:
 
 
 
-	InvenLayer();
-	~InvenLayer();
+	StatusLayer();
+	~StatusLayer();
 private:
 	Sprite* m_panel;
 	bool m_OpenFlag;

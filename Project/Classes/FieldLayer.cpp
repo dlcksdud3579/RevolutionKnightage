@@ -181,7 +181,7 @@ void FieldLayer::viewControl()
 
 void FieldLayer::changeMap(int index)
 {
-	getMapControler()->mapChange(index);
+	//getMapControler()->mapChange(index);
 	removeTileField();
 	printTileField();
 }

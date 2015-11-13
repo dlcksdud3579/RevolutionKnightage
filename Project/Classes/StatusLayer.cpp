@@ -1,9 +1,9 @@
-#include "InvenLayer.h"
+#include "StatusLayer.h"
 
 
-bool InvenLayer::init()
+bool StatusLayer::init()
 {
-	if (!InvenLayer::initWithColor(Color4B(0, 0, 0, 0)))
+	if (!StatusLayer::initWithColor(Color4B(0, 0, 0, 0)))
 	{
 		return false;
 	}
@@ -14,7 +14,7 @@ bool InvenLayer::init()
 	return true;
 }
 
-void InvenLayer::onEnter()
+void StatusLayer::onEnter()
 {
 	Layer::onEnter();
 	setOpenFlag(false);
@@ -22,12 +22,12 @@ void InvenLayer::onEnter()
 
 }
 
-void InvenLayer::onExit()
+void StatusLayer::onExit()
 {
 	Layer::onExit();
 }
 
-void InvenLayer::Open()
+void StatusLayer::Open()
 {
 	if (isOpenFlag() == true)
 		return; // 이미 열린경우 
@@ -43,7 +43,7 @@ void InvenLayer::Open()
 	setOpenFlag(true);
 
 }
-void InvenLayer::Close()
+void StatusLayer::Close()
 {
 	if (isOpenFlag() == false)
 		return; //이미 닫힌경우 
@@ -52,12 +52,12 @@ void InvenLayer::Close()
 	setOpenFlag(false);
 
 }
-InvenLayer::InvenLayer()
+StatusLayer::StatusLayer()
 {
 	//m_panel->retain();
 	//this->retain();
 }
-InvenLayer::~InvenLayer()
+StatusLayer::~StatusLayer()
 {
 	//m_panel->release();
 	//this->release();

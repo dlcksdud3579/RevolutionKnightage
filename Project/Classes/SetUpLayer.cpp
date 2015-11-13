@@ -1,9 +1,9 @@
-#include "InvenLayer.h"
+#include "SetUpLayer.h"
 
 
-bool InvenLayer::init()
+bool SetUpLayer::init()
 {
-	if (!InvenLayer::initWithColor(Color4B(0, 0, 0, 0)))
+	if (!SetUpLayer::initWithColor(Color4B(0, 0, 0, 0)))
 	{
 		return false;
 	}
@@ -14,7 +14,7 @@ bool InvenLayer::init()
 	return true;
 }
 
-void InvenLayer::onEnter()
+void SetUpLayer::onEnter()
 {
 	Layer::onEnter();
 	setOpenFlag(false);
@@ -22,12 +22,12 @@ void InvenLayer::onEnter()
 
 }
 
-void InvenLayer::onExit()
+void SetUpLayer::onExit()
 {
 	Layer::onExit();
 }
 
-void InvenLayer::Open()
+void SetUpLayer::Open()
 {
 	if (isOpenFlag() == true)
 		return; // 이미 열린경우 
@@ -43,7 +43,7 @@ void InvenLayer::Open()
 	setOpenFlag(true);
 
 }
-void InvenLayer::Close()
+void SetUpLayer::Close()
 {
 	if (isOpenFlag() == false)
 		return; //이미 닫힌경우 
@@ -52,12 +52,12 @@ void InvenLayer::Close()
 	setOpenFlag(false);
 
 }
-InvenLayer::InvenLayer()
+SetUpLayer::SetUpLayer()
 {
 	//m_panel->retain();
 	//this->retain();
 }
-InvenLayer::~InvenLayer()
+SetUpLayer::~SetUpLayer()
 {
 	//m_panel->release();
 	//this->release();

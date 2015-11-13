@@ -16,7 +16,7 @@ CMapControler::~CMapControler()
 
 }
 
-void mapChange(int a_changeMapNum)
+void CMapControler::mapChange(int a_changeMapNum)
 {
 	string index;
 	index = to_string(a_changeMapNum);
