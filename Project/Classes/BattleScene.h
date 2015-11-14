@@ -2,6 +2,7 @@
 #define _BATTLESCENE_H_
 #include "cocos2d.h"
 #include "BattleLayer.h"
+#include "BattleControler.h"
 USING_NS_CC;
 
 class BattleScene : public LayerColor
@@ -18,13 +19,20 @@ public:
 	virtual void onTouchMoved(Touch* touch, Event* event);
 	virtual void onTouchEnded(Touch* touch, Event* event);
 
-
+	void CharacterTurn();
+	void endCharacterTurn();
+	void run(float delta);
+	void rapidAction(); // 빠른 행동 
+	void nomalAction(); // 노말 행동
 
 	CREATE_FUNC(BattleScene);
+	
+
 
 private:
-	BattleLayer* m_fieldLayer;
 
+	BattleLayer* m_battleLayer;  // 배틀 맵 레이어 ( 타일, 몬스터, 캐릭터를 출력)
+	BattleControler * m_battleControler;  // 배틀 컨트롤러 
 };
 
 

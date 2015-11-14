@@ -18,6 +18,9 @@ BattleControler::~BattleControler()
 }
 void BattleControler::timeUp()
 {
+	if (stopflag ==1) // 턴진행중에는 멈춤;
+		return;
+
 	CharacterGauge += DynamicContentsContainer::getInstance()->getCharacter()->getStatus().getSpeed(); // 출발속도 지정 
 	for (int i = 0; i < 10; i++)// 몬스터들 지정
 	{
@@ -25,18 +28,10 @@ void BattleControler::timeUp()
 		this->MonGauge[i] += DynamicContentsContainer::getInstance()->getMonster(i)->getStatus().getSpeed();
 	}
 }
-void BattleControler::run(float delta) // 0.2초마다
+
+
+
+void BattleControler::MonsterTurn(int index)
 {
-	timeUp();
-	if (CharacterGauge >= 100)
-	{
 
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		if (this->MonGauge[i] >= 100)
-		{
-
-		}
-	}
 }

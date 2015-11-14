@@ -20,6 +20,7 @@ bool BattleScene::init()
 	}
 
 
+	schedule(schedule_selector(BattleScene::run),1.0f);
 
 	return true;
 }
@@ -47,7 +48,8 @@ void BattleScene::onExit()
 
 bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 {
-
+	if (m_battleControler->getTurnType() != 3)
+		return false;
 }
 void BattleScene::onTouchMoved(Touch* touch, Event* event)
 {
@@ -58,5 +60,40 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
 
 }
 
+void BattleScene::run(float delta) // 0.2초마다
+{
+	m_battleControler->timeUp();
+	if (m_battleControler->getCharacterGauge() >= 100)
+	{
+		CharacterTurn();
+		return;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_battleControler->getMonGauge(i) >= 100)
+		{
+			m_battleControler->MonsterTurn(i);
+			return;
+		}
+	}
+}
 
+void BattleScene::CharacterTurn()
+{
 
+}
+
+void BattleScene::rapidAction() // 빠른 행동
+{
+
+}
+void BattleScene::nomalAction() // 노말 행동
+{
+
+}
+
+void BattleScene::endCharacterTurn()
+{
+	m_battleControler->setStopFlag(0);
+	m_battleControler->setTurnType(0);
+}
