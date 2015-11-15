@@ -35,7 +35,8 @@ public:
 	BattleLayer *getBattleLayer(){ return m_battleLayer; }
 
 
-
+	void setBattleControler(BattleControler *m_battleControler){ m_battleControler = m_battleControler; }
+	BattleControler *getBattleControler(){ return m_battleControler; }
 
 	void printRapidMenu();
 	void removeRapidMenu();
@@ -49,6 +50,8 @@ public:
 	void chooseRapidMenu(Object* pSender);
 	void chooseNomalMenu(Object* pSender);
 	void chooseActionMenu(Object* pSender);
+
+
 
 
 private:

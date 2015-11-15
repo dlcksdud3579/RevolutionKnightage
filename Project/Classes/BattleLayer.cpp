@@ -19,6 +19,7 @@ void BattleLayer::moveCharacter(float delta)
 	if (MovequeMax == MovequeMIn)
 	{
 		// ¹«ºê³¡
+		getBattleControler()->TurnEnd();
 		return;
 	}
 		switch (getMoveQue())

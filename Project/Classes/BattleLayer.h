@@ -2,6 +2,7 @@
 #define _BATTLELAYER_H_
 
 #include "FieldLayer.h"
+#include "BattleControler.h"
 
 class BattleLayer :public FieldLayer
 {
@@ -21,10 +22,17 @@ public:
 	virtual void onEnter();
 	virtual void onExit();
 
+	void setBattleControler(BattleControler *a_battleControler){ m_BattleControler = a_battleControler; }
+	BattleControler *getBattleControler(){ return m_BattleControler; }
+
 private:
 	int maxMovePoint;
 	int MoveQue[10]; // right: 1 left: 2  up : 3  down : 4
 	int MovequeMax;
 	int MovequeMIn;
+	
+	BattleControler *m_BattleControler;
+
+
 };
 #endif
