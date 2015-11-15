@@ -43,8 +43,12 @@ public:
 	void printNomalMenu();
 	void removeNomalMenu();
 
+	void printActionMenu();
+	void removeActionMenu();
+
 	void chooseRapidMenu(Object* pSender);
 	void chooseNomalMenu(Object* pSender);
+	void chooseActionMenu(Object* pSender);
 
 private:
 

@@ -1,4 +1,5 @@
 #include "BattleScene.h"
+#include "DynamicContentsContainer.h"
 
 Scene* BattleScene::createScene()
 {
@@ -55,6 +56,12 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 }
 void BattleScene::onTouchMoved(Touch* touch, Event* event)
 {
+	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
+	int curPointX = Character->getPoint().x;
+	int curPointY = Character->getPoint().y;
+
+	
+	
 
 }
 void BattleScene::onTouchEnded(Touch* touch, Event* event)
@@ -175,12 +182,15 @@ void BattleScene::chooseRapidMenu(Object* pSender)
 	{
 	case 10:
 		m_battleControler->setTurnType(3); // move
+
 		break;
 	case 11:
 		m_battleControler->setTurnType(2); // 가방
+
 		break;
 	case 12:
 		m_battleControler->setTurnType(1); //도망
+
 		break;
 	default:
 		return;
@@ -188,6 +198,7 @@ void BattleScene::chooseRapidMenu(Object* pSender)
 	}
 	removeRapidMenu();
 }
+
 void BattleScene::chooseNomalMenu(Object* pSender)
 {
 	auto item = (MenuItem*)pSender;
@@ -196,14 +207,18 @@ void BattleScene::chooseNomalMenu(Object* pSender)
 	switch (index)
 	{
 	case 20:
+		removeRapidMenu();
+		removeNomalMenu();
 		m_battleControler->setTurnType(4); // 액션
+
 		break;
 	case 21:
 		m_battleControler->setTurnType(5); //공격
+
 		break;
 	case 22:
 		m_battleControler->setTurnType(6); // 종료
-
+		Director::getInstance()->popScene();
 		break;
 	default:
 		return;
@@ -211,4 +226,56 @@ void BattleScene::chooseNomalMenu(Object* pSender)
 	}
 	removeRapidMenu();
 	removeNomalMenu();
+}
+void  BattleScene::printActionMenu()
+{
+	int r3 = 1.7; //루트 3 
+	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x;
+	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y;
+
+	Label* Action1Lable = Label::create("MOVE", "fonts/arial.ttf", 36);
+	Action1Lable->setPosition(PointX + 50 * r3, PointY + 50);
+	Action1Lable->setTag(30);
+
+	Label* Action2Lable = Label::create("BAG", "fonts/arial.ttf", 36);
+	Action2Lable->setPosition(PointX - 50 * r3, PointY - 50);
+	Action2Lable->setTag(31);
+
+	Label* Action3Lable = Label::create("ESC", "fonts/arial.ttf", 36);
+	Action3Lable->setPosition(PointX - 50 * r3, PointY + 50);
+	Action3Lable->setTag(32);
+
+	this->addChild(Action1Lable);
+	this->addChild(Action2Lable);
+	this->addChild(Action3Lable);
+}
+void  BattleScene::removeActionMenu()
+{
+	this->removeChildByTag(30);
+	this->removeChildByTag(31);
+	this->removeChildByTag(32);
+}
+void  BattleScene::chooseActionMenu(Object* pSender)
+{
+	auto item = (MenuItem*)pSender;
+	int index = item->getTag();
+	switch (index)
+	{
+	case 30:
+		
+		m_battleControler->setTurnType(7); //
+
+		break;
+	case 31:
+		m_battleControler->setTurnType(8); //
+
+		break;
+	case 32:
+		m_battleControler->setTurnType(9); // 
+
+		break;
+	default:
+		return;
+		break;
+	}
 }
