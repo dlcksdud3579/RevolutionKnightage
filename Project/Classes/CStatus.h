@@ -36,7 +36,5 @@ private:
 	int ins; // instint 본능 
 	int kno; // 지식 
 
-}
-
-
+};
 #endif

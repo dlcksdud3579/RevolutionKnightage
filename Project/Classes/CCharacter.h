@@ -1,14 +1,13 @@
 #ifndef _CCHARACTER_H_
 #define _CCHARACTER_H_
-USING_NS_CC;
+
 #include "cocos2d.h"
 #include "CObject.h"
 #include "CStatus.h"
 
+USING_NS_CC;
 
-
-// 주인공씨 
-class CCharacter : public CObject
+class CCharacter : public CObject // 주인공씨 
 {
 public:
 	CCharacter();

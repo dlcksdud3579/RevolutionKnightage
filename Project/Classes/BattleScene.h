@@ -50,6 +50,7 @@ public:
 	void chooseNomalMenu(Object* pSender);
 	void chooseActionMenu(Object* pSender);
 
+
 private:
 
 

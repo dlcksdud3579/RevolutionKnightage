@@ -51,18 +51,52 @@ void BattleScene::onExit()
 
 bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 {
-	if (m_battleControler->getTurnType() != 3)
+	if (m_battleControler->getTurnType() != 3) // 이동이 아닐시 터치입력 X
 		return false;
 }
-void BattleScene::onTouchMoved(Touch* touch, Event* event)
+void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
 {
 	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
+	
+	int touchX = touch->getLocation().x;
+	int touchY = touch->getLocation().y;
+
 	int curPointX = Character->getPoint().x;
 	int curPointY = Character->getPoint().y;
 
+	int movePointX = curPointX;
+	int movePointY = curPointY;
 	
-	
-
+	if (movePointX - 50 < touchX < movePointX + 50 && movePointY - 50 < touchY < movePointY + 50)
+	{
+		//getBattleLayer()->setMoveQue(0); 
+		log("move::CUR");
+	}
+	else if (movePointX - 50 +100< touchX < movePointX + 50+100 && movePointY - 50 < touchY < movePointY + 50)
+	{
+		getBattleLayer()->setMoveQue(1); // 앞
+		log("move::RIGHT");
+	}
+	else if (movePointX - 50 -100< touchX < movePointX + 50 -100&& movePointY - 50 < touchY < movePointY + 50)
+	{
+		getBattleLayer()->setMoveQue(2); // 뒤
+		log("move::LEFT");
+	}
+	else if (movePointX - 50 < touchX < movePointX + 50 && movePointY - 50 +100< touchY < movePointY + 50+100)
+	{
+		getBattleLayer()->setMoveQue(3);//위
+		log("move::UP");
+	}
+	else if (movePointX - 50 < touchX < movePointX + 50 && movePointY - 50 -100< touchY < movePointY + 50-100)
+	{
+		getBattleLayer()->setMoveQue(4); // 아래 
+		log("move::DOWN");
+	}
+	else
+	{
+		log("move::NOT");
+		return;
+	}
 }
 void BattleScene::onTouchEnded(Touch* touch, Event* event)
 {
@@ -115,8 +149,9 @@ void BattleScene::endCharacterTurn()
 void BattleScene::printRapidMenu()
 {
 	int r3 = 1.7; //루트 3 
-	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x;
-	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y;
+
+	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x*100;
+	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y*100;
 
 	Label* moveLable = Label::create("MOVE", "fonts/arial.ttf", 36);
 	moveLable->setPosition(PointX + 50 * r3, PointY + 50);
@@ -141,8 +176,8 @@ void BattleScene::printNomalMenu()
 {
 	int r3 = 1.7; //루트 3 
 
-	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x;
-	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y;
+	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x*100;
+	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y*100;
 
 	Label* actionLable = Label::create("ACTION", "fonts/arial.ttf", 36);
 	actionLable->setPosition(PointX + 50 * r3, PointY + 50);
@@ -230,8 +265,8 @@ void BattleScene::chooseNomalMenu(Object* pSender)
 void  BattleScene::printActionMenu()
 {
 	int r3 = 1.7; //루트 3 
-	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x;
-	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y;
+	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x*100;
+	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y*100;
 
 	Label* Action1Lable = Label::create("MOVE", "fonts/arial.ttf", 36);
 	Action1Lable->setPosition(PointX + 50 * r3, PointY + 50);
