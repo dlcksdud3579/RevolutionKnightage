@@ -2,6 +2,7 @@
 #include "DynamicContentsContainer.h"	
 #include "time.h"
 #include "stdlib.h"
+
 BattleControler::BattleControler()
 {
 	srand(time(NULL));
@@ -11,10 +12,13 @@ BattleControler::BattleControler()
 		if (DynamicContentsContainer::getInstance()->getMonster(i) != NULL);
 		this->MonGauge[i] = rand() % 20 + 1;
 	}
+
+
 }
 
 BattleControler::~BattleControler()
 {
+
 }
 void BattleControler::timeUp()
 {
@@ -28,7 +32,11 @@ void BattleControler::timeUp()
 		this->MonGauge[i] += DynamicContentsContainer::getInstance()->getMonster(i)->getStatus().getSpeed();
 	}
 }
-
+void BattleControler::TurnEnd()
+{
+	stopflag == 0;
+	setTurnType(0);
+}
 
 
 void BattleControler::MonsterTurn(int index)

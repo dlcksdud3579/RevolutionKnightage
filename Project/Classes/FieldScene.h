@@ -33,9 +33,7 @@ public:
 	virtual void onTouchEnded(Touch* touch, Event* event);
 
 
-
 	CREATE_FUNC(FieldScene);
-
 private:
 	FieldLayer* m_fieldLayer;
 	FrameLayer* m_frameLayer;

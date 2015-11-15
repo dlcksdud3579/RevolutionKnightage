@@ -1,10 +1,11 @@
 #ifndef _CCHARACTER_H_
 #define _CCHARACTER_H_
-
+USING_NS_CC;
 #include "cocos2d.h"
 #include "CObject.h"
 #include "CStatus.h"
-USING_NS_CC;
+
+
 
 // ÁÖÀÎ°ø¾¾ 
 class CCharacter : public CObject

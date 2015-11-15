@@ -1,5 +1,7 @@
 #ifndef _BattleControler__
 #define _BattleControler__
+
+
 class BattleControler
 {
 public:
@@ -8,12 +10,7 @@ public:
 
 	void timeUp(); //  // 시간이 올라는 함수요 
 
-	//void run(float delta); // 스케쥴러로 돌아갈 함수요, 안되면 씬 스케쥴에  ㅣㅇ함ㅅ구 넣으면 되요 
-
-	
 	void MonsterTurn(int index);
-
-
 
 	void setTurnType(int turnType){ this->turnType = turnType; }
 	int getTurnType(){ return this->turnType; }
@@ -27,6 +24,8 @@ public:
 	void setStopFlag(bool stopflag){ this->stopflag = stopflag; }
 	bool isStopFlag(){ return this->stopflag; }
 	
+
+	void TurnEnd();
 
 private:
 	int CharacterGauge;
