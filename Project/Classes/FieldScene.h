@@ -32,6 +32,7 @@ public:
 	virtual void onTouchMoved(Touch* touch, Event* event);
 	virtual void onTouchEnded(Touch* touch, Event* event);
 
+	void Battle(float delta);
 
 	CREATE_FUNC(FieldScene);
 private:

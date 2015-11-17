@@ -22,8 +22,13 @@ public:
 	void setStatus(Status a_status){ this->m_status = a_status; }
 	Status getStatus(){ return this->m_status; }
 
+	void setSpriteRoot(std::string m_spriteRoot){ this-> m_spriteRoot =  m_spriteRoot;}
+	std::string getSpriteRoot(){ return this->m_spriteRoot; }
+
 private:
 	Vec2 m_Point;
+	std::string m_spriteRoot;
+
 	Sprite* m_sprite;
 	Status  m_status;
 };

@@ -10,6 +10,9 @@ bool FieldLayer::init()
 		return false;
 	}
 
+	setCharacterSprite(Sprite::create(getCharacter()->getSpriteRoot()));
+
+
 	printTileField();
 	printCharacter();
 
@@ -103,12 +106,12 @@ void FieldLayer::moveDown()
 void FieldLayer::printCharacter()
 {
 	int tileSiz = getMap()->atTile(Vec2(0, 0))->getSize().x;
-	getCharacter()->getSprite()->setPosition(Vec2(tileSiz / 2 + getCharacter()->getPoint().x * tileSiz, tileSiz / 2 + getCharacter()->getPoint().y * tileSiz));
-	this->addChild(getCharacter()->getSprite(), 1);
+	getCharacterSprite()->setPosition(Vec2(tileSiz / 2 + getCharacter()->getPoint().x * tileSiz, tileSiz / 2 + getCharacter()->getPoint().y * tileSiz));
+	this->addChild(getCharacterSprite(), 1);
 }
 void FieldLayer::removeCharacter()
 {
-	this->removeChild(getCharacter()->getSprite());
+	this->removeChild(getCharacterSprite());
 }
 
 void FieldLayer::onEnter()
@@ -119,8 +122,6 @@ void FieldLayer::onEnter()
 	getCharacter()->setPoint(getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
 	this->setViewPoint(getMap()->getStartPoint());// 레이어의 시작 포인크를 설정 
 	viewControl();
-		
-
 
 }
 
@@ -157,7 +158,7 @@ void FieldLayer::setViewPoint(Vec2 a_viewPoint)
 void FieldLayer::moveCharacter(Vec2 a_Point)
 {
 	int tileSiz = getMap()->atTile(Vec2(0, 0))->getSize().x;
-	this->getCharacter()->getSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
+	this->getCharacterSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
 }
 
 void FieldLayer::viewControl()

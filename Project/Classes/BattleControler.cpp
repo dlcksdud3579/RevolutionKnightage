@@ -28,8 +28,8 @@ void BattleControler::timeUp()
 	CharacterGauge += DynamicContentsContainer::getInstance()->getCharacter()->getStatus().getSpeed(); // 출발속도 지정 
 	for (int i = 0; i < 10; i++)// 몬스터들 지정
 	{
-		if (DynamicContentsContainer::getInstance()->getMonster(i) != NULL);
-		this->MonGauge[i] += DynamicContentsContainer::getInstance()->getMonster(i)->getStatus().getSpeed();
+		if (DynamicContentsContainer::getInstance()->getMonster(i) != NULL)
+			this->MonGauge[i] += DynamicContentsContainer::getInstance()->getMonster(i)->getStatus().getSpeed();
 	}
 }
 void BattleControler::TurnEnd()

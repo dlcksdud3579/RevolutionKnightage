@@ -15,8 +15,8 @@ public:
 
 	virtual bool init();
 
-	void printTileField();
-	void removeTileField();
+	virtual void printTileField();
+	virtual void removeTileField();
 
 	void printCharacter();
 	void removeCharacter();
@@ -38,7 +38,7 @@ public:
 
 	// get set 함수 
 	
-	CMap* getMap(){ return getMapControler()->getMap(); } // 컨테이너에서 캐릭터 정보를 불러옴 
+	virtual CMap* getMap(){ return getMapControler()->getMap(); } // 컨테이너에서 맵 정보를 불러옴 
 	CCharacter* getCharacter(){ return getCharacterControler()->getCharacter(); } // 컨테이너에서 현재 맵정보를 불러옴
 	
 	void setViewPoint(Vec2 a_viewPoint);
@@ -57,12 +57,14 @@ public:
 
 	void viewControl(); // 보이지 않는곳을 스프라이트 안뛰우고 보이는곳만 보이게하는 함수
 
+	void setCharacterSprite(Sprite* a_characterSprite){ this->m_characterSprite = a_characterSprite; }
+	Sprite* getCharacterSprite(){ return this->m_characterSprite; }
 	
 private:
 	Vec2 m_viewPoint;
 	CCharacterControler* m_CharacterControler;
 	CMapControler* m_MapControler;
-	
+	Sprite* m_characterSprite;
 };
 
 

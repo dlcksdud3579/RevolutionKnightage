@@ -50,7 +50,7 @@ bool MenuLayer::init()
 	this->addChild(pMenu,2);
 
 
-	this->setInvenLayer(InvenLayer::create());
+	this->setInvenLayer(InvenLayer::create());  // 인벤 레이어 
 
 	addChild(getInvenLayer(),3);
 

@@ -12,6 +12,7 @@ Scene* BattleScene::createScene()
 	return scene;
 }
 
+
 bool BattleScene::init()
 {
 
@@ -21,9 +22,15 @@ bool BattleScene::init()
 	}
 
 	m_battleControler = new BattleControler();
-	m_battleLayer = new BattleLayer();
+	this->setBattleLayer(BattleLayer::create());
 
-	schedule(schedule_selector(BattleScene::run),1.0f);
+	m_invenLayer = InvenLayer::create();
+
+	this->setInvenLayer(m_invenLayer);
+	this->addChild(m_battleLayer,1);
+	
+
+	schedule(schedule_selector(BattleScene::run),1.0f); // 배틀에서 속도를 올려주는함수 
 
 	return true;
 }
@@ -165,12 +172,10 @@ void BattleScene::printRapidMenu()
 	escLable->setPosition(PointX - 50 * r3, PointY + 50);
 	escLable->setTag(12);
 
-	this->addChild(moveLable);
-	this->addChild(InvenLable);
-	this->addChild(escLable);
+	this->addChild(moveLable,10);
+	this->addChild(InvenLable,10);
+	this->addChild(escLable,10);
 }
-
-
 
 void BattleScene::printNomalMenu()
 {
@@ -217,7 +222,6 @@ void BattleScene::chooseRapidMenu(Object* pSender)
 	{
 	case 10:
 		m_battleControler->setTurnType(3); // move
-
 		break;
 	case 11:
 		m_battleControler->setTurnType(2); // 가방
@@ -225,7 +229,7 @@ void BattleScene::chooseRapidMenu(Object* pSender)
 		break;
 	case 12:
 		m_battleControler->setTurnType(1); //도망
-
+		Director::getInstance()->popScene();
 		break;
 	default:
 		return;
@@ -245,15 +249,15 @@ void BattleScene::chooseNomalMenu(Object* pSender)
 		removeRapidMenu();
 		removeNomalMenu();
 		m_battleControler->setTurnType(4); // 액션
-
-		break;
+		printActionMenu();
+		return;
 	case 21:
 		m_battleControler->setTurnType(5); //공격
-
 		break;
 	case 22:
 		m_battleControler->setTurnType(6); // 종료
-		Director::getInstance()->popScene();
+		m_battleControler->TurnEnd();
+		endCharacterTurn();
 		break;
 	default:
 		return;
@@ -314,3 +318,18 @@ void  BattleScene::chooseActionMenu(Object* pSender)
 		break;
 	}
 }
+
+void  BattleScene::openInven()
+{
+	if (getInvenLayer()->isOpenFlag() == false)
+	{
+		log("open");
+		getInvenLayer()->Open();
+	}
+	else if (getInvenLayer()->isOpenFlag() == true)
+	{
+		log("close");
+		getInvenLayer()->Close();
+	}
+}
+

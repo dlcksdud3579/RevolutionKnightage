@@ -1,5 +1,5 @@
 #include "FieldScene.h"
-
+#include "BattleScene.h"
 
 USING_NS_CC;
 
@@ -39,6 +39,8 @@ bool FieldScene::init()
 	this->m_menuLayer->setPosition(0, 0);
 	this->addChild(m_menuLayer, 3);
 	
+	// 테스트용 몬스터 등장용 
+	scheduleOnce(schedule_selector(FieldScene::Battle), 3.0f);
 
 	return true;
 }
@@ -154,5 +156,9 @@ void FieldScene::onTouchEnded(Touch* touch, Event* event)
 
 }
 
-
+void FieldScene::Battle(float delta)
+{
+	auto * battleScene = BattleScene::createScene();
+	Director::getInstance()->pushScene(battleScene);
+}
 
