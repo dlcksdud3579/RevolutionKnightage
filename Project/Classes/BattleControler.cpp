@@ -43,3 +43,20 @@ void BattleControler::MonsterTurn(int index)
 {
 
 }
+
+
+void BattleControler::setTurnType(int turnType)
+{
+	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
+	switch (turnType)
+	{
+	case 3://¹«ºê 
+		
+		this->setTempPoint(Vec2(Character->getPoint().x, Character->getPoint().y));
+		break;
+	default:
+		
+		break;
+	}
+	this->turnType = turnType;
+}

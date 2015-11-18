@@ -4,6 +4,7 @@
 #include "FieldLayer.h"
 #include "BattleControler.h"
 
+
 class BattleLayer :public FieldLayer
 {
 public:

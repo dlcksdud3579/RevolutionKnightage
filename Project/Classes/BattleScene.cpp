@@ -21,14 +21,20 @@ bool BattleScene::init()
 		return false;
 	}
 
-	m_battleControler = new BattleControler();
+	setBattleControler(new BattleControler());
+
 	this->setBattleLayer(BattleLayer::create());
+
+
+	setBattleMenuLayer(BattleMenuLayer::create());
+	getBattleMenuLayer()->setBattleControler(getBattleControler());
 
 	m_invenLayer = InvenLayer::create();
 
+
+	this->addChild(m_battleLayer);
+	this->addChild(getBattleMenuLayer());
 	this->setInvenLayer(m_invenLayer);
-	this->addChild(m_battleLayer,1);
-	
 
 	schedule(schedule_selector(BattleScene::run),1.0f); // 배틀에서 속도를 올려주는함수 
 
@@ -63,40 +69,47 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 }
 void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
 {
+
 	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
 	
 	int touchX = touch->getLocation().x;
 	int touchY = touch->getLocation().y;
 
-	int curPointX = Character->getPoint().x;
-	int curPointY = Character->getPoint().y;
-
-	int movePointX = curPointX;
-	int movePointY = curPointY;
 	
-	if (movePointX - 50 < touchX < movePointX + 50 && movePointY - 50 < touchY < movePointY + 50)
+
+	int movePointX = getBattleControler()->getTempPoint().x*100 + 140;
+	int movePointY = getBattleControler()->getTempPoint().y*100 + 60;
+
+	log("movePoint: %d %d \nTouch: %d %d \n", movePointX, movePointY, touchX, touchY);
+	
+	if (movePointX - 50 < touchX && touchX < movePointX + 50 && movePointY - 50 < touchY && touchY < movePointY + 50)
 	{
 		//getBattleLayer()->setMoveQue(0); 
 		log("move::CUR");
 	}
-	else if (movePointX - 50 +100< touchX < movePointX + 50+100 && movePointY - 50 < touchY < movePointY + 50)
+	else if (movePointX - 50 + 100< touchX && touchX  < movePointX + 50 + 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
 	{
 		getBattleLayer()->setMoveQue(1); // 앞
+		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y));
+
 		log("move::RIGHT");
 	}
-	else if (movePointX - 50 -100< touchX < movePointX + 50 -100&& movePointY - 50 < touchY < movePointY + 50)
+	else if (movePointX - 50 - 100< touchX && touchX  < movePointX + 50 - 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
 	{
 		getBattleLayer()->setMoveQue(2); // 뒤
+		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x - 1, getBattleControler()->getTempPoint().y));
 		log("move::LEFT");
 	}
-	else if (movePointX - 50 < touchX < movePointX + 50 && movePointY - 50 +100< touchY < movePointY + 50+100)
+	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 + 100< touchY && touchY < movePointY + 50 + 100)
 	{
 		getBattleLayer()->setMoveQue(3);//위
+		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x, getBattleControler()->getTempPoint().y+1));
 		log("move::UP");
 	}
-	else if (movePointX - 50 < touchX < movePointX + 50 && movePointY - 50 -100< touchY < movePointY + 50-100)
+	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 - 100< touchY && touchY < movePointY + 50 - 100)
 	{
 		getBattleLayer()->setMoveQue(4); // 아래 
+		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y-1));
 		log("move::DOWN");
 	}
 	else
@@ -112,6 +125,9 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
 
 void BattleScene::run(float delta) // 0.2초마다
 {
+	if (m_battleControler->isStopFlag() == 1)
+		return;
+
 	m_battleControler->timeUp();
 	if (m_battleControler->getCharacterGauge() >= 100)
 	{
@@ -138,12 +154,12 @@ void BattleScene::CharacterTurn()
 
 void BattleScene::rapidAction() // 빠른 행동
 {
-	printRapidMenu();
+	getBattleMenuLayer()->printRapidMenu();
 
 }
 void BattleScene::nomalAction() // 노말 행동
 {
-	printNomalMenu();
+	getBattleMenuLayer()->printNomalMenu();
 
 }
 
@@ -152,7 +168,7 @@ void BattleScene::endCharacterTurn()
 	m_battleControler->setStopFlag(0);
 	m_battleControler->setTurnType(0);
 }
-
+/*
 void BattleScene::printRapidMenu()
 {
 	int r3 = 1.7; //루트 3 
@@ -213,59 +229,6 @@ void  BattleScene::removeNomalMenu()
 	this->removeChildByTag(21);
 	this->removeChildByTag(22);
 }
-void BattleScene::chooseRapidMenu(Object* pSender)
-{
-	auto item = (MenuItem*)pSender;
-	int index = item->getTag();
-
-	switch (index)
-	{
-	case 10:
-		m_battleControler->setTurnType(3); // move
-		break;
-	case 11:
-		m_battleControler->setTurnType(2); // 가방
-
-		break;
-	case 12:
-		m_battleControler->setTurnType(1); //도망
-		Director::getInstance()->popScene();
-		break;
-	default:
-		return;
-		break;
-	}
-	removeRapidMenu();
-}
-
-void BattleScene::chooseNomalMenu(Object* pSender)
-{
-	auto item = (MenuItem*)pSender;
-	int index = item->getTag();
-
-	switch (index)
-	{
-	case 20:
-		removeRapidMenu();
-		removeNomalMenu();
-		m_battleControler->setTurnType(4); // 액션
-		printActionMenu();
-		return;
-	case 21:
-		m_battleControler->setTurnType(5); //공격
-		break;
-	case 22:
-		m_battleControler->setTurnType(6); // 종료
-		m_battleControler->TurnEnd();
-		endCharacterTurn();
-		break;
-	default:
-		return;
-		break;
-	}
-	removeRapidMenu();
-	removeNomalMenu();
-}
 void  BattleScene::printActionMenu()
 {
 	int r3 = 1.7; //루트 3 
@@ -294,30 +257,86 @@ void  BattleScene::removeActionMenu()
 	this->removeChildByTag(31);
 	this->removeChildByTag(32);
 }
-void  BattleScene::chooseActionMenu(Object* pSender)
-{
-	auto item = (MenuItem*)pSender;
-	int index = item->getTag();
-	switch (index)
-	{
-	case 30:
-		
-		m_battleControler->setTurnType(7); //
-
-		break;
-	case 31:
-		m_battleControler->setTurnType(8); //
-
-		break;
-	case 32:
-		m_battleControler->setTurnType(9); // 
-
-		break;
-	default:
-		return;
-		break;
-	}
-}
+*/
+//void BattleScene::chooseRapidMenu(Object* pSender)
+//{
+//	auto item = (MenuItem*)pSender;
+//	int index = item->getTag();
+//
+//	switch (index)
+//	{
+//	case 10:
+//		m_battleControler->setTurnType(3); // move
+//		break;
+//	case 11:
+//		m_battleControler->setTurnType(2); // 가방
+//
+//		break;
+//	case 12:
+//		m_battleControler->setTurnType(1); //도망
+//		Director::getInstance()->popScene();
+//		break;
+//	default:
+//		return;
+//		break;
+//	}
+//	getBattleMenuLayer()->removeRapidMenu();
+//}
+//
+//void BattleScene::chooseNomalMenu(Object* pSender)
+//{
+//	auto item = (MenuItem*)pSender;
+//	int index = item->getTag();
+//
+//	switch (index)
+//	{
+//	case 20:
+//		getBattleMenuLayer()->removeRapidMenu();
+//		getBattleMenuLayer()->removeNomalMenu();
+//		m_battleControler->setTurnType(4); // 액션
+//		getBattleMenuLayer()->printActionMenu();
+//		return;
+//	case 21:
+//		m_battleControler->setTurnType(5); //공격
+//		break;
+//	case 22:
+//		m_battleControler->setTurnType(6); // 종료
+//		m_battleControler->TurnEnd();
+//		endCharacterTurn();
+//		break;
+//	default:
+//		return;
+//		break;
+//	}
+//	getBattleMenuLayer()->removeRapidMenu();
+//	getBattleMenuLayer()->removeNomalMenu();
+//}
+//
+//
+//void  BattleScene::chooseActionMenu(Object* pSender)
+//{
+//	auto item = (MenuItem*)pSender;
+//	int index = item->getTag();
+//	switch (index)
+//	{
+//	case 30:
+//		
+//		m_battleControler->setTurnType(7); //
+//
+//		break;
+//	case 31:
+//		m_battleControler->setTurnType(8); //
+//
+//		break;
+//	case 32:
+//		m_battleControler->setTurnType(9); // 
+//
+//		break;
+//	default:
+//		return;
+//		break;
+//	}
+//}
 
 void  BattleScene::openInven()
 {

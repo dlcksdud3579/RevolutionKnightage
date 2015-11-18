@@ -10,7 +10,8 @@ bool BattleLayer::init()
 	makeMap();
 	printTileField(); // 필드 소환 
 	printCharacter(); // 캐릭터 소환
-
+	MovequeMax=0;
+	MovequeMIn=0;
 
 	return true;
 }
@@ -89,33 +90,13 @@ void BattleLayer::onExit()
 void BattleLayer::makeMap()
 {
 	CMap *map = DynamicContentsContainer::getInstance()->getMap();  //  맵
-	CCharacter* character = DynamicContentsContainer::getInstance()->getCharacter(); // 케릭터 
-	Vec2 battlePoint = character->getPoint(); // x 의 기준 
 	m_map = new CMap();
-	
 
-	if (battlePoint.x < 5)
-		battlePoint.x = 5;
-
-	else if (battlePoint.x > map->getSizeTile().x - 6)
-		battlePoint.x = map->getSizeTile().x - 6;
-
-	if (battlePoint.y < 3)
-		battlePoint.y = 3;
-
-	else if (battlePoint.y> map->getSizeTile().y - 4)
-		battlePoint.y = map->getSizeTile().y - 4;
-
-	int x = 0, y = 0;
-
-	for (int i = battlePoint.x - 5; i <= battlePoint.x + 5; i++)
+	for (int i = 0; i < map->getSizeTile().x; i++)
 	{
-		for (int j = battlePoint.x - 5; j <= battlePoint.x + 5; j++)
+		for (int j = 0; j < map->getSizeTile().y ; j++)
 		{
-			m_map->addTile(Vec2(x, y), new CTile(map->atTile(Vec2(j, i))->getName(), map->atTile(Vec2(j, i))->getSpriteRoot(), map->atTile(Vec2(j, i))->getObject(2)));
-			x++;
+			m_map->addTile(Vec2(j, i), new CTile(map->atTile(Vec2(j, i))->getName(), map->atTile(Vec2(j, i))->getSpriteRoot(), map->atTile(Vec2(j, i))->getObject(2)));
 		}
-		x = 0;
-		y++;
 	}
 }

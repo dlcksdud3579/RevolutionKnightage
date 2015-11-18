@@ -45,6 +45,7 @@ bool MenuLayer::init()
 	setUp->setPosition(winSize.width / 2 + (150 / 2), winSize.height * 2 / 5 * -3 / 5);
 	setUp->setScale(1.5);
 	setUp->setColor(Color3B(0, 0, 0));
+
 	auto pMenu = Menu::create(Inven, status, skill, setUp, NULL);
 	// ¸Þ´ºµé
 	this->addChild(pMenu,2);
