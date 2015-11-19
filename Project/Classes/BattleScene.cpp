@@ -24,7 +24,7 @@ bool BattleScene::init()
 	setBattleControler(new BattleControler());
 
 	this->setBattleLayer(BattleLayer::create());
-
+	getBattleLayer()->setBattleControler(getBattleControler());
 
 	setBattleMenuLayer(BattleMenuLayer::create());
 	getBattleMenuLayer()->setBattleControler(getBattleControler());
@@ -69,13 +69,20 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 }
 void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
 {
+	if (m_battleControler->getTurnType() != 3) // 이동이 아닐시 터치입력 X
+		return;
+
+	if (this->getBattleControler()->getMoveCnt() >= 4)
+	{
+		m_battleControler->setTurnType(0);
+		getBattleLayer()->moveSchedule();
+		return;
+	}
 
 	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
 	
 	int touchX = touch->getLocation().x;
 	int touchY = touch->getLocation().y;
-
-	
 
 	int movePointX = getBattleControler()->getTempPoint().x*100 + 140;
 	int movePointY = getBattleControler()->getTempPoint().y*100 + 60;
@@ -84,33 +91,35 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 	
 	if (movePointX - 50 < touchX && touchX < movePointX + 50 && movePointY - 50 < touchY && touchY < movePointY + 50)
 	{
-		//getBattleLayer()->setMoveQue(0); 
 		log("move::CUR");
 	}
 	else if (movePointX - 50 + 100< touchX && touchX  < movePointX + 50 + 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
 	{
 		getBattleLayer()->setMoveQue(1); // 앞
 		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y));
-
 		log("move::RIGHT");
+		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
 	}
 	else if (movePointX - 50 - 100< touchX && touchX  < movePointX + 50 - 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
 	{
 		getBattleLayer()->setMoveQue(2); // 뒤
 		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x - 1, getBattleControler()->getTempPoint().y));
 		log("move::LEFT");
+		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
 	}
 	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 + 100< touchY && touchY < movePointY + 50 + 100)
 	{
 		getBattleLayer()->setMoveQue(3);//위
 		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x, getBattleControler()->getTempPoint().y+1));
 		log("move::UP");
+		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
 	}
 	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 - 100< touchY && touchY < movePointY + 50 - 100)
 	{
 		getBattleLayer()->setMoveQue(4); // 아래 
 		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y-1));
 		log("move::DOWN");
+		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
 	}
 	else
 	{

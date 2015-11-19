@@ -30,12 +30,16 @@ public:
 	void setTempPoint(Vec2 a_tempPoint){ this->m_tempPoint = a_tempPoint; }
 	Vec2 getTempPoint(){ return this->m_tempPoint; }
 
+	void setMoveCnt(int a_moveCnt){ this->m_moveCnt = a_moveCnt; }
+	int getMoveCnt(){ return this->m_moveCnt; }
+
 private:
 	int CharacterGauge;
 	int MonGauge[10];
 	bool stopflag; // 턴에 도달시	
 	int turnType;
 	Vec2 m_tempPoint;
+	int m_moveCnt;
  };
 
 

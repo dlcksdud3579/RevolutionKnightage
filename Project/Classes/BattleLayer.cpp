@@ -41,28 +41,42 @@ void  BattleLayer::removeTileField()
 	}
 }
 
-void BattleLayer::moveCharacter(float delta)
+void BattleLayer::moveSchedule()
 {
-	if (MovequeMax == MovequeMIn)
+	schedule(schedule_selector(BattleLayer::move), 1.0f);
+}
+
+void BattleLayer::move(float delta)
+{
+	if (MovequeMax <= MovequeMIn)
 	{
 		// ¹«ºê³¡
-		getBattleControler()->TurnEnd();
+		
+		this->getBattleControler()->setTempPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+			,getCharacter()->getPoint().y- getViewPoint().y + 3));
+
+		unschedule(schedule_selector(BattleLayer::move));
+		MovequeMax = 0;
+		MovequeMIn = 0;
 		return;
 	}
 		switch (getMoveQue())
 		{
 		case 1: //right
 			moveRight();
+			break;
 		case 2: // left
 			moveLeft();
+			break;
 		case 3: // up 
 			moveUp();
+			break;
 		case 4: //down
 			moveDown();
+			break;
 		default:
 			break;
 		}
-		scheduleOnce(schedule_selector(BattleLayer::moveCharacter), 1.0f);
 }
 
 void BattleLayer::onEnter()
@@ -91,7 +105,7 @@ void BattleLayer::makeMap()
 {
 	CMap *map = DynamicContentsContainer::getInstance()->getMap();  //  ¸Ê
 	m_map = new CMap();
-
+	m_map->setSizeTile(map->getSizeTile());
 	for (int i = 0; i < map->getSizeTile().x; i++)
 	{
 		for (int j = 0; j < map->getSizeTile().y ; j++)

@@ -12,6 +12,7 @@ BattleControler::BattleControler()
 		if (DynamicContentsContainer::getInstance()->getMonster(i) != NULL);
 		this->MonGauge[i] = rand() % 20 + 1;
 	}
+	setMoveCnt(0);
 
 
 }
@@ -36,6 +37,7 @@ void BattleControler::TurnEnd()
 {
 	stopflag == 0;
 	setTurnType(0);
+	setMoveCnt(0);
 }
 
 
@@ -51,8 +53,6 @@ void BattleControler::setTurnType(int turnType)
 	switch (turnType)
 	{
 	case 3://¹«ºê 
-		
-		this->setTempPoint(Vec2(Character->getPoint().x, Character->getPoint().y));
 		break;
 	default:
 		

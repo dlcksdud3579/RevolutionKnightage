@@ -12,7 +12,7 @@ public:
 	virtual bool init();
 	CREATE_FUNC(BattleLayer);
 
-	void moveCharacter(float delta);
+	void move(float delta);
 
 	virtual void printTileField();
 	virtual void removeTileField();
@@ -31,6 +31,8 @@ public:
 
 	void setMap(CMap* a_map){ this->m_map = a_map; }
 	virtual CMap* getMap(){ return this-> m_map; }
+
+	void moveSchedule();
 
 
 
