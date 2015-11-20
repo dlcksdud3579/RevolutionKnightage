@@ -52,6 +52,7 @@ void BattleControler::setTurnType(int turnType)
 	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
 	switch (turnType)
 	{
+	case 2:
 	case 3://¹«ºê 
 		break;
 	default:

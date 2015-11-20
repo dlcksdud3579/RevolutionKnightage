@@ -162,6 +162,7 @@ void StaticContentsContainer::readMapItem()
 }
 void StaticContentsContainer::readMapSkill()
 {
+	Vec2 temp;
 	xml_document xmlDoc;
 	xml_parse_result result = xmlDoc.load_file("data/skill.xml");
 
@@ -175,14 +176,27 @@ void StaticContentsContainer::readMapSkill()
 	// 로드 심볼스
 	xml_node nodeResult = xmlDoc.child("result");
 
-	xml_node nodeItems = nodeResult.child("items");
+	xml_node nodeSkills = nodeResult.child("kills");
 
 	//Type 1
-	for (xml_node nodeItem = nodeItems.child("item"); nodeItem; nodeItem = nodeItem.next_sibling("item"))
+	for (xml_node nodeskill = nodeSkills.child("skill"); nodeskill; nodeskill = nodeskill.next_sibling("skill"))
 	{
-		std::string symbolKey = nodeItem.child("key").text().get();
+		pair<string, CSkill*> tempPairSKill(
+			nodeskill.child("key").text().get(),
+			new CSkill(nodeskill.child("name").text().get(),
+			nodeskill.child("range").text().as_int(),
+			nodeskill.child("diceType").text().as_int(),
+			nodeskill.child("diceNum").text().as_int(),
+			nodeskill.child("attribute").text().as_int(),
+			nodeskill.child("accuracyRate").text().as_int()));
 
-		log("%s", symbolKey.c_str());
+		for (xml_node nodeSplashs = nodeSkills.child("splashs"); nodeSplashs; nodeSplashs = nodeSplashs.next_sibling("splashs"))
+		{
+			xml_node sybolSplash = nodeSplashs.child("splash");
+			temp.x = stoi(sybolSplash.child("x").text().get());
+			temp.y = stoi(sybolSplash.child("x").text().get());
+		}
+		getMapSkill()->insert(tempPairSKill);
 	}
 }
 void StaticContentsContainer::readMapCondition()

@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "CObject.h"
 #include "CStatus.h"
-
+#include "CSkill.h"
 USING_NS_CC;
 
 class CCharacter : public CObject // ÁÖÀÎ°ø¾¾ 
@@ -25,11 +25,14 @@ public:
 	void setSpriteRoot(std::string m_spriteRoot){ this-> m_spriteRoot =  m_spriteRoot;}
 	std::string getSpriteRoot(){ return this->m_spriteRoot; }
 
+	void setSKill(CSkill a_skill,int index){ this->m_skill[index] = a_skill; }
+	CSkill getSKill(int index){ return m_skill[index]; }
+
 private:
 	Vec2 m_Point;
 	std::string m_spriteRoot;
-
 	Sprite* m_sprite;
 	Status  m_status;
+	CSkill m_skill[6];
 };
 #endif

@@ -37,6 +37,9 @@ bool BattleScene::init()
 	this->setInvenLayer(m_invenLayer);
 
 	schedule(schedule_selector(BattleScene::run),1.0f); // 배틀에서 속도를 올려주는함수 
+	this->getBattleControler()->setTempPoint(Vec2(getBattleLayer()->getCharacter()->getPoint().x - getBattleLayer()->getViewPoint().x + 5
+		, getBattleLayer()->getCharacter()->getPoint().y - getBattleLayer()->getViewPoint().y + 3));
+
 
 	return true;
 }
@@ -62,11 +65,20 @@ void BattleScene::onExit()
 	Layer::onExit();
 }
 
+void BattleScene::movedMenu(float delta)
+{
+
+	getBattleMenuLayer()->printNomalMenu();
+}
+
 bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 {
 	if (m_battleControler->getTurnType() != 3) // 이동이 아닐시 터치입력 X
 		return false;
+
+
 }
+
 void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
 {
 	if (m_battleControler->getTurnType() != 3) // 이동이 아닐시 터치입력 X
@@ -75,7 +87,9 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 	if (this->getBattleControler()->getMoveCnt() >= 4)
 	{
 		m_battleControler->setTurnType(0);
-		getBattleLayer()->moveSchedule();
+		float movingTime = getBattleLayer()->moveSchedule();
+		getBattleMenuLayer()->removeNomalMenu();
+		scheduleOnce(schedule_selector(BattleScene::movedMenu), 5 * movingTime);
 		return;
 	}
 
@@ -117,7 +131,7 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 - 100< touchY && touchY < movePointY + 50 - 100)
 	{
 		getBattleLayer()->setMoveQue(4); // 아래 
-		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y-1));
+		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x , getBattleControler()->getTempPoint().y-1));
 		log("move::DOWN");
 		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
 	}
@@ -129,7 +143,9 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 }
 void BattleScene::onTouchEnded(Touch* touch, Event* event)
 {
-
+	m_battleControler->setTurnType(0);
+	getBattleLayer()->moveSchedule();
+	return;
 }
 
 void BattleScene::run(float delta) // 0.2초마다

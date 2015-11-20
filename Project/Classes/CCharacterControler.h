@@ -24,8 +24,6 @@ private:
 	void setCharacter(CCharacter *a_Character){ this->m_Character = a_Character; }
 	CCharacter *m_Character;
 	
-	
-
 };
 
 

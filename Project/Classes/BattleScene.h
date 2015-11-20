@@ -74,7 +74,7 @@ public:
 	void setBattleMenuLayer(BattleMenuLayer *a_battleMenuLayer){ this->m_battleMenuLayer = a_battleMenuLayer; }
 	BattleMenuLayer* getBattleMenuLayer(){ return m_battleMenuLayer; }
 	
-
+	void movedMenu(float delta);
 private:
 	InvenLayer* m_invenLayer; // 인벤토리 창 메뉴아이템
 	BattleLayer* m_battleLayer;  // 배틀 맵 레이어 ( 타일, 몬스터, 캐릭터를 출력)

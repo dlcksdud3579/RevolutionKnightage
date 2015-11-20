@@ -12,6 +12,7 @@ bool BattleLayer::init()
 	printCharacter(); // 캐릭터 소환
 	MovequeMax=0;
 	MovequeMIn=0;
+	this->setViewPoint(getCharacter()->getPoint());// 레이어의 시작 포인크를 설정 
 
 	return true;
 }
@@ -19,12 +20,12 @@ void BattleLayer::printTileField()
 {
 	int tileSiz = getMap()->atTile(Vec2(0, 0))->getSize().x;
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < getMap()->getSizeTile().y; i++)
 	{
-		for (int j = 0; j < 11; j++)
+		for (int j = 0; j < getMap()->getSizeTile().x; j++)
 		{
 			getMap()->atTile(Vec2(j, i))->getSprite()->setPosition(tileSiz / 2 + tileSiz * j, tileSiz / 2 + tileSiz * i);
-			this->addChild(getMap()->atTile(Vec2(j, i))->getSprite(), 1);
+			this->addChild(getMap()->atTile(Vec2(j, i))->getSprite(), 0);
 		}
 	}
 }
@@ -41,9 +42,11 @@ void  BattleLayer::removeTileField()
 	}
 }
 
-void BattleLayer::moveSchedule()
+float BattleLayer::moveSchedule()
 {
-	schedule(schedule_selector(BattleLayer::move), 1.0f);
+	float rv = 0.2f; //인터발 타임
+	schedule(schedule_selector(BattleLayer::move), rv);
+	return rv;
 }
 
 void BattleLayer::move(float delta)
@@ -77,6 +80,7 @@ void BattleLayer::move(float delta)
 		default:
 			break;
 		}
+		this->viewControl();
 }
 
 void BattleLayer::onEnter()
@@ -86,12 +90,10 @@ void BattleLayer::onEnter()
 	int MovequeMax=0; // 무브 큐에 서 씀 
 	int MovequeMIn=0; //  위와 동일 
 
-	getMap()->setStartPoint(Vec2(0, 0));
-	getCharacter()->setPoint(getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
-	this->setViewPoint(getMap()->getStartPoint());// 레이어의 시작 포인크를 설정 
+	//getMap()->setStartPoint(Vec2(0, 0));
+	//getCharacter()->setPoint(getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
+	
 	viewControl();
-
-
 
 }
 

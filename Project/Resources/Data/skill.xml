@@ -1,7 +1,19 @@
 <result>
-  <items>
-    <item>
-      <key></key>
-    </item>
-  </items>
+  <skills>
+    <skill>
+      <key>1</key>
+      <name>nomal atteck</name>
+      <range>1</range>
+      <splashs>
+        <splash>
+          <x>0</x>
+          <y>0</y>
+        </splash>
+      </splashs>
+      <diceType>6</diceType>
+      <diceNum>1</diceNum>
+      <attribute>0</attribute>
+      <accuracyRate>100</accuracyRate>
+    </skill>
+  </skills>
 </result>

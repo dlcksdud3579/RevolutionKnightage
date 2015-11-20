@@ -32,7 +32,7 @@ public:
 	void setMap(CMap* a_map){ this->m_map = a_map; }
 	virtual CMap* getMap(){ return this-> m_map; }
 
-	void moveSchedule();
+	float moveSchedule();
 
 
 

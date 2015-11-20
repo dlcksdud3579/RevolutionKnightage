@@ -24,9 +24,13 @@ public:
 	void printActionMenu();//빠른 행동 메뉴 
 	void removeActionMenu();
 
+	void printAttackMenu();
+	void removeAttackMenu();
+
 	void chooseRapidMenu(Object* pSender); //빠른 행동 메뉴 선택시 
 	void chooseNomalMenu(Object* pSender); // 느린  //
 	void chooseActionMenu(Object* pSender);// 액션 // 
+	void chooseAttackMenu(Object* pSender);
 
 	void setBattleControler(BattleControler *a_battleControler){ m_battleControler = a_battleControler; }
 	BattleControler *getBattleControler(){ return m_battleControler; }

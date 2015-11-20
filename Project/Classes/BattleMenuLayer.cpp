@@ -17,9 +17,10 @@ bool BattleMenuLayer::init()
 void BattleMenuLayer::printRapidMenu()
 {
 	float r3 = 1.732; //루트 3 
-
-	int PointX = 750;
-	int PointY = 300;
+	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint();
+	
+	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
+	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
 
 	MenuItemFont* moveLable = MenuItemFont::create("MOVE",
 		CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
@@ -47,9 +48,12 @@ void BattleMenuLayer::printRapidMenu()
 void BattleMenuLayer::printNomalMenu()
 {
 	float r3 = 1.732; //루트 3 
+	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint();
 
-	int PointX = 750;
-	int PointY = 300;
+	int PointX = getBattleControler()->getTempPoint().x*100+140;
+	int PointY = getBattleControler()->getTempPoint().y*100+60;
+
+
 
 	MenuItemFont* actionLable = MenuItemFont::create("ACTION", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	actionLable->setPosition( + 50 * r3,  - 50);
@@ -87,28 +91,30 @@ void  BattleMenuLayer::printActionMenu()
 {
 	float r3 = 1.732; //루트 3 
 
-	int PointX = 750;
-	int PointY = 300;
+	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
+	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
+
+
 
 	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	action1Lable->setPosition(+50 * r3, -50);
 	action1Lable->setColor(Color3B(0, 0, 0));
-	action1Lable->setTag(20);
+	action1Lable->setTag(30);
 
 	MenuItemFont* action2Lable = MenuItemFont::create("ACTION2", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	action2Lable->setPosition(+50 * r3, +50);
 	action2Lable->setColor(Color3B(0, 0, 0));
-	action2Lable->setTag(21);
+	action2Lable->setTag(31);
 
 	MenuItemFont* action3Lable = MenuItemFont::create("ACTION3", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	action3Lable->setPosition(-50 * r3, +50);
 	action3Lable->setColor(Color3B(0, 0, 0));
-	action3Lable->setTag(22);
+	action3Lable->setTag(32);
 
 	MenuItemFont* action4Lable = MenuItemFont::create("ACTION4", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	action4Lable->setPosition(-50 * r3, -50);
 	action4Lable->setColor(Color3B(0, 0, 0));
-	action4Lable->setTag(22);
+	action4Lable->setTag(33);
 
 	auto pMenu = Menu::create(action1Lable, action2Lable, action3Lable, action4Lable, NULL);
 	pMenu->setPosition(PointX, PointY);
@@ -120,6 +126,50 @@ void  BattleMenuLayer::removeActionMenu()
 	this->removeChildByTag(300);
 
 }
+void  BattleMenuLayer::printAttackMenu()
+{
+	float r3 = 1.732; //루트 3 
+
+	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
+	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
+
+
+
+	MenuItemFont* skill1Lable = MenuItemFont::create("ATTACK1", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	skill1Lable->setPosition(+50 * r3, -50);
+	skill1Lable->setColor(Color3B(0, 0, 0));
+	skill1Lable->setTag(40);
+
+	MenuItemFont* skill2Lable = MenuItemFont::create("ATTACK2", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	skill2Lable->setPosition(+50 * r3, +50);
+	skill2Lable->setColor(Color3B(0, 0, 0));
+	skill2Lable->setTag(41);
+
+	MenuItemFont* skill3Lable = MenuItemFont::create("ATTACK3", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	skill3Lable->setPosition(-50 * r3, +50);
+	skill3Lable->setColor(Color3B(0, 0, 0));
+	skill3Lable->setTag(42);
+
+	MenuItemFont* skill4Lable = MenuItemFont::create("ATTACK4", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	skill4Lable->setPosition(-50 * r3, -50);
+	skill4Lable->setColor(Color3B(0, 0, 0));
+	skill4Lable->setTag(43);
+
+	MenuItemFont* skill5Lable = MenuItemFont::create("ATTACK5", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	skill5Lable->setPosition(0, 100);
+	skill5Lable->setColor(Color3B(0, 0, 0));
+	skill5Lable->setTag(44);
+
+	auto pMenu = Menu::create(skill1Lable, skill2Lable, skill3Lable, skill4Lable, skill5Lable,NULL);
+	pMenu->setPosition(PointX, PointY);
+	pMenu->setTag(400);
+	addChild(pMenu);
+}
+void  BattleMenuLayer::removeAttackMenu()
+{
+	this->removeChildByTag(400); 
+}
+
 void BattleMenuLayer::chooseRapidMenu(Object* pSender)
 {
 	auto item = (MenuItem*)pSender;
@@ -163,6 +213,7 @@ void BattleMenuLayer::chooseNomalMenu(Object* pSender)
 		return;
 	case 21:
 		m_battleControler->setTurnType(5); //공격
+		this->printAttackMenu();
 
 		break;
 	case 22:
@@ -196,6 +247,44 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender)
 		break;
 	case 32:
 		m_battleControler->setTurnType(9); // 
+
+	case 33:
+		m_battleControler->setTurnType(10); // 
+		break;
+	default:
+		return;
+		break;
+	}
+}
+void  BattleMenuLayer::chooseAttackMenu(Object* pSender)
+{
+	auto item = (MenuItem*)pSender;
+	int index = item->getTag();
+	removeAttackMenu();
+	switch (index)
+	{
+	case 40:
+		m_battleControler->setTurnType(11); //
+
+		break;
+	case 41:
+		m_battleControler->setTurnType(12); //
+
+		break;
+	case 42:
+		m_battleControler->setTurnType(13); // 
+
+	case 43:
+
+		m_battleControler->setTurnType(14); //
+
+		break;
+	case 44:
+		m_battleControler->setTurnType(15); //
+
+		break;
+	case 45:
+		m_battleControler->setTurnType(16); // 
 
 		break;
 	default:
