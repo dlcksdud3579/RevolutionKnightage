@@ -116,3 +116,25 @@ void BattleLayer::makeMap()
 		}
 	}
 }
+
+void BattleLayer::printMonster()
+{
+	CMonster* mon[10];
+	for (int i = 0; i < 10; i++)
+	{
+		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
+			continue;
+		
+		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+		addChild(mon[i]->getSprite());
+	}
+}
+void BattleLayer::removeMonster()
+{
+	CMonster* mon[10];
+	for (int i = 0; i < 10; i++)
+	{
+		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+		removeChild(mon[i]->getSprite());
+	}
+}

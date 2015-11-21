@@ -118,9 +118,8 @@ void FieldLayer::onEnter()
 {
 	Layer::onEnter();
 	
-	getMap()->setStartPoint(Vec2(0, 0));
-	getCharacter()->setPoint(getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
-	this->setViewPoint(getMap()->getStartPoint());// 레이어의 시작 포인크를 설정 
+	
+	this->setViewPoint(getCharacter()->getPoint());// 레이어의 시작 포인크를 설정 
 	viewControl();
 
 }

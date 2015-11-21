@@ -159,6 +159,6 @@ void FieldScene::onTouchEnded(Touch* touch, Event* event)
 void FieldScene::Battle(float delta)
 {
 	auto * battleScene = BattleScene::createScene();
-	Director::getInstance()->pushScene(battleScene);
+	Director::getInstance()->replaceScene(battleScene);
 }
 

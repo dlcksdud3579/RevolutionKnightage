@@ -1,6 +1,7 @@
 #ifndef _BattleControler__
 #define _BattleControler__
 #include "cocos2d.h"
+#include "CSkill.h"
 USING_NS_CC;
 
 class BattleControler
@@ -33,13 +34,22 @@ public:
 	void setMoveCnt(int a_moveCnt){ this->m_moveCnt = a_moveCnt; }
 	int getMoveCnt(){ return this->m_moveCnt; }
 
+	void AttackStart(int index);
+	void damageMon(Vec2 Point);
+
+	void setCurSkill(CSkill* a_CurSkill){ this->m_CurSkill = a_CurSkill; }
+	CSkill* getCurSkill(){ return this->m_CurSkill; }
+
+	void dieMon(int index);
+
 private:
 	int CharacterGauge;
 	int MonGauge[10];
 	bool stopflag; // 턴에 도달시	
-	int turnType;
+	int turnType; // 무브턴 3// 
 	Vec2 m_tempPoint;
 	int m_moveCnt;
+	CSkill* m_CurSkill; // 현재 사용할 스킬
  };
 
 

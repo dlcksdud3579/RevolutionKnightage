@@ -35,6 +35,9 @@ public:
 	float moveSchedule();
 
 
+	void printMonster();
+	void removeMonster();
+
 
 	void makeMap();
 private:

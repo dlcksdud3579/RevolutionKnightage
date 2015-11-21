@@ -10,6 +10,7 @@
 #include "CScenario.h"
 #include "CDice.h"
 #include "CObject.h"
+#include "CMonster.h"
 
 static class  StaticContentsContainer  // 정적으로 생성되는 함수 xml 파일 데이터를 다루는  클래스 
 {
@@ -47,6 +48,9 @@ public:
 	static std::map<string, CObject*>* getMapObject(){ return m_mapObject; }
 	static void setMapObject(std::map<string, CObject*>* a_mapObject){ m_mapObject = a_mapObject; }
 
+	static std::map<string, CMonster*>* getMapMonster(){ return m_mapMonster; }
+	static void setMapMonster(std::map<string, CMonster*>* a_mapMonster){ m_mapMonster = a_mapMonster; }
+
 	static void readxml();
 
 private:
@@ -61,6 +65,7 @@ private:
 	static std::map<string, CDice*>* m_mapDice; // 주사위
 	static std::map<string, CTile*>* m_mapTile; // 타일
 	static std::map<string, CObject*>* m_mapObject; // 오브 젝트
+	static std::map<string, CMonster*>* m_mapMonster; //몬스타 
 
 	//각각 읽어오는 함수 
 	static void readMapObject();
@@ -74,5 +79,6 @@ private:
 	static void readMapMap(); 
 	static void readMapScenario();  
 	static void readMapDice(); 
+	static void readMapMonster();
 };
 #endif

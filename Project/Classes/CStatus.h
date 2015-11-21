@@ -4,12 +4,15 @@
 class Status
 {
 public:
+	Status();
+	Status(int hp, int spd, int def, int str, int dex, int ins, int kno);
+	~Status();
 
 	void setHp(int hp){ this->hp = hp; }
 	int getHp(){ return hp; }
 
-	void setSpeed(int speed){ this->speed = speed; }
-	int getSpeed(){ return speed; }
+	void setSpeed(int speed){ this->spd = spd; }
+	int getSpeed(){ return spd; }
 
 	void setDef(int def){ this->def = def; }
 	int getDef(){ return def; }
@@ -28,7 +31,7 @@ public:
 
 private:
 	int hp;
-	int speed;
+	int spd;
 	int def;
 
 	int str; //Èû

@@ -30,3 +30,11 @@ int  CDice::rollDice(int type)
 	this->setNumber(getNumber() - 1);
 	return value;
 }
+int CDice::rollDice(int type, int Number)
+{
+	int rv = 0;
+	for (int i = 0; i < Number; i++)
+		rv +=rollDice(type);
+
+	return rv;
+}

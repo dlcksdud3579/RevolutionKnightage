@@ -1,6 +1,7 @@
 #include "BattleMenuLayer.h"
 #include "DynamicContentsContainer.h"
 #include "BattleScene.h"
+#include "FieldScene.h"
 
 bool BattleMenuLayer::init()
 {
@@ -174,7 +175,7 @@ void BattleMenuLayer::chooseRapidMenu(Object* pSender)
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
-
+	Scene* fieldScene = NULL;
 	removeRapidMenu();
 	switch (index)
 	{
@@ -187,7 +188,8 @@ void BattleMenuLayer::chooseRapidMenu(Object* pSender)
 		break;
 	case 12:
 		m_battleControler->setTurnType(1); //µµ¸Á
-		Director::getInstance()->popScene();
+		fieldScene = FieldScene::createScene();
+		Director::getInstance()->replaceScene(fieldScene);
 		break;
 	default:
 		return;

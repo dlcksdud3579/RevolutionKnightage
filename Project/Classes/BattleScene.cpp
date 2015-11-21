@@ -73,7 +73,7 @@ void BattleScene::movedMenu(float delta)
 
 bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 {
-	if (m_battleControler->getTurnType() != 3) // 이동이 아닐시 터치입력 X
+	if (m_battleControler->getTurnType() != 3&&m_battleControler->getTurnType() != 5) // 이동이 아닐시 터치입력 X
 		return false;
 
 
@@ -81,66 +81,86 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 
 void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
 {
-	if (m_battleControler->getTurnType() != 3) // 이동이 아닐시 터치입력 X
-		return;
-
-	if (this->getBattleControler()->getMoveCnt() >= 4)
-	{
-		m_battleControler->setTurnType(0);
-		float movingTime = getBattleLayer()->moveSchedule();
-		getBattleMenuLayer()->removeNomalMenu();
-		scheduleOnce(schedule_selector(BattleScene::movedMenu), 5 * movingTime);
-		return;
-	}
-
-	CCharacter * Character = DynamicContentsContainer::getInstance()->getCharacter();
-	
 	int touchX = touch->getLocation().x;
 	int touchY = touch->getLocation().y;
 
-	int movePointX = getBattleControler()->getTempPoint().x*100 + 140;
-	int movePointY = getBattleControler()->getTempPoint().y*100 + 60;
+	int movePointX = getBattleControler()->getTempPoint().x * 100 + 140;
+	int movePointY = getBattleControler()->getTempPoint().y * 100 + 60;
 
-	log("movePoint: %d %d \nTouch: %d %d \n", movePointX, movePointY, touchX, touchY);
-	
-	if (movePointX - 50 < touchX && touchX < movePointX + 50 && movePointY - 50 < touchY && touchY < movePointY + 50)
+	if (m_battleControler->getTurnType() == 3) // 이동이 아닐시 터치입력 X
 	{
-		log("move::CUR");
+		if (this->getBattleControler()->getMoveCnt() >= 4)
+		{
+			m_battleControler->setTurnType(0);
+			float movingTime = getBattleLayer()->moveSchedule();
+			getBattleMenuLayer()->removeNomalMenu();
+			scheduleOnce(schedule_selector(BattleScene::movedMenu), 5 * movingTime);
+			return;
+		}
+
+		log("movePoint: %d %d \nTouch: %d %d \n", movePointX, movePointY, touchX, touchY);
+
+		if (movePointX - 50 < touchX && touchX < movePointX + 50 && movePointY - 50 < touchY && touchY < movePointY + 50)
+		{
+			log("move::CUR");
+		}
+		else if (movePointX - 50 + 100 < touchX && touchX < movePointX + 50 + 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
+		{
+			getBattleLayer()->setMoveQue(1); // 앞
+			getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y));
+			log("move::RIGHT");
+			getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
+		}
+		else if (movePointX - 50 - 100 < touchX && touchX < movePointX + 50 - 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
+		{
+			getBattleLayer()->setMoveQue(2); // 뒤
+			getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x - 1, getBattleControler()->getTempPoint().y));
+			log("move::LEFT");
+			getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
+		}
+		else if (movePointX - 50 < touchX && touchX < movePointX + 50 && movePointY - 50 + 100 < touchY && touchY < movePointY + 50 + 100)
+		{
+			getBattleLayer()->setMoveQue(3);//위
+			getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x, getBattleControler()->getTempPoint().y + 1));
+			log("move::UP");
+			getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
+		}
+		else if (movePointX - 50 < touchX && touchX < movePointX + 50 && movePointY - 50 - 100 < touchY && touchY < movePointY + 50 - 100)
+		{
+			getBattleLayer()->setMoveQue(4); // 아래 
+			getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x, getBattleControler()->getTempPoint().y - 1));
+			log("move::DOWN");
+			getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
+		}
+		else
+		{
+			log("move::NOT");
+			return;
+		}
 	}
-	else if (movePointX - 50 + 100< touchX && touchX  < movePointX + 50 + 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
+	else if (m_battleControler->getTurnType() == 5)
 	{
-		getBattleLayer()->setMoveQue(1); // 앞
-		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x + 1, getBattleControler()->getTempPoint().y));
-		log("move::RIGHT");
-		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
-	}
-	else if (movePointX - 50 - 100< touchX && touchX  < movePointX + 50 - 100 && movePointY - 50 < touchY && touchY < movePointY + 50)
-	{
-		getBattleLayer()->setMoveQue(2); // 뒤
-		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x - 1, getBattleControler()->getTempPoint().y));
-		log("move::LEFT");
-		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
-	}
-	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 + 100< touchY && touchY < movePointY + 50 + 100)
-	{
-		getBattleLayer()->setMoveQue(3);//위
-		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x, getBattleControler()->getTempPoint().y+1));
-		log("move::UP");
-		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
-	}
-	else if (movePointX - 50 < touchX && touchX  < movePointX + 50 && movePointY - 50 - 100< touchY && touchY < movePointY + 50 - 100)
-	{
-		getBattleLayer()->setMoveQue(4); // 아래 
-		getBattleControler()->setTempPoint(Vec2(getBattleControler()->getTempPoint().x , getBattleControler()->getTempPoint().y-1));
-		log("move::DOWN");
-		getBattleControler()->setMoveCnt(getBattleControler()->getMoveCnt() + 1); // 카운터++;
-	}
-	else
-	{
-		log("move::NOT");
-		return;
+		
+		if (m_battleControler->getCurSkill() == NULL)
+			return;
+
+		int r = getBattleControler()->getCurSkill()->getRange();
+
+		if (movePointX - 50 +100*r < touchX && touchX < movePointX + 50 + 100*r && movePointY - 50 +100*r < touchY && touchY < movePointY + 50 +100* r)
+		{
+			Vec2 attackPoint;
+			attackPoint.x = (touchX - 140) / 100 - getBattleLayer()->getViewPoint().x; 
+			attackPoint.y = (touchY - 60) / 100 - getBattleLayer()->getViewPoint().y;
+			getBattleControler()->damageMon(attackPoint);
+		}
+		else
+		{
+			log("attack::NOT");
+			return;
+		}
 	}
 }
+
 void BattleScene::onTouchEnded(Touch* touch, Event* event)
 {
 	m_battleControler->setTurnType(0);

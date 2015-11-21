@@ -1,5 +1,7 @@
 #include "StaticContentsContainer.h"
 #include "pugixml.hpp"
+#include "CStatus.h"
+
 using namespace pugi;
 
 std::map<string, CKind*>* StaticContentsContainer::m_mapKind = new std::map<string, CKind*>(); //종족
@@ -13,6 +15,7 @@ std::map<string, CScenario*>* StaticContentsContainer::m_mapScenario = new std::
 std::map<string, CDice*>* StaticContentsContainer::m_mapDice = new std::map<string, CDice*>(); // 주사위
 std::map<string, CTile*>* StaticContentsContainer::m_mapTile = new std::map<string, CTile*>(); // 타일;
 std::map<string, CObject*>* StaticContentsContainer::m_mapObject = new std::map<string, CObject*>();//오브젝트
+std::map<string, CMonster*>* StaticContentsContainer::m_mapMonster = new std::map<string, CMonster*>(); //몬스타
 
 void StaticContentsContainer::readxml()
 {
@@ -27,6 +30,7 @@ void StaticContentsContainer::readxml()
 	StaticContentsContainer::readMapMap();
 	StaticContentsContainer::readMapScenario();
 	StaticContentsContainer::readMapDice();
+	StaticContentsContainer::readMapMonster();
 }
 
 void StaticContentsContainer::readMapKind()
@@ -165,6 +169,7 @@ void StaticContentsContainer::readMapSkill()
 	Vec2 temp;
 	xml_document xmlDoc;
 	xml_parse_result result = xmlDoc.load_file("data/skill.xml");
+	int i=0;
 
 	if (!result)
 	{
@@ -194,8 +199,11 @@ void StaticContentsContainer::readMapSkill()
 		{
 			xml_node sybolSplash = nodeSplashs.child("splash");
 			temp.x = stoi(sybolSplash.child("x").text().get());
-			temp.y = stoi(sybolSplash.child("x").text().get());
+			temp.y = stoi(sybolSplash.child("y").text().get());
+			tempPairSKill.second->setSplash(temp, i++);
 		}
+
+
 		getMapSkill()->insert(tempPairSKill);
 	}
 }
@@ -369,5 +377,58 @@ void StaticContentsContainer::readMapDice()
 		log("%s", symbolKey.c_str());
 	}
 }
+
+void StaticContentsContainer::readMapMonster()
+{
+	xml_document xmlDoc;
+	xml_parse_result result = xmlDoc.load_file("data/scenario.xml");
+	int cnt=0;
+	if (!result)
+	{
+		log("Error description: %s", result.description());
+		log("Error offset: %d", result.offset);
+		return;
+	}
+
+	// 로드 심볼스
+	xml_node nodeResult = xmlDoc.child("result");
+
+	xml_node nodemonsters = nodeResult.child("monsters");
+
+	//Type 1
+	for (xml_node nodemonster = nodemonsters.child("moster"); nodemonster; nodemonster = nodemonster.next_sibling("moster"))
+	{
+		
+		pair<string, CMonster*> tempPairMonster(
+			nodemonster.child("key").text().get(),
+			new CMonster(nodemonster.child("name").text().get(),
+			nodemonster.child("spriteRoot").text().get()));
+		
+		xml_node nodeStatus = nodemonster.child("status");
+		tempPairMonster.second->setStatus(new Status(nodeStatus.child("hp").text().as_int(), 
+			nodeStatus.child("spd").text().as_int(),
+			nodeStatus.child("def").text().as_int(),
+			nodeStatus.child("str").text().as_int(),
+			nodeStatus.child("dex").text().as_int(),
+			nodeStatus.child("ins").text().as_int(),
+			nodeStatus.child("kno").text().as_int()));
+
+		 xml_node nodeSkills = nodemonster.child("skills");
+		 cnt = 0;
+		 for (xml_node nodeSkillKey = nodeSkills.child("skillKey"); nodeSkillKey; nodeSkillKey = nodeSkillKey.next_sibling("skillKey"))
+		 {
+			 tempPairMonster.second->setSKill(getMapSkill()->find(nodeSkillKey.text().get())->second, cnt++);
+		 }
+		 xml_node nodeitems = nodemonster.child("items");
+		 for (xml_node nodesitem = nodeitems.child("ItemKey"); nodesitem; nodesitem = nodesitem.next_sibling("ItemKey"))
+		 {
+			 tempPairMonster.second->setItem(getMapItem()->find(nodesitem.text().get())->second, cnt++);
+		 }
+
+		 getMapMonster()->insert(tempPairMonster);
+
+	}
+}
+
 
 
