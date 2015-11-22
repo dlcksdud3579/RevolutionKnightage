@@ -38,6 +38,7 @@ void BattleControler::TurnEnd()
 	stopflag == 0;
 	setTurnType(0);
 	setMoveCnt(0);
+	setCurSkill(NULL);
 }
 
 
@@ -63,7 +64,7 @@ void BattleControler::setTurnType(int turnType)
 }
 void  BattleControler::AttackStart(int index)
 {
-	this->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSKill(index));
+	this->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(index));
 
 }
 void BattleControler::damageMon(Vec2 Point)

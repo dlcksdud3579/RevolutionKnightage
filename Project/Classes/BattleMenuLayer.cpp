@@ -97,22 +97,22 @@ void  BattleMenuLayer::printActionMenu()
 
 
 
-	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action1Lable->setPosition(+50 * r3, -50);
 	action1Lable->setColor(Color3B(0, 0, 0));
 	action1Lable->setTag(30);
 
-	MenuItemFont* action2Lable = MenuItemFont::create("ACTION2", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	MenuItemFont* action2Lable = MenuItemFont::create("ACTION2", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action2Lable->setPosition(+50 * r3, +50);
 	action2Lable->setColor(Color3B(0, 0, 0));
 	action2Lable->setTag(31);
 
-	MenuItemFont* action3Lable = MenuItemFont::create("ACTION3", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	MenuItemFont* action3Lable = MenuItemFont::create("ACTION3", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action3Lable->setPosition(-50 * r3, +50);
 	action3Lable->setColor(Color3B(0, 0, 0));
 	action3Lable->setTag(32);
 
-	MenuItemFont* action4Lable = MenuItemFont::create("ACTION4", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
+	MenuItemFont* action4Lable = MenuItemFont::create("ACTION4", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action4Lable->setPosition(-50 * r3, -50);
 	action4Lable->setColor(Color3B(0, 0, 0));
 	action4Lable->setTag(33);
@@ -133,38 +133,64 @@ void  BattleMenuLayer::printAttackMenu()
 
 	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
 	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
+	CSkill* skill[6];
+	std::string  skillName[6];
+	for (int i = 0; i < 6; i++)
+	{
+		skill[i] = DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i);
+		if (skill[i] == NULL)
+			skillName[i] = " ";
+		else
+			skillName[i] = skill[i]->getName();
+	}
 
+	MenuItemFont* 	skill1Lable = MenuItemFont::create(skillName[0], CC_CALLBACK_1(BattleMenuLayer::chooseAttackMenu, this));
 
+	if (skill[0] != NULL)
+	{
+		skill1Lable->setPosition(+50 * r3, -50);
+		skill1Lable->setColor(Color3B(0, 0, 0));
+		skill1Lable->setTag(40);
+	}
+	MenuItemFont* skill2Lable = MenuItemFont::create(skillName[1], CC_CALLBACK_1(BattleMenuLayer::chooseAttackMenu, this));
+	if (skill[0] != NULL)
+	{
+		skill2Lable->setPosition(+50 * r3, +50);
+		skill2Lable->setColor(Color3B(0, 0, 0));
+		skill2Lable->setTag(41);
+	}
 
-	MenuItemFont* skill1Lable = MenuItemFont::create("ATTACK1", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	skill1Lable->setPosition(+50 * r3, -50);
-	skill1Lable->setColor(Color3B(0, 0, 0));
-	skill1Lable->setTag(40);
+	MenuItemFont* skill3Lable = MenuItemFont::create(skillName[2], CC_CALLBACK_1(BattleMenuLayer::chooseAttackMenu, this));
+	if (skill[0] != NULL)
+	{
+		skill3Lable->setPosition(-50 * r3, +50);
+		skill3Lable->setColor(Color3B(0, 0, 0));
+		skill3Lable->setTag(42);
+	}
 
-	MenuItemFont* skill2Lable = MenuItemFont::create("ATTACK2", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	skill2Lable->setPosition(+50 * r3, +50);
-	skill2Lable->setColor(Color3B(0, 0, 0));
-	skill2Lable->setTag(41);
+	MenuItemFont* skill4Lable = MenuItemFont::create(skillName[3], CC_CALLBACK_1(BattleMenuLayer::chooseAttackMenu, this));
+	if (skill[0] != NULL)
+	{
+		skill4Lable->setPosition(-50 * r3, -50);
+		skill4Lable->setColor(Color3B(0, 0, 0));
+		skill4Lable->setTag(43);
+	}
 
-	MenuItemFont* skill3Lable = MenuItemFont::create("ATTACK3", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	skill3Lable->setPosition(-50 * r3, +50);
-	skill3Lable->setColor(Color3B(0, 0, 0));
-	skill3Lable->setTag(42);
-
-	MenuItemFont* skill4Lable = MenuItemFont::create("ATTACK4", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	skill4Lable->setPosition(-50 * r3, -50);
-	skill4Lable->setColor(Color3B(0, 0, 0));
-	skill4Lable->setTag(43);
-
-	MenuItemFont* skill5Lable = MenuItemFont::create("ATTACK5", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	skill5Lable->setPosition(0, 100);
-	skill5Lable->setColor(Color3B(0, 0, 0));
-	skill5Lable->setTag(44);
+	MenuItemFont* skill5Lable = MenuItemFont::create(skillName[4], CC_CALLBACK_1(BattleMenuLayer::chooseAttackMenu, this));
+	if (skill[0] != NULL)
+	{
+		skill5Lable->setPosition(0, 100);
+		skill5Lable->setColor(Color3B(0, 0, 0));
+		skill5Lable->setTag(44);
+	}
 
 	auto pMenu = Menu::create(skill1Lable, skill2Lable, skill3Lable, skill4Lable, skill5Lable,NULL);
-	pMenu->setPosition(PointX, PointY);
-	pMenu->setTag(400);
-	addChild(pMenu);
+	if (skill[0] != NULL)
+	{
+		pMenu->setPosition(PointX, PointY);
+		pMenu->setTag(400);
+		addChild(pMenu);
+	}
 }
 void  BattleMenuLayer::removeAttackMenu()
 {
@@ -214,7 +240,6 @@ void BattleMenuLayer::chooseNomalMenu(Object* pSender)
 		printActionMenu();
 		return;
 	case 21:
-		m_battleControler->setTurnType(5); //공격
 		this->printAttackMenu();
 
 		break;
@@ -236,6 +261,8 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender)
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
+	removeActionMenu();
+
 	switch (index)
 	{
 	case 30:
@@ -249,7 +276,7 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender)
 		break;
 	case 32:
 		m_battleControler->setTurnType(9); // 
-
+		break;
 	case 33:
 		m_battleControler->setTurnType(10); // 
 		break;
@@ -257,40 +284,55 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender)
 		return;
 		break;
 	}
+	m_battleControler->TurnEnd();
 }
 void  BattleMenuLayer::chooseAttackMenu(Object* pSender)
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
+	m_battleControler->setTurnType(5); //공격
 	removeAttackMenu();
+	int i=0;
 	switch (index)
 	{
 	case 40:
-		m_battleControler->setTurnType(11); //
-
+		i = index - 40;
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
 		break;
 	case 41:
-		m_battleControler->setTurnType(12); //
 
+		i = index - 40;
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
 		break;
 	case 42:
-		m_battleControler->setTurnType(13); // 
-
+	
+		i = index - 40;
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		break;
 	case 43:
 
-		m_battleControler->setTurnType(14); //
+
+		i = index - 40;
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
 
 		break;
 	case 44:
-		m_battleControler->setTurnType(15); //
-
+		i = index - 40;
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
 		break;
 	case 45:
-		m_battleControler->setTurnType(16); // 
-
+		i = index - 40;
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
 		break;
 	default:
 		return;
 		break;
+
 	}
 }

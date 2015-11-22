@@ -78,7 +78,40 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 	if (m_battleControler->getTurnType() != 3&&m_battleControler->getTurnType() != 5) // 이동이 아닐시 터치입력 X
 		return false;
 
+	int touchX = touch->getLocation().x;
+	int touchY = touch->getLocation().y;
 
+	int movePointX = getBattleControler()->getTempPoint().x * 100 + 140;
+	int movePointY = getBattleControler()->getTempPoint().y * 100 + 60;
+
+	if (m_battleControler->getTurnType() == 5)
+	{
+		if (m_battleControler->getCurSkill() == NULL)
+		{
+			log("attack:NULL");
+			getBattleControler()->TurnEnd();
+			return false;
+		}
+
+		int r = getBattleControler()->getCurSkill()->getRange();
+
+		if (movePointX - 50 - 100 * r < touchX && touchX < movePointX + 50 + 100 * r && movePointY - 50 - 100 * r < touchY && touchY < movePointY + 50 + 100 * r)
+		{
+			Vec2 attackPoint;
+			attackPoint.x = (touchX - 140) / 100 - getBattleLayer()->getViewPoint().x;
+			attackPoint.y = (touchY - 60) / 100 - getBattleLayer()->getViewPoint().y;
+			getBattleControler()->damageMon(attackPoint);
+			log("attack");
+			endCharacterTurn();
+			getBattleControler()->TurnEnd();
+		}
+		else
+		{
+			log("attack::NOT");
+			return false;
+		}
+	}
+	return true;
 }
 
 void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
@@ -140,36 +173,19 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 			return;
 		}
 	}
-	else if (m_battleControler->getTurnType() == 5)
-	{
-		
-		if (m_battleControler->getCurSkill() == NULL)
-			return;
 
-		int r = getBattleControler()->getCurSkill()->getRange();
-
-		if (movePointX - 50 +100*r < touchX && touchX < movePointX + 50 + 100*r && movePointY - 50 +100*r < touchY && touchY < movePointY + 50 +100* r)
-		{
-			Vec2 attackPoint;
-			attackPoint.x = (touchX - 140) / 100 - getBattleLayer()->getViewPoint().x; 
-			attackPoint.y = (touchY - 60) / 100 - getBattleLayer()->getViewPoint().y;
-			getBattleControler()->damageMon(attackPoint);
-		}
-		else
-		{
-			log("attack::NOT");
-			return;
-		}
-	}
 }
 
 void BattleScene::onTouchEnded(Touch* touch, Event* event)
 {
-	m_battleControler->setTurnType(0);
-	float movingTime = getBattleLayer()->moveSchedule();
-	getBattleMenuLayer()->removeNomalMenu();
-	scheduleOnce(schedule_selector(BattleScene::movedMenu), 5 * movingTime);
-	return;
+	if (m_battleControler->getTurnType() == 3) // 이동이 아닐시 터치입력 X
+	{
+		m_battleControler->setTurnType(0);
+		float movingTime = getBattleLayer()->moveSchedule();
+		getBattleMenuLayer()->removeNomalMenu();
+		scheduleOnce(schedule_selector(BattleScene::movedMenu), 5 * movingTime);
+		return;
+	}
 }
 
 void BattleScene::run(float delta) // 0.2초마다
@@ -217,175 +233,6 @@ void BattleScene::endCharacterTurn()
 	m_battleControler->setStopFlag(0);
 	m_battleControler->setTurnType(0);
 }
-/*
-void BattleScene::printRapidMenu()
-{
-	int r3 = 1.7; //루트 3 
-
-	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x*100;
-	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y*100;
-
-	Label* moveLable = Label::create("MOVE", "fonts/arial.ttf", 36);
-	moveLable->setPosition(PointX + 50 * r3, PointY + 50);
-	moveLable->setTag(10);
-
-	Label* InvenLable = Label::create("BAG", "fonts/arial.ttf", 36);
-	InvenLable->setPosition(PointX - 50 * r3, PointY - 50);
-	InvenLable->setTag(11);
-
-	Label* escLable = Label::create("ESC", "fonts/arial.ttf", 36);
-	escLable->setPosition(PointX - 50 * r3, PointY + 50);
-	escLable->setTag(12);
-
-	this->addChild(moveLable,10);
-	this->addChild(InvenLable,10);
-	this->addChild(escLable,10);
-}
-
-void BattleScene::printNomalMenu()
-{
-	int r3 = 1.7; //루트 3 
-
-	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x*100;
-	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y*100;
-
-	Label* actionLable = Label::create("ACTION", "fonts/arial.ttf", 36);
-	actionLable->setPosition(PointX + 50 * r3, PointY + 50);
-	actionLable->setTag(20);
-
-	Label* attakLable = Label::create("ATTACK", "fonts/arial.ttf", 36);
-	attakLable->setPosition(PointX, PointY + 100);
-	attakLable->setTag(21);
-
-	Label* endLable = Label::create("END", "fonts/arial.ttf", 36);
-	endLable->setPosition(PointX, PointY - 100);
-	endLable->setTag(22);
-
-	this->addChild(actionLable);
-	this->addChild(attakLable);
-	this->addChild(endLable);
-}
-void  BattleScene::removeRapidMenu()
-{
-	this->removeChildByTag(10);
-	this->removeChildByTag(11);
-	this->removeChildByTag(12);
-		
-}
-void  BattleScene::removeNomalMenu()
-{
-	this->removeChildByTag(20);
-	this->removeChildByTag(21);
-	this->removeChildByTag(22);
-}
-void  BattleScene::printActionMenu()
-{
-	int r3 = 1.7; //루트 3 
-	int PointX = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().x*100;
-	int PointY = DynamicContentsContainer::getInstance()->getCharacter()->getPoint().y*100;
-
-	Label* Action1Lable = Label::create("MOVE", "fonts/arial.ttf", 36);
-	Action1Lable->setPosition(PointX + 50 * r3, PointY + 50);
-	Action1Lable->setTag(30);
-
-	Label* Action2Lable = Label::create("BAG", "fonts/arial.ttf", 36);
-	Action2Lable->setPosition(PointX - 50 * r3, PointY - 50);
-	Action2Lable->setTag(31);
-
-	Label* Action3Lable = Label::create("ESC", "fonts/arial.ttf", 36);
-	Action3Lable->setPosition(PointX - 50 * r3, PointY + 50);
-	Action3Lable->setTag(32);
-
-	this->addChild(Action1Lable);
-	this->addChild(Action2Lable);
-	this->addChild(Action3Lable);
-}
-void  BattleScene::removeActionMenu()
-{
-	this->removeChildByTag(30);
-	this->removeChildByTag(31);
-	this->removeChildByTag(32);
-}
-*/
-//void BattleScene::chooseRapidMenu(Object* pSender)
-//{
-//	auto item = (MenuItem*)pSender;
-//	int index = item->getTag();
-//
-//	switch (index)
-//	{
-//	case 10:
-//		m_battleControler->setTurnType(3); // move
-//		break;
-//	case 11:
-//		m_battleControler->setTurnType(2); // 가방
-//
-//		break;
-//	case 12:
-//		m_battleControler->setTurnType(1); //도망
-//		Director::getInstance()->popScene();
-//		break;
-//	default:
-//		return;
-//		break;
-//	}
-//	getBattleMenuLayer()->removeRapidMenu();
-//}
-//
-//void BattleScene::chooseNomalMenu(Object* pSender)
-//{
-//	auto item = (MenuItem*)pSender;
-//	int index = item->getTag();
-//
-//	switch (index)
-//	{
-//	case 20:
-//		getBattleMenuLayer()->removeRapidMenu();
-//		getBattleMenuLayer()->removeNomalMenu();
-//		m_battleControler->setTurnType(4); // 액션
-//		getBattleMenuLayer()->printActionMenu();
-//		return;
-//	case 21:
-//		m_battleControler->setTurnType(5); //공격
-//		break;
-//	case 22:
-//		m_battleControler->setTurnType(6); // 종료
-//		m_battleControler->TurnEnd();
-//		endCharacterTurn();
-//		break;
-//	default:
-//		return;
-//		break;
-//	}
-//	getBattleMenuLayer()->removeRapidMenu();
-//	getBattleMenuLayer()->removeNomalMenu();
-//}
-//
-//
-//void  BattleScene::chooseActionMenu(Object* pSender)
-//{
-//	auto item = (MenuItem*)pSender;
-//	int index = item->getTag();
-//	switch (index)
-//	{
-//	case 30:
-//		
-//		m_battleControler->setTurnType(7); //
-//
-//		break;
-//	case 31:
-//		m_battleControler->setTurnType(8); //
-//
-//		break;
-//	case 32:
-//		m_battleControler->setTurnType(9); // 
-//
-//		break;
-//	default:
-//		return;
-//		break;
-//	}
-//}
 
 void  BattleScene::openInven()
 {

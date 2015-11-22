@@ -35,23 +35,6 @@ public:
 
 	CREATE_FUNC(BattleScene);
 
-
-
-	/*
-	void printRapidMenu();//빠른 행동 메뉴 
-	void removeRapidMenu();
-
-	void printNomalMenu();//기본  행동 메뉴 
-	void removeNomalMenu();
-
-	void printActionMenu();//빠른 행동 메뉴 
-	void removeActionMenu();
-	*/
-	/*
-	void chooseRapidMenu(Object* pSender); //빠른 행동 메뉴 선택시 
-	void chooseNomalMenu(Object* pSender); // 느린  //
-	void chooseActionMenu(Object* pSender);// 액션 // 
-	*/
 	void openInven(); // 가방 열기 
 
 

@@ -181,7 +181,7 @@ void StaticContentsContainer::readMapSkill()
 	// 로드 심볼스
 	xml_node nodeResult = xmlDoc.child("result");
 
-	xml_node nodeSkills = nodeResult.child("kills");
+	xml_node nodeSkills = nodeResult.child("skills");
 
 	//Type 1
 	for (xml_node nodeskill = nodeSkills.child("skill"); nodeskill; nodeskill = nodeskill.next_sibling("skill"))
@@ -417,7 +417,7 @@ void StaticContentsContainer::readMapMonster()
 		 cnt = 0;
 		 for (xml_node nodeSkillKey = nodeSkills.child("skillKey"); nodeSkillKey; nodeSkillKey = nodeSkillKey.next_sibling("skillKey"))
 		 {
-			 tempPairMonster.second->setSKill(getMapSkill()->find(nodeSkillKey.text().get())->second, cnt++);
+			 tempPairMonster.second->setSkill(getMapSkill()->find(nodeSkillKey.text().get())->second, cnt++);
 		 }
 		 xml_node nodeitems = nodemonster.child("items");
 		 for (xml_node nodesitem = nodeitems.child("ItemKey"); nodesitem; nodesitem = nodesitem.next_sibling("ItemKey"))

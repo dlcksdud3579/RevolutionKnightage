@@ -26,11 +26,11 @@ public:
 	void setSpriteRoot(std::string m_spriteRoot){ this-> m_spriteRoot =  m_spriteRoot;}
 	std::string getSpriteRoot(){ return this->m_spriteRoot; }
 
-	void setSKill(CSkill* a_skill,int index){ this->m_skill[index] = a_skill; }
-	CSkill* getSKill(int index){ return m_skill[index]; }
+	void setSkill(CSkill* a_skill,int index){ this->m_skill[index] = a_skill; }
+	CSkill* getSkill(int index){ return m_skill[index]; }
 
 	void setItem(CItem* a_item, int index){ this->m_item[index] = a_item; }
-	CItem* getSkill(int index){ return this->m_item[index]; }
+	CItem* getItem(int index){ return this->m_item[index]; }
 
 	void setName(std::string a_name){ this->m_name = a_name; }
 	std::string getName(){ this->m_name; }
