@@ -10,9 +10,6 @@
 
 USING_NS_CC;
 
-
-
-
 class BattleScene : public LayerColor
 {
 public:
