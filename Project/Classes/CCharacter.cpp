@@ -20,5 +20,7 @@ CCharacter::CCharacter()
 CCharacter::~CCharacter()
 {
 	this->getSprite()->release();
+	delete(this->getStatus());
+	delete(this->getSkill(0));
 }
 

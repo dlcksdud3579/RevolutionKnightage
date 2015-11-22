@@ -42,6 +42,8 @@ public:
 
 	void dieMon(int index);
 
+
+
 private:
 	int CharacterGauge;
 	int MonGauge[10];

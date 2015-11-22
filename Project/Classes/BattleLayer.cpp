@@ -10,6 +10,7 @@ bool BattleLayer::init()
 	makeMap();
 	printTileField(); // 필드 소환 
 	printCharacter(); // 캐릭터 소환
+	printMonster();
 	MovequeMax=0;
 	MovequeMIn=0;
 	this->setViewPoint(getCharacter()->getPoint());// 레이어의 시작 포인크를 설정 
@@ -54,7 +55,6 @@ void BattleLayer::move(float delta)
 	if (MovequeMax <= MovequeMIn)
 	{
 		// 무브끝
-		
 		this->getBattleControler()->setTempPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
 			,getCharacter()->getPoint().y- getViewPoint().y + 3));
 
@@ -124,8 +124,8 @@ void BattleLayer::printMonster()
 	{
 		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
 			continue;
-		
 		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+		mon[i]->getSprite()->setPosition(Vec2(mon[i]->getPoint().x * 100 + 140, mon[i]->getPoint().y * 100 + 60));
 		addChild(mon[i]->getSprite());
 	}
 }
@@ -137,4 +137,10 @@ void BattleLayer::removeMonster()
 		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
 		removeChild(mon[i]->getSprite());
 	}
+}
+
+void BattleLayer::removeMonster(int index)
+{
+	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	removeChild(mon->getSprite());
 }

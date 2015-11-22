@@ -197,6 +197,7 @@ void BattleScene::run(float delta) // 0.2초마다
 	if (m_battleControler->getCharacterGauge() >= 100)
 	{
 		m_battleControler->setStopFlag(1);
+		m_battleControler->setCharacterGauge(0);
 		CharacterTurn();
 		return;
 	}
@@ -204,8 +205,10 @@ void BattleScene::run(float delta) // 0.2초마다
 	{
 		if (m_battleControler->getMonGauge(i) >= 100)
 		{
-			m_battleControler->setStopFlag(1);
+			log("Monster");
+//			m_battleControler->setStopFlag(1);
 			m_battleControler->MonsterTurn(i);
+			m_battleControler->setMonGauge(0, i);
 			return;
 		}
 	}
@@ -247,4 +250,5 @@ void  BattleScene::openInven()
 		getInvenLayer()->Close();
 	}
 }
+
 

@@ -9,6 +9,7 @@ class CSkill
 {
 public:
 	CSkill();
+
 	CSkill(string a_name,int a_range,int a_diceType, int a_diceNum, int m_attribute,int m_accuracyRate);
 
 
@@ -31,7 +32,7 @@ public:
 	int getAttribute(){ return this->m_attribute; }
 
 	void setAccuracyRate(int a_accuracyRate){ this->m_accuracyRate = a_accuracyRate; }
-	int setAccuracyRate(){ return this->m_accuracyRate; }
+	int getAccuracyRate(){ return this->m_accuracyRate; }
 
 private:
 	std::string m_name; //¿Ã∏ß

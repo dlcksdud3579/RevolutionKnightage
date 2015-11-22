@@ -381,7 +381,7 @@ void StaticContentsContainer::readMapDice()
 void StaticContentsContainer::readMapMonster()
 {
 	xml_document xmlDoc;
-	xml_parse_result result = xmlDoc.load_file("data/scenario.xml");
+	xml_parse_result result = xmlDoc.load_file("data/monster.xml");
 	int cnt=0;
 	if (!result)
 	{
@@ -396,7 +396,7 @@ void StaticContentsContainer::readMapMonster()
 	xml_node nodemonsters = nodeResult.child("monsters");
 
 	//Type 1
-	for (xml_node nodemonster = nodemonsters.child("moster"); nodemonster; nodemonster = nodemonster.next_sibling("moster"))
+	for (xml_node nodemonster = nodemonsters.child("monster"); nodemonster; nodemonster = nodemonster.next_sibling("monster"))
 	{
 		
 		pair<string, CMonster*> tempPairMonster(

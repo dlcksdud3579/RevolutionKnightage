@@ -12,4 +12,7 @@ CSkill::CSkill(string a_name, int a_range, int a_diceType, int a_diceNum, int m_
 	this->setDiceNum(a_diceNum);
 	this->setAttribute(m_attribute);
 	this->setAccuracyRate(m_accuracyRate);
+
+	for (int i = 0; i < 10; i++)
+		this->setSplash(Vec2(0,0),i);
 }

@@ -1,6 +1,7 @@
 #include "FieldScene.h"
 #include "BattleScene.h"
-
+#include "StaticContentsContainer.h"
+#include "CStatus.h"
 USING_NS_CC;
 
 
@@ -158,6 +159,40 @@ void FieldScene::onTouchEnded(Touch* touch, Event* event)
 
 void FieldScene::Battle(float delta)
 {
+	CMonster *temp;
+	CMonster *monster[10];
+	CSkill* tempSkill;
+	int skillNum=0;
+	; 
+	for (int i=0; i < 10; i++)
+	{
+		temp = StaticContentsContainer::getMapMonster()->find("1")->second;
+		if (i >= 9)
+			temp = StaticContentsContainer::getMapMonster()->find("2")->second;
+
+		monster[i] = new CMonster(temp->getName(), temp->getSpriteRoot());
+		monster[i]->setStatus(new Status(temp->getStatus()->getHp(),
+			temp->getStatus()->getSpeed(),
+			temp->getStatus()->getDef(),
+			temp->getStatus()->getStr(),
+			temp->getStatus()->getDex(),
+			temp->getStatus()->getIns(),
+			temp->getStatus()->getKno()));
+
+		tempSkill = new CSkill(temp->getSkill(skillNum)->getName(),
+			temp->getSkill(skillNum)->getRange(),
+			temp->getSkill(skillNum)->getDiceType(),
+			temp->getSkill(skillNum)->getDiceNum(),
+			temp->getSkill(skillNum)->getAttribute(),
+			temp->getSkill(skillNum)->getAccuracyRate());
+		for (int j = 0; temp->getSkill(skillNum)->getSplash(j) != Vec2(0,0); j++)
+			tempSkill->setSplash(temp->getSkill(skillNum)->getSplash(j), j);
+		monster[i]->setSkill(tempSkill, skillNum);
+		monster[i]->setPoint(Vec2(0, 0 + i));
+
+		DynamicContentsContainer::getInstance()->setMonster(monster[i],i);
+	}
+
 	auto * battleScene = BattleScene::createScene();
 	Director::getInstance()->replaceScene(battleScene);
 }

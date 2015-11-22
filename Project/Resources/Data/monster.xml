@@ -1,0 +1,46 @@
+<result>
+  <monsters>
+    <monster>
+      <key>1</key>
+      <name>bandit</name>
+      <spriteRoot>char/bandit.png</spriteRoot>
+      <status>
+        <hp>10</hp>
+        <spd>10</spd>
+        <def>10</def>
+        <str>10</str>
+        <dex>10</dex>
+        <ins>10</ins>
+        <kno>10</kno>
+      </status>
+      <skills>
+        <skillKey>1</skillKey>
+      </skills>
+
+      <items>
+      </items>
+
+    </monster>
+    <monster>
+      <key>2</key>
+      <name>darkKnight</name>
+      <spriteRoot>char/darkKnight.png</spriteRoot>
+      <status>
+        <hp>200</hp>
+        <spd>30</spd>
+        <def>10</def>
+        <str>10</str>
+        <dex>10</dex>
+        <ins>10</ins>
+        <kno>10</kno>
+      </status>
+      <skills>
+        <skillKey>1</skillKey>
+      </skills>
+
+      <items>
+      </items>
+
+    </monster>
+  </monsters>
+</result>

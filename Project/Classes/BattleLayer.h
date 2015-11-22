@@ -40,6 +40,11 @@ public:
 
 
 	void makeMap();
+
+	
+	void removeMonster(int index);
+
+
 private:
 	int maxMovePoint;
 	int MoveQue[10]; // right: 1 left: 2  up : 3  down : 4

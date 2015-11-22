@@ -33,7 +33,7 @@ public:
 	CItem* getItem(int index){ return this->m_item[index]; }
 
 	void setName(std::string a_name){ this->m_name = a_name; }
-	std::string getName(){ this->m_name; }
+	std::string getName(){return this->m_name; }
 private:
 	std::string m_name;
 	Vec2 m_Point;
