@@ -4,7 +4,7 @@
       <key>test1</key>
       <seq>1</seq>
       <subject>버려진요새1</subject>
-      <name>버려진요새1</name>
+      <name>deserted_castle1</name>
       <startPoint>
         <x>7</x>
         <y>3</y>
@@ -15,88 +15,88 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
 
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -105,83 +105,83 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -191,23 +191,23 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
@@ -227,51 +227,51 @@
             </tile>
             <tile>
               <seq>9</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -282,23 +282,23 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
@@ -318,51 +318,51 @@
             </tile>
             <tile>
               <seq>9</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -372,23 +372,23 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
@@ -408,47 +408,47 @@
             </tile>
             <tile>
               <seq>9</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -458,15 +458,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -502,39 +502,39 @@
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -544,15 +544,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -588,15 +588,15 @@
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
@@ -616,11 +616,11 @@
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -630,15 +630,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
             <seq>3</seq>
@@ -674,15 +674,15 @@
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
@@ -702,11 +702,11 @@
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -716,15 +716,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -760,15 +760,15 @@
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
@@ -788,11 +788,11 @@
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -802,7 +802,7 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
@@ -846,15 +846,15 @@
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
@@ -874,11 +874,11 @@
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -888,7 +888,7 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
@@ -960,11 +960,11 @@
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -974,7 +974,7 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
@@ -1046,11 +1046,11 @@
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1060,7 +1060,7 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
@@ -1116,27 +1116,27 @@
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1146,7 +1146,7 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
@@ -1202,27 +1202,27 @@
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1232,7 +1232,7 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
@@ -1288,27 +1288,27 @@
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1318,15 +1318,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -1366,35 +1366,35 @@
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1404,15 +1404,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -1452,35 +1452,35 @@
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1490,15 +1490,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -1538,35 +1538,35 @@
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1576,15 +1576,15 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
@@ -1624,35 +1624,35 @@
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1661,269 +1661,278 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>1</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind></kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
       </rows>
     </map>
+    
     <map>
       <key>test2</key>
       <seq>2</seq>
       <subject>버려진요새2</subject>
-      <name>버려진요새2</name>
+      <name>deserted_castle2</name>
       <startPoint>
         <x>10</x>
         <y>10</y>
       </startPoint>
       <rows>
+
         <row>
           <seq>0</seq>
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind>6</kind>
+              <kind>0</kind>
             </tile>
+
             <tile>
               <seq>1</seq>
-              <kind>6</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
+
         <row>
           <seq>1</seq>
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
+
             <tile>
               <seq>1</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>4</kind>
+              <kind>0</kind>
+            </tile>
+            <tile>
+              <seq>10</seq>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
@@ -1933,264 +1942,274 @@
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
+
             <tile>
               <seq>1</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind>1</kind>
+              <kind>9</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind>2</kind>
+              <kind>8</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind>3</kind>
+              <kind>9</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
+
         <row>
           <seq>3</seq>
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
+
             <tile>
               <seq>1</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind>2</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind>3</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind>1</kind>
+              <kind>9</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind>2</kind>
+              <kind>8</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind>3</kind>
+              <kind>9</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind>1</kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
+
         <row>
           <seq>4</seq>
           <tiles>
             <tile>
               <seq>0</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
+
             <tile>
               <seq>1</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>2</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>3</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>4</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>5</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>6</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>7</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>8</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>9</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>10</seq>
-              <kind>4</kind>
+              <kind>0</kind>
+            </tile>
+            <tile>
+              <seq>10</seq>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>11</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>12</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>13</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>14</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>15</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>16</seq>
-              <kind>4</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>17</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>18</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
             <tile>
               <seq>19</seq>
-              <kind>5</kind>
+              <kind>0</kind>
             </tile>
           </tiles>
         </row>
+        
         <row>
           <seq>5</seq>
           <tiles>
