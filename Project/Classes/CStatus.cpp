@@ -19,3 +19,11 @@ Status::Status(int hp, int spd, int def, int str, int dex, int ins, int kno)
 
 		
 }
+
+
+
+
+
+
+
+
