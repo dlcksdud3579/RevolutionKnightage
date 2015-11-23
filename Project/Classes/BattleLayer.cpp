@@ -144,3 +144,21 @@ void BattleLayer::removeMonster(int index)
 	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
 	removeChild(mon->getSprite());
 }
+void BattleLayer::monstermove(int index)
+{
+	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	CMap* map = DynamicContentsContainer::getInstance()->getMap();
+	Vec2 a_Point;
+
+	Vec2 moveVec2  = mon->getMove();
+
+	if (mon->getPoint().x + moveVec2.x >= map->getSizeTile().x - 1 ||
+		mon->getPoint().y + moveVec2.y >= map->getSizeTile().y - 1 ||
+		mon->getPoint().x + moveVec2.x <= 0 || mon->getPoint().y + moveVec2 .y<= 0)
+		return;
+
+	a_Point = Vec2(mon->getPoint().x + moveVec2.x, mon->getPoint().y + moveVec2.y);
+
+	int tileSiz = 100;
+	mon->getSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
+}

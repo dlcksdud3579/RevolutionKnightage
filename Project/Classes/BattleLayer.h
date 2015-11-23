@@ -41,7 +41,7 @@ public:
 
 	void makeMap();
 
-	
+	void monstermove(int index);
 	
 
 

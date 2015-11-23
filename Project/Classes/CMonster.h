@@ -13,8 +13,12 @@ public:
 	CMonster();
 	CMonster(std::string a_name,std::string a_spriteRoot);
 	~CMonster();
+	Vec2 getMove();
 
 private:
+	Vec2 moveAI[10];
+	int moveHead;
+	int dir;  // 0-stop, 1-right, 2-left, 3-up, 4-down
 
 };
 
