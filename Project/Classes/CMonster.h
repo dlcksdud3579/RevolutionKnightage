@@ -15,6 +15,9 @@ public:
 	~CMonster();
 	Vec2 getMove();
 
+	void setDir(int dir){ this->dir = dir; }
+	int getDir(){ return this->dir; }
+
 private:
 	Vec2 moveAI[10];
 	int moveHead;

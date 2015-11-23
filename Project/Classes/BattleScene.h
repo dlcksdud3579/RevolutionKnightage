@@ -58,6 +58,7 @@ public:
 
 	void checkdie();
 
+	void dieCharacter();
 
 
 private:

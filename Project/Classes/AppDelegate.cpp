@@ -54,10 +54,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	
 	StaticContentsContainer::readxml();  // 처음 파일을 읽는다. 
 
-	CMap* tempMap = StaticContentsContainer::getMapMap()->find("test")->second;
+	CMap* tempMap = StaticContentsContainer::getMapMap()->find("test1")->second;
 	DynamicContentsContainer::getInstance()->setMap(tempMap);
 
-	DynamicContentsContainer::getInstance()->getMap()->setStartPoint(Vec2(10, 9));
+	//DynamicContentsContainer::getInstance()->getMap()->setStartPoint(Vec2(10, 9));
 	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
 
 	auto fieldScene = FieldScene::createScene();  // 테스트를 위한 씬 

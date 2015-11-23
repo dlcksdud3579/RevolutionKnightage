@@ -66,6 +66,7 @@ private:
 	static std::map<string, CTile*>* m_mapTile; // 타일
 	static std::map<string, CObject*>* m_mapObject; // 오브 젝트
 	static std::map<string, CMonster*>* m_mapMonster; //몬스타 
+	static std::map<string, CObject**>* m_mapMonsterArray;
 
 	//각각 읽어오는 함수 
 	static void readMapObject();
@@ -80,5 +81,6 @@ private:
 	static void readMapScenario();  
 	static void readMapDice(); 
 	static void readMapMonster();
+	static void readMapMonsterArray();
 };
 #endif

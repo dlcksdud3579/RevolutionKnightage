@@ -17,6 +17,8 @@ std::map<string, CTile*>* StaticContentsContainer::m_mapTile = new std::map<stri
 std::map<string, CObject*>* StaticContentsContainer::m_mapObject = new std::map<string, CObject*>();//오브젝트
 std::map<string, CMonster*>* StaticContentsContainer::m_mapMonster = new std::map<string, CMonster*>(); //몬스타
 
+std::map<string, CObject**>* StaticContentsContainer::m_mapMonsterArray = new std::map<string, CObject**>();
+
 void StaticContentsContainer::readxml()
 {
 	StaticContentsContainer::readMapObject();
@@ -31,6 +33,7 @@ void StaticContentsContainer::readxml()
 	StaticContentsContainer::readMapScenario();
 	StaticContentsContainer::readMapDice();
 	StaticContentsContainer::readMapMonster();
+	StaticContentsContainer::readMapMonsterArray();
 }
 
 void StaticContentsContainer::readMapKind()

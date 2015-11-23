@@ -47,9 +47,22 @@ bool CCharacterControler::moveDown()
 bool CCharacterControler::checkMoveable(Vec2 a_checkPoint)
 {
 	CMap * map = DynamicContentsContainer::getInstance()->getMap();
-
+	CMonster *mon[10];
 	if (map->atTile(a_checkPoint)->getObject(2)->isMoveable() == false || map->atTile(a_checkPoint)->getObject(0) != NULL)
 		return false;
+	
+	if (DynamicContentsContainer::getInstance()->getCharacter()->getPoint() == a_checkPoint)
+		return false;
+
+	for (int i = 0; i < 10; i++)
+	{
+		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+		if (mon[i] == NULL)
+			continue;
+		if (mon[i]->getPoint() == a_checkPoint)
+			return false;
+	}
+	
 	return true;
 }
 
