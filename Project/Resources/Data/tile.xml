@@ -83,5 +83,64 @@
       <Object2>0</Object2>
     </tile>
 
+    <tile>
+      <seq>10</seq>
+      <key>10</key>
+      <subject>보스방테이블1</subject>
+      <name>BTable1</name>
+      <SpriteRoot>Tile/BTable1.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+
+    <tile>
+      <seq>11</seq>
+      <key>11</key>
+      <subject>보스방테이블2</subject>
+      <name>BTable2</name>
+      <SpriteRoot>Tile/BTable2.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+ 
+
+  <tile>
+    <seq>12</seq>
+    <key>12</key>
+    <subject>보스방테이블3</subject>
+    <name>BTable3</name>
+    <SpriteRoot>Tile/BTable3.png</SpriteRoot>
+    <Object2>0</Object2>
+  </tile>
+
+
+    <tile>
+      <seq>13</seq>
+      <key>13</key>
+      <subject>보스방테이블4</subject>
+      <name>BTable4</name>
+      <SpriteRoot>Tile/BTable4.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+
+
+    <tile>
+      <seq>14</seq>
+      <key>14</key>
+      <subject>보스방테이블5</subject>
+      <name>BTable5</name>
+      <SpriteRoot>Tile/BTable5.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+
+
+    <tile>
+      <seq>15</seq>
+      <key>15</key>
+      <subject>보스방테이블6</subject>
+      <name>BTable6</name>
+      <SpriteRoot>Tile/BTable6.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+
+
   </tiles>
 </result>
