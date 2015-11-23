@@ -1,5 +1,7 @@
 #include "FieldLayer.h"
 #include "math.h"
+#include "FieldScene.h"
+#include "StaticContentsContainer.h"
 
 USING_NS_CC;
 
@@ -179,9 +181,26 @@ void FieldLayer::viewControl()
 	}
 }
 
-void FieldLayer::changeMap(int index)
+void FieldLayer::changeMap(string MapKey)
 {
-	//getMapControler()->mapChange(index);
-	removeTileField();
-	printTileField();
+	CMap * map = StaticContentsContainer::getMapMap()->find(MapKey)->second;
+	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
+	DynamicContentsContainer::getInstance()->setMap(map);
+	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint());
+	auto	fieldScene = FieldScene::createScene();
+	Director::getInstance()->replaceScene(fieldScene);
+}
+void FieldLayer::checkPortal()
+{
+	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
+	CMap * map = DynamicContentsContainer::getInstance()->getMap();
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (map->getPortal(i) == NULL) //  빈포탈 체크 
+			continue;
+		if (hero->getPoint() == map->getPortal(i)->getPoint())  // 같은 위치임을 체크
+			changeMap(map->getPortal(i)->getName());
+
+	}
 }

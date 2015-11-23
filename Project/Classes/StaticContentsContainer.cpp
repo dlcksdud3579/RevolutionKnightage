@@ -271,7 +271,7 @@ void StaticContentsContainer::readMapMap()
 {
 
 	xml_document xmlDoc;
-
+	int portalNum=0;
 
 
 	xml_parse_result resultDoc = xmlDoc.load_file("data/map.xml");
@@ -302,8 +302,11 @@ void StaticContentsContainer::readMapMap()
 			atoi(nodeStartPoint.child("x").text().get()),
 			atoi(nodeStartPoint.child("y").text().get())));
 
-		xml_node nodeRows = nodeMap.child("rows");
+		xml_node nodePortals = nodeMap.child("portals");  // 맵간이동 포탈 설정 
 
+		for (xml_node nodePortal = nodePortals.child("portal"); nodePortal; nodePortal = nodePortal.next_sibling("portal"))
+			tempMap->addPortal(nodePortal.child("key").text().as_string(), portalNum++, Vec2(nodePortal.child("x").text().as_int(), nodePortal.child("y").text().as_int()));
+		xml_node nodeRows = nodeMap.child("rows");
 		for (xml_node nodeRow = nodeRows.child("row"); nodeRow; nodeRow = nodeRow.next_sibling("row"))
 		{
 			xml_node nodeTiles = nodeRow.child("tiles");
@@ -432,9 +435,43 @@ void StaticContentsContainer::readMapMonster()
 
 	}
 }
-StaticContentsContainer::readMapMonsterArray()
+void StaticContentsContainer::readMapMonsterArray()
 {
+	xml_document xmlDoc;
+	xml_parse_result result = xmlDoc.load_file("data/MonsterArray.xml");
+	CObject** object;
+	int monsterCnt=0;
+	if (!result)
+	{
+		log("Error description: %s", result.description());
+		log("Error offset: %d", result.offset);
+		return;
+	}
 
+	// 로드 심볼스
+	xml_node nodeResult = xmlDoc.child("result");
+
+	//Type 1
+	for (xml_node nodemonsterArray = nodeResult.child("monsterArray"); nodemonsterArray; nodemonsterArray = nodemonsterArray.next_sibling("monsterArray"))
+	{
+		object = new CObject*[10];
+			for (int i = 0; i < 10; i++)
+				object[i] = NULL;
+		for (xml_node nodemonster = nodemonsterArray.child("monster"); nodemonster; nodemonster = nodemonster.next_sibling("monster"))
+		{
+			object[monsterCnt] = new CObject();
+			xml_node nodePoint = nodemonster.child("point");
+			object[monsterCnt]->setPoint(Vec2(nodePoint.child("x").text().as_int(), nodePoint.child("y").text().as_int()));
+			object[monsterCnt]->setName(nodemonster.child("type").text().as_string()); // 일단 여기에다 담아둠 
+			monsterCnt++;
+
+		}
+		pair<string, CObject**> tempPairObject(
+			nodemonsterArray.child("key").text().get(),
+			object);
+
+		m_mapMonsterArray->insert(tempPairObject);
+	}
 }
 
 

@@ -157,18 +157,23 @@ void FieldScene::onTouchEnded(Touch* touch, Event* event)
 
 }
 
-void FieldScene::Battle(float delta)
+void FieldScene::Battle(float delta) // 배틀로 넘어가는 하함수 
 {
+	string mapKey = "1";
+
 	CMonster *temp;
 	CMonster *monster[10];
+	CObject **object = StaticContentsContainer::getMapMonsterArray()->find(mapKey)->second; // 여기담긴 내용을로 
+
 	CSkill* tempSkill;
 	int skillNum=0;
 	; 
-	for (int i=0; i < 1; i++)
+	for (int i=0; i < 10; i++)
 	{
-		temp = StaticContentsContainer::getMapMonster()->find("1")->second;
-		if (i >= 9)
-			temp = StaticContentsContainer::getMapMonster()->find("2")->second;
+		if (object[i] == NULL)
+			break;
+
+		temp = StaticContentsContainer::getMapMonster()->find(object[i]->getName())->second;
 
 		monster[i] = new CMonster(temp->getName(), temp->getSpriteRoot());
 		monster[i]->setStatus(new Status(temp->getStatus()->getHp(),
@@ -188,7 +193,7 @@ void FieldScene::Battle(float delta)
 		for (int j = 0; temp->getSkill(skillNum)->getSplash(j) != Vec2(0,0); j++)
 			tempSkill->setSplash(temp->getSkill(skillNum)->getSplash(j), j);
 		monster[i]->setSkill(tempSkill, skillNum);
-		monster[i]->setPoint(Vec2(15, 10));
+		monster[i]->setPoint(object[i]->getPoint());
 		monster[i]->setDir(2);
 		DynamicContentsContainer::getInstance()->setMonster(monster[i],i);
 	}

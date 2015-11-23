@@ -9,6 +9,11 @@ CMap::CMap()
 			this->addTile(Vec2(j, i), NULL);
 		}
 	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		portal[i] = NULL;
+	}
 }
 
 void CMap::addTile(Vec2 a_index, CTile* a_Tile)
@@ -24,4 +29,10 @@ CTile* CMap::atTile(Vec2 a_index)
 	int y = (int)a_index.y;
 
 	return this->m_tileTable[y][x];
+}
+void CMap::addPortal(string MapKey, int index, Vec2 point)
+{
+	portal[index] = new CObject();
+	portal[index]->setName(MapKey);
+	portal[index]->setPoint(point);
 }
