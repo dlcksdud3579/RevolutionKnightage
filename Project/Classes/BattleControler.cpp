@@ -96,3 +96,8 @@ void BattleControler::dieMon(int index)
 	DynamicContentsContainer::getInstance()->setMonster(NULL,index);
 	log("die:monseter[%d]", index);
 }
+
+void BattleControler::monsterAttack(int index)
+{
+
+}

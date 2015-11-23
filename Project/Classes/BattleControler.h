@@ -41,8 +41,7 @@ public:
 	CSkill* getCurSkill(){ return this->m_CurSkill; }
 
 	void dieMon(int index);
-
-
+	void monsterAttack(int index);
 
 private:
 	int CharacterGauge;
