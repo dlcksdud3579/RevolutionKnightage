@@ -7,28 +7,32 @@
       <name>deserted_castle1</name>
       <startPoint>
         <x>7</x>
-        <y>2</y>
+        <y>3</y>
       </startPoint>
       <portals>
         <portal>
           <seq>0</seq>
           <x>15</x>
           <y>8</y>
+          <key>test2</key>
         </portal>
         <portal>
           <seq>1</seq>
           <x>16</x>
           <y>8</y>
+          <key>test2</key>
         </portal>
         <portal>
           <seq>2</seq>
           <x>6</x>
           <y>2</y>
+          <key>test4</key>
         </portal>
         <portal>
           <seq>2</seq>
           <x>7</x>
           <y>2</y>
+          <key>test4</key>
         </portal>
       </portals>
       <rows>
@@ -1773,23 +1777,26 @@
       <name>deserted_castle2</name>
       <startPoint>
         <x>3</x>
-        <y>17</y>
+        <y>16</y>
       </startPoint>
       <portals>
         <portal>
           <seq>0</seq>
           <x>3</x>
           <y>17</y>
+          <key>test1</key>
         </portal>
         <portal>
           <seq>1</seq>
           <x>4</x>
           <y>17</y>
+          <key>test1</key>
         </portal>
         <portal>
           <seq>2</seq>
           <x>17</x>
           <y>2</y>
+          <key>test3</key>
         </portal>
       </portals>
       <rows>
@@ -3548,23 +3555,26 @@
       <name>deserted_castle3</name>
       <startPoint>
         <x>3</x>
-        <y>17</y>
+        <y>16</y>
       </startPoint>
       <portals>
         <portal>
           <seq>0</seq>
           <x>16</x>
           <y>9</y>
+          <key>test4</key>
         </portal>
         <portal>
           <seq>1</seq>
           <x>16</x>
           <y>10</y>
+          <key>test4</key>
         </portal>
         <portal>
           <seq>2</seq>
           <x>3</x>
           <y>17</y>
+          <key>test2</key>
         </portal>
       </portals>
 
@@ -5298,7 +5308,7 @@
       <subject>버려진요새4</subject>
       <name>deserted_castle4</name>
       <startPoint>
-        <x>2</x>
+        <x>3</x>
         <y>9</y>
       </startPoint>
       <portals>
@@ -5306,11 +5316,13 @@
           <seq>0</seq>
           <x>2</x>
           <y>9</y>
+          <key>test3</key>
         </portal>
         <portal>
           <seq>1</seq>
           <x>2</x>
           <y>10</y>
+          <key>test3</key>
         </portal>
       </portals>
       <rows>
