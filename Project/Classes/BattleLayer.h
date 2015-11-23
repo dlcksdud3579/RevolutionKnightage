@@ -37,12 +37,12 @@ public:
 
 	void printMonster();
 	void removeMonster();
-
+	void removeMonster(int index);
 
 	void makeMap();
 
 	
-	void removeMonster(int index);
+	
 
 
 private:
