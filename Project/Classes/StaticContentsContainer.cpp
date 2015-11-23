@@ -432,6 +432,9 @@ void StaticContentsContainer::readMapMonster()
 
 	}
 }
+StaticContentsContainer::readMapMonsterArray()
+{
 
+}
 
 
