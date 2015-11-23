@@ -4,9 +4,9 @@
     <tile>
       <seq>0</seq>
       <key>0</key>
-      <subject>테스트2</subject>
-      <name>water</name>
-      <SpriteRoot>Tile/water.png</SpriteRoot>
+      <subject>검은색</subject>
+      <name>Black</name>
+      <SpriteRoot>Tile/Black.png</SpriteRoot>
       <Object2>0</Object2>
     </tile>
     <tile>
@@ -45,10 +45,10 @@
     <tile>
       <seq>5</seq>
       <key>5</key>
-      <subject>성방문</subject>
+      <subject>요새방문</subject>
       <name>Castle_Door</name>
       <SpriteRoot>Tile/Castle_Door.png</SpriteRoot>
-      <Object2>1</Object2>
+      <Object2>0</Object2>
     </tile>
     <tile>
       <seq>6</seq>
@@ -56,7 +56,7 @@
       <subject>요새높은바닥</subject>
       <name>Castle_Higher_Floor</name>
       <SpriteRoot>Tile/Castle_Higher_Floor.png</SpriteRoot>
-      <Object2>0</Object2>
+      <Object2>1</Object2>
     </tile>
     <tile>
       <seq>7</seq>
@@ -64,7 +64,7 @@
       <subject>요새일반바닥</subject>
       <name>Castle_Floor</name>
       <SpriteRoot>Tile/Castle_Floor.png</SpriteRoot>
-      <Object2>0</Object2>
+      <Object2>1</Object2>
     </tile>
     <tile>
       <seq>8</seq>
@@ -72,7 +72,7 @@
       <subject>요새계단</subject>
       <name>Castle_Stair</name>
       <SpriteRoot>Tile/Castle_Stair.png</SpriteRoot>
-      <Object2>0</Object2>
+      <Object2>1</Object2>
     </tile>
     <tile>
       <seq>9</seq>
