@@ -56,6 +56,8 @@ public:
 	
 	void movedMenu(float delta);
 
+	void checkdie();
+
 
 
 private:

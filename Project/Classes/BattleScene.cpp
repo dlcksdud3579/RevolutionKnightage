@@ -98,9 +98,10 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 		if (movePointX - 50 - 100 * r < touchX && touchX < movePointX + 50 + 100 * r && movePointY - 50 - 100 * r < touchY && touchY < movePointY + 50 + 100 * r)
 		{
 			Vec2 attackPoint;
-			attackPoint.x = (touchX - 140) / 100 - getBattleLayer()->getViewPoint().x;
-			attackPoint.y = (touchY - 60) / 100 - getBattleLayer()->getViewPoint().y;
+			attackPoint.x = (touchX - 140) / 100 + getBattleLayer()->getViewPoint().x - 5;
+			attackPoint.y = (touchY - 60) / 100 + getBattleLayer()->getViewPoint().y - 3;
 			getBattleControler()->damageMon(attackPoint);
+			checkdie();
 			log("attack");
 			endCharacterTurn();
 			getBattleControler()->TurnEnd();
@@ -252,3 +253,19 @@ void  BattleScene::openInven()
 }
 
 
+void BattleScene::checkdie()
+{
+	CMonster* mon[10];
+	for (int i = 0; i < 10; i++)
+	{
+		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
+			continue;
+		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+
+		if (mon[i]->getStatus()->getHp() <= 0)
+		{
+			getBattleLayer()->removeMonster(i);
+			getBattleControler()->dieMon(i);
+		}
+	}
+}

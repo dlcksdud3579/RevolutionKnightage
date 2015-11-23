@@ -78,11 +78,11 @@ void BattleControler::damageMon(Vec2 Point)
 		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
 		for (int j = 0; j < 10; j++)
 		{
-			if (mon[i]->getPoint().x == getCurSkill()->getSplash(j).x &&mon[i]->getPoint().y == getCurSkill()->getSplash(j).y)
+			if (mon[i]->getPoint().x == Point.x + getCurSkill()->getSplash(j).x &&mon[i]->getPoint().y == Point.y + getCurSkill()->getSplash(j).y)
 			{
 				mon[i]->getStatus()->setHp(mon[i]->getStatus()->getHp() - DynamicContentsContainer::getInstance()->getDice()->rollDice(getCurSkill()->getDiceType(), getCurSkill()->getDiceNum()));
-				if (mon[i]->getStatus()->getHp() <= 0)
-					dieMon(i);
+				log("attacked:monseter[%d]", i);
+				break;
 			}
 		}
 	}
@@ -90,5 +90,9 @@ void BattleControler::damageMon(Vec2 Point)
 }
 void BattleControler::dieMon(int index)
 {
+	CMonster* mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	delete(mon);
+
 	DynamicContentsContainer::getInstance()->setMonster(NULL,index);
+	log("die:monseter[%d]", index);
 }
