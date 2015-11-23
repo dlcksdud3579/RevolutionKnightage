@@ -45,18 +45,43 @@
     <tile>
       <seq>5</seq>
       <key>5</key>
-      <subject>테스트5</subject>
-      <name>wild</name>
-      <SpriteRoot>Tile/wild.png</SpriteRoot>
+      <subject>성방문</subject>
+      <name>Castle_Door</name>
+      <SpriteRoot>Tile/Castle_Door.png</SpriteRoot>
       <Object2>1</Object2>
     </tile>
     <tile>
       <seq>6</seq>
       <key>6</key>
-      <subject>테스트6</subject>
-      <name>ball</name>
-      <SpriteRoot>Tile/water.png</SpriteRoot>
+      <subject>요새높은바닥</subject>
+      <name>Castle_Higher_Floor</name>
+      <SpriteRoot>Tile/Castle_Higher_Floor.png</SpriteRoot>
       <Object2>0</Object2>
     </tile>
+    <tile>
+      <seq>7</seq>
+      <key>7</key>
+      <subject>요새일반바닥</subject>
+      <name>Castle_Floor</name>
+      <SpriteRoot>Tile/Castle_Floor.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+    <tile>
+      <seq>8</seq>
+      <key>8</key>
+      <subject>요새계단</subject>
+      <name>Castle_Stair</name>
+      <SpriteRoot>Tile/Castle_Stair.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+    <tile>
+      <seq>9</seq>
+      <key>9</key>
+      <subject>요새성벽</subject>
+      <name>Castle_Wall</name>
+      <SpriteRoot>Tile/Castle_Wall.png</SpriteRoot>
+      <Object2>0</Object2>
+    </tile>
+
   </tiles>
 </result>
