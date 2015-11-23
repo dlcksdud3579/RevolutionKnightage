@@ -207,12 +207,16 @@ void BattleScene::run(float delta) // 0.2ÃÊ¸¶´Ù
 		if (m_battleControler->getMonGauge(i) >= 100)
 		{
 			log("Monster");
-//			m_battleControler->setStopFlag(1);
+			getBattleLayer()->monstermove(i);
+			m_battleControler->setMonsterDir(i);
+			m_battleControler->monsterAttack(i);
 			m_battleControler->MonsterTurn(i);
 			m_battleControler->setMonGauge(0, i);
+			dieCharacter();
 			return;
 		}
 	}
+	
 }
 
 void BattleScene::CharacterTurn()
@@ -268,4 +272,12 @@ void BattleScene::checkdie()
 			getBattleControler()->dieMon(i);
 		}
 	}
+}
+void BattleScene::dieCharacter()
+{
+	if (DynamicContentsContainer::getInstance()->getCharacter()->getStatus()->getHp() <= 0)
+	{
+		Director::getInstance()->restart();
+	}
+
 }

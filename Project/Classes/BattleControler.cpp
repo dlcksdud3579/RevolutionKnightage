@@ -99,5 +99,48 @@ void BattleControler::dieMon(int index)
 
 void BattleControler::monsterAttack(int index)
 {
+	CMonster *mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	CCharacter *hero = DynamicContentsContainer::getInstance()->getCharacter();
+	for (int i = 0; i < 10; i++)
+	{
+		if (mon->getSkill(i) == NULL)
+			return;
+		CSkill* skill = mon->getSkill(i);
+		int range = skill->getRange();
 
+		if (mon->getPoint().x - range<= hero->getPoint().x && hero->getPoint().x <= mon->getPoint().x + range && 
+			mon->getPoint().y - range<= hero->getPoint().y && hero->getPoint().y <= mon->getPoint().y + range)
+		{
+			hero->getStatus()->setHp(hero->getStatus()->getHp() - rand()%6);
+		}
+
+
+	}
+}
+
+void BattleControler::setMonsterDir(int index)
+{
+	CMonster *mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	CCharacter *hero = DynamicContentsContainer::getInstance()->getCharacter();
+
+	if (hero->getPoint().x < mon->getPoint().x)
+	{
+		mon->setDir(2);
+		return;
+	}
+	else if (hero->getPoint().x > mon->getPoint().x)
+	{
+		mon->setDir(1);
+		return;
+	}
+	if (hero->getPoint().y < mon->getPoint().y)
+	{
+		mon->setDir(4);
+		return;
+	}
+	else if (hero->getPoint().y > mon->getPoint().y)
+	{
+		mon->setDir(3);
+		return;
+	}
 }

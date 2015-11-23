@@ -43,6 +43,8 @@ public:
 	void dieMon(int index);
 	void monsterAttack(int index);
 
+	void setMonsterDir(int index);
+
 private:
 	int CharacterGauge;
 	int MonGauge[10];

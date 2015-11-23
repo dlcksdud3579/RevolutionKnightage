@@ -80,7 +80,7 @@ bool FieldScene::onTouchBegan(Touch* touch, Event* event)
 	int root3 = sqrt(3); // tan 기준으로 30도에경우 1/root3  60인경우 root3을 곱한다.
 	//log("%d %d, %f, %f",x,
 	
-	log("%f, %f ", touch->getLocation().x, winSize.width - 90);
+	//log("%f, %f ", touch->getLocation().x, winSize.width - 90);
 	if (this->getMenuLayer()->isOpenFlag() == false)
 	{
 		if (touch->getLocation().x > winSize.width - 90)
@@ -96,14 +96,14 @@ bool FieldScene::onTouchBegan(Touch* touch, Event* event)
 				touch->getLocation().y > y - tileSiz / 2 &&
 				touch->getLocation().y < y + tileSiz / 2) // 현재 타일을 가르킴 
 			{
-				log("stop");
+			//	log("stop");
 
 			}
 			else if (touch->getLocation().x > x &&       // 오른쪽 대각선으로 각도가 30도가 눌려지면 걸림  
 				touch->getLocation().y < y + (1 / root3)*(touch->getLocation().x - x) &&
 				touch->getLocation().y > y - (1 / root3)*(touch->getLocation().x - x))
 			{
-				log("right");
+				//log("right");
 				getFieldLayer()->moveRight();
 				getFieldLayer()->viewControl();
 			}
@@ -111,7 +111,7 @@ bool FieldScene::onTouchBegan(Touch* touch, Event* event)
 				touch->getLocation().y < y + (1 / root3)*(x - touch->getLocation().x) &&
 				touch->getLocation().y > y - (1 / root3)*(x - touch->getLocation().x))
 			{
-				log("left");
+				//log("left");
 				getFieldLayer()->moveLeft();
 				getFieldLayer()->viewControl();
 			}
@@ -119,7 +119,7 @@ bool FieldScene::onTouchBegan(Touch* touch, Event* event)
 				touch->getLocation().x < x + (root3)*(touch->getLocation().y - y) &&
 				touch->getLocation().x > x - (root3)*(touch->getLocation().y - y))
 			{
-				log("up");
+			//	log("up");
 				getFieldLayer()->moveUp();
 				getFieldLayer()->viewControl();
 			}
@@ -128,7 +128,7 @@ bool FieldScene::onTouchBegan(Touch* touch, Event* event)
 				touch->getLocation().x > x - (root3)*(y - touch->getLocation().y))
 
 			{
-				log("down");
+			//	log("down");
 				getFieldLayer()->moveDown();
 				getFieldLayer()->viewControl();
 			}
@@ -164,7 +164,7 @@ void FieldScene::Battle(float delta)
 	CSkill* tempSkill;
 	int skillNum=0;
 	; 
-	for (int i=0; i < 10; i++)
+	for (int i=0; i < 1; i++)
 	{
 		temp = StaticContentsContainer::getMapMonster()->find("1")->second;
 		if (i >= 9)
@@ -188,8 +188,8 @@ void FieldScene::Battle(float delta)
 		for (int j = 0; temp->getSkill(skillNum)->getSplash(j) != Vec2(0,0); j++)
 			tempSkill->setSplash(temp->getSkill(skillNum)->getSplash(j), j);
 		monster[i]->setSkill(tempSkill, skillNum);
-		monster[i]->setPoint(Vec2(0, 0 + i));
-
+		monster[i]->setPoint(Vec2(15, 10));
+		monster[i]->setDir(2);
 		DynamicContentsContainer::getInstance()->setMonster(monster[i],i);
 	}
 

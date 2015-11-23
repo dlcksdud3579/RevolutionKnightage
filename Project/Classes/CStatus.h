@@ -11,7 +11,7 @@ public:
 	void setHp(int hp){ this->hp = hp; }
 	int getHp(){ return hp; }
 
-	void setSpeed(int speed){ this->spd = spd; }
+	void setSpeed(int speed){ this->spd = speed; }
 	int getSpeed(){ return spd; }
 
 	void setDef(int def){ this->def = def; }

@@ -5,8 +5,8 @@ CCharacter::CCharacter()
 	this->setSpriteRoot("char/RKnight.png");
 	this->setSprite(Sprite::create("char/RKnight.png"));
 	this->getSprite()->retain();
-	this->setStatus(new Status(100, 10, 10, 10, 10, 10, 10));
-
+	this->setStatus(new Status(10, 10, 10, 10, 10, 10, 10));
+	this->getStatus()->setSpeed(10);
 	for (int i=0; i < 10; i++)
 	{
 		setSkill(NULL, i);
