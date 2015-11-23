@@ -33,8 +33,8 @@ public:
 	virtual void onEnter();
 	virtual void onExit();
 	
-	void changeMap(int index);
-
+	void changeMap(string MapKey);
+	void checkPortal();
 
 	// get set ÇÔ¼ö 
 	

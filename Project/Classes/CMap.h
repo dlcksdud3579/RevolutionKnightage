@@ -23,6 +23,9 @@ public:
 	void addTile(Vec2 a_index,CTile* a_Tile);
 	CTile* atTile(Vec2 a_index);
 
+	void addPortal(string MapKey, int index,Vec2 point);
+	CObject* getPortal(int index){ return this->portal[index]; }
+
 private:
 	CTile *m_tileTable[100][100]; 
 
@@ -31,5 +34,6 @@ private:
 
 	Vec2 m_SizeTile;
 
+	CObject* portal[10];  // Æ÷Å»±¸Çö 
 };
 #endif

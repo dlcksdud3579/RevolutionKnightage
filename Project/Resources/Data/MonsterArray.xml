@@ -1,0 +1,66 @@
+<result>
+  <monsterArray>
+    <seq>1</seq>
+    <key>1</key>
+    <subject>1번맵</subject>
+
+    <monster>
+      <seq>1</seq>
+      <type>1</type>
+      <point>
+        <x>10</x>
+        <y>15</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>2</seq>
+      <type>1</type>
+      <point>
+        <x>11</x>
+        <y>16</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>3</seq>
+      <type>1</type>
+      <point>
+        <x>13</x>
+        <y>10</y>
+      </point>
+    </monster>
+    
+  </monsterArray>
+
+  <monsterArray>
+    <seq>1</seq>
+    <key>1</key>
+    <subject>2번맵</subject>
+
+    <monster>
+      <seq>0</seq>
+      <type>1</type>
+      <point>
+        <x>10</x>
+        <y>5</y>
+      </point>
+    </monster>
+  </monsterArray>
+
+  <monsterArray>
+    <seq>3</seq>
+    <key>3</key>
+    <subject>3번맵</subject>
+
+    <monster>
+      <seq>0</seq>
+      <type>1</type>
+      <point>
+        <x>10</x>
+        <y>5</y>
+      </point>
+    </monster>
+    
+  </monsterArray>
+</result>

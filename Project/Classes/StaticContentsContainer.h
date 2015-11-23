@@ -51,6 +51,9 @@ public:
 	static std::map<string, CMonster*>* getMapMonster(){ return m_mapMonster; }
 	static void setMapMonster(std::map<string, CMonster*>* a_mapMonster){ m_mapMonster = a_mapMonster; }
 
+	static std::map<string, CObject**>* getMapMonsterArray(){ return m_mapMonsterArray; }
+	static void setMapObject(std::map<string, CObject**>* a_mapMonsterArray){ m_mapMonsterArray = a_mapMonsterArray; }
+
 	static void readxml();
 
 private:
