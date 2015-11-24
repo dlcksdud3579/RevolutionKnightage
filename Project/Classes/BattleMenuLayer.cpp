@@ -26,18 +26,18 @@ void BattleMenuLayer::printRapidMenu()
 	MenuItemFont* moveLable = MenuItemFont::create("MOVE",
 		CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	moveLable->setPosition( 50 * r3,  50);
-	moveLable->setColor(Color3B(0, 0, 0));
+	moveLable->setColor(Color3B(255, 255, 255));
 	moveLable->setTag(10);
 	
 	
 	MenuItemFont* InvenLable = MenuItemFont::create("BAG", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	InvenLable->setPosition( - 50 * r3,  - 50);
-	InvenLable->setColor(Color3B(0, 0, 0));
+	InvenLable->setColor(Color3B(255, 255, 255));
 	InvenLable->setTag(11);
 
 	MenuItemFont* escLable = MenuItemFont::create("ESC", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
 	escLable->setPosition( - 50 * r3,  + 50);
-	escLable->setColor(Color3B(0, 0, 0));
+	escLable->setColor(Color3B(255, 255, 255));
 	escLable->setTag(12);
 
 	auto pMenu = Menu::create(moveLable, InvenLable, escLable, NULL);
@@ -58,17 +58,17 @@ void BattleMenuLayer::printNomalMenu()
 
 	MenuItemFont* actionLable = MenuItemFont::create("ACTION", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	actionLable->setPosition( + 50 * r3,  - 50);
-	actionLable->setColor(Color3B(0, 0, 0));
+	actionLable->setColor(Color3B(255, 255, 255));
 	actionLable->setTag(20);
 
 	MenuItemFont* attakLable = MenuItemFont::create("ATTACK", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	attakLable->setPosition(0,  + 100);
-	attakLable->setColor(Color3B(0, 0, 0));
+	attakLable->setColor(Color3B(255, 255, 255));
 	attakLable->setTag(21);
 
 	MenuItemFont* endLable = MenuItemFont::create("END", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	endLable->setPosition(0,  - 100);
-	endLable->setColor(Color3B(0, 0, 0));
+	endLable->setColor(Color3B(255, 255, 255));
 	endLable->setTag(22);
 
 	auto pMenu = Menu::create(actionLable, attakLable, endLable, NULL);
@@ -99,22 +99,22 @@ void  BattleMenuLayer::printActionMenu()
 
 	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action1Lable->setPosition(+50 * r3, -50);
-	action1Lable->setColor(Color3B(0, 0, 0));
+	action1Lable->setColor(Color3B(255, 255, 255));
 	action1Lable->setTag(30);
 
 	MenuItemFont* action2Lable = MenuItemFont::create("ACTION2", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action2Lable->setPosition(+50 * r3, +50);
-	action2Lable->setColor(Color3B(0, 0, 0));
+	action2Lable->setColor(Color3B(255, 255, 255));
 	action2Lable->setTag(31);
 
 	MenuItemFont* action3Lable = MenuItemFont::create("ACTION3", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action3Lable->setPosition(-50 * r3, +50);
-	action3Lable->setColor(Color3B(0, 0, 0));
+	action3Lable->setColor(Color3B(255, 255, 255));
 	action3Lable->setTag(32);
 
 	MenuItemFont* action4Lable = MenuItemFont::create("ACTION4", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action4Lable->setPosition(-50 * r3, -50);
-	action4Lable->setColor(Color3B(0, 0, 0));
+	action4Lable->setColor(Color3B(255, 255, 255));
 	action4Lable->setTag(33);
 
 	auto pMenu = Menu::create(action1Lable, action2Lable, action3Lable, action4Lable, NULL);
@@ -149,14 +149,14 @@ void  BattleMenuLayer::printAttackMenu()
 	if (skill[0] != NULL)
 	{
 		skill1Lable->setPosition(+50 * r3, -50);
-		skill1Lable->setColor(Color3B(0, 0, 0));
+		skill1Lable->setColor(Color3B(255, 255, 255));
 		skill1Lable->setTag(40);
 	}
 	MenuItemFont* skill2Lable = MenuItemFont::create(skillName[1], CC_CALLBACK_1(BattleMenuLayer::chooseAttackMenu, this));
 	if (skill[0] != NULL)
 	{
 		skill2Lable->setPosition(+50 * r3, +50);
-		skill2Lable->setColor(Color3B(0, 0, 0));
+		skill2Lable->setColor(Color3B(255, 255, 255));
 		skill2Lable->setTag(41);
 	}
 
@@ -164,7 +164,7 @@ void  BattleMenuLayer::printAttackMenu()
 	if (skill[0] != NULL)
 	{
 		skill3Lable->setPosition(-50 * r3, +50);
-		skill3Lable->setColor(Color3B(0, 0, 0));
+		skill3Lable->setColor(Color3B(255, 255, 255));
 		skill3Lable->setTag(42);
 	}
 
@@ -172,7 +172,7 @@ void  BattleMenuLayer::printAttackMenu()
 	if (skill[0] != NULL)
 	{
 		skill4Lable->setPosition(-50 * r3, -50);
-		skill4Lable->setColor(Color3B(0, 0, 0));
+		skill4Lable->setColor(Color3B(255, 255, 255));
 		skill4Lable->setTag(43);
 	}
 
@@ -180,7 +180,7 @@ void  BattleMenuLayer::printAttackMenu()
 	if (skill[0] != NULL)
 	{
 		skill5Lable->setPosition(0, 100);
-		skill5Lable->setColor(Color3B(0, 0, 0));
+		skill5Lable->setColor(Color3B(255, 255, 255));
 		skill5Lable->setTag(44);
 	}
 

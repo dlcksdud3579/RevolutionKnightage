@@ -324,9 +324,7 @@ void StaticContentsContainer::readMapMap()
 					NULL,
 					NULL
 					));
-
 			}
-
 		}
 		tempMap->setSizeTile(Vec2(Xsize, Ysize));
 
@@ -421,6 +419,8 @@ void StaticContentsContainer::readMapMonster()
 			nodeStatus.child("ins").text().as_int(),
 			nodeStatus.child("kno").text().as_int()));
 
+		tempPairMonster.second->getStatus()->setMvp(nodeStatus.child("mvp").text().as_int()); // mvp  포인트 
+
 		 xml_node nodeSkills = nodemonster.child("skills");
 		 cnt = 0;
 		 for (xml_node nodeSkillKey = nodeSkills.child("skillKey"); nodeSkillKey; nodeSkillKey = nodeSkillKey.next_sibling("skillKey"))
@@ -466,7 +466,6 @@ void StaticContentsContainer::readMapMonsterArray()
 			object[monsterCnt]->setPoint(Vec2(nodePoint.child("x").text().as_int(), nodePoint.child("y").text().as_int()));
 			object[monsterCnt]->setName(nodemonster.child("type").text().as_string()); // 일단 여기에다 담아둠 
 			monsterCnt++;
-
 		}
 		pair<string, CObject**> tempPairObject(
 			nodemonsterArray.child("key").text().get(),

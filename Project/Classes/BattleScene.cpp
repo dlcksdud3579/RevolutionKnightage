@@ -125,7 +125,7 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 
 	if (m_battleControler->getTurnType() == 3) // 이동이 아닐시 터치입력 X
 	{
-		if (this->getBattleControler()->getMoveCnt() >= 4)
+		if (this->getBattleControler()->getMoveCnt() >= DynamicContentsContainer::getInstance()->getCharacter()->getStatus()->getMvp())  // mvp 만큼 이동 가능 체크
 		{
 			m_battleControler->setTurnType(0);
 			float movingTime = getBattleLayer()->moveSchedule();

@@ -29,9 +29,13 @@ public:
 	void setKno(int kno){ this->kno = kno; }
 	int getKno(){ return kno; }
 
+	void setMvp(int mvp){ this->mvp = mvp; }
+	int getMvp(){ return this->mvp;}
+
 private:
 	int hp;
 	int spd;
+	int mvp;
 	int def;
 
 	int str; //Èû
