@@ -150,43 +150,46 @@ void BattleLayer::monstermove(int index)
 	CMap* map = DynamicContentsContainer::getInstance()->getMap();
 	Vec2 a_Point;
 
-	Vec2 moveVec2  = mon->getMove();
-
-	if (mon->getPoint().x + moveVec2.x >= map->getSizeTile().x - 1 ||
-		mon->getPoint().y + moveVec2.y >= map->getSizeTile().y - 1 ||
-		mon->getPoint().x + moveVec2.x <= 0 || mon->getPoint().y + moveVec2 .y<= 0)
-		return;
-
-	CCharacterControler *monCon = new CCharacterControler(mon);
-	switch ((int)moveVec2.x)
+	
+	for (int i = 0; i < mon->getStatus()->getMvp(); i++)
 	{
-	case 1:
-		if (moveVec2.y ==0)
-			monCon->moveRight();
-		break;
-	case 0:
-		switch ((int)moveVec2.y)
+		Vec2 moveVec2 = mon->getMove();
+		if (mon->getPoint().x + moveVec2.x >= map->getSizeTile().x - 1 ||
+			mon->getPoint().y + moveVec2.y >= map->getSizeTile().y - 1 ||
+			mon->getPoint().x + moveVec2.x <= 0 || mon->getPoint().y + moveVec2.y <= 0)
+			return;
+
+		CCharacterControler *monCon = new CCharacterControler(mon);
+		switch ((int)moveVec2.x)
 		{
 		case 1:
-				monCon->moveUp();
+			if (moveVec2.y == 0)
+				monCon->moveRight();
 			break;
 		case 0:
+			switch ((int)moveVec2.y)
+			{
+			case 1:
+				monCon->moveUp();
+				break;
+			case 0:
+				break;
+			case -1:
+				monCon->moveDown();
+				break;
+			default:
+				break;
+			}
 			break;
 		case -1:
-				monCon->moveDown();
+			if (moveVec2.y == 0)
+				monCon->moveLeft();
 			break;
 		default:
 			break;
 		}
-		break;
-	case -1:
-		if (moveVec2.y == 0)
-			monCon->moveLeft();
-		break;
-	default:
-		break;
+		a_Point = mon->getPoint();
+		int tileSiz = 100;
+		mon->getSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
 	}
-	a_Point = mon->getPoint();
-	int tileSiz = 100;
-	mon->getSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
 }
