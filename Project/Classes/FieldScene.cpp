@@ -159,7 +159,10 @@ void FieldScene::onTouchEnded(Touch* touch, Event* event)
 
 void FieldScene::Battle(float delta) // 배틀로 넘어가는 하함수 
 {
-	string mapKey = "1";
+	CMap *map = DynamicContentsContainer::getInstance()->getMap();
+
+
+	string mapKey = map->getKey();
 
 	CMonster *temp;
 	CMonster *monster[10];

@@ -36,7 +36,7 @@ bool BattleScene::init()
 	this->addChild(getBattleMenuLayer());
 	this->setInvenLayer(m_invenLayer);
 
-	schedule(schedule_selector(BattleScene::run),1.0f); // 배틀에서 속도를 올려주는함수 
+	schedule(schedule_selector(BattleScene::run),0.5f); // 배틀에서 속도를 올려주는함수 
 	this->getBattleControler()->setTempPoint(Vec2(getBattleLayer()->getCharacter()->getPoint().x - getBattleLayer()->getViewPoint().x + 5
 		, getBattleLayer()->getCharacter()->getPoint().y - getBattleLayer()->getViewPoint().y + 3));
 

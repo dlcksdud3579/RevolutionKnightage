@@ -57,6 +57,7 @@ void  FieldLayer::removeTileField()
 
 void FieldLayer::moveRight()
 {
+	checkPortal();
 	if (getCharacter()->getPoint().x >= getMap()->getSizeTile().x-1)
 		return;
 	if (this->getCharacterControler()->moveRight())
@@ -68,6 +69,7 @@ void FieldLayer::moveRight()
 }
 void FieldLayer::moveLeft()
 {
+	checkPortal();
 	if (getCharacter()->getPoint().x <= 0)
 		return;
 	if (this->getCharacterControler()->moveLeft())
@@ -80,6 +82,7 @@ void FieldLayer::moveLeft()
 }
 void FieldLayer::moveUp()
 {
+	checkPortal();
 	if (getCharacter()->getPoint().y >= getMap()->getSizeTile().y-1)
 		return;
 	if (this->getCharacterControler()->moveUp())
@@ -92,6 +95,7 @@ void FieldLayer::moveUp()
 }
 void FieldLayer::moveDown()
 {
+	checkPortal();
 	if (getCharacter()->getPoint().y <= 0)
 		return;
 
@@ -181,7 +185,7 @@ void FieldLayer::viewControl()
 	}
 }
 
-void FieldLayer::changeMap(string MapKey)
+void FieldLayer::changeMap(string MapKey) // 맵체인지
 {
 	CMap * map = StaticContentsContainer::getMapMap()->find(MapKey)->second;
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
@@ -189,8 +193,15 @@ void FieldLayer::changeMap(string MapKey)
 	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint());
 	auto	fieldScene = FieldScene::createScene();
 	Director::getInstance()->replaceScene(fieldScene);
+	for (int i = 0; i < 10; i++)
+	{
+		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
+			break;
+	///	delete(DynamicContentsContainer::getInstance()->getMonster(i));
+		DynamicContentsContainer::getInstance()->setMonster(NULL, i);
+	}
 }
-void FieldLayer::checkPortal()
+void FieldLayer::checkPortal() // 포탈 위치와 히어로 
 {
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
 	CMap * map = DynamicContentsContainer::getInstance()->getMap();
@@ -201,6 +212,5 @@ void FieldLayer::checkPortal()
 			continue;
 		if (hero->getPoint() == map->getPortal(i)->getPoint())  // 같은 위치임을 체크
 			changeMap(map->getPortal(i)->getName());
-
 	}
 }

@@ -14,6 +14,9 @@ public:
 	void setName(string a_szName){ this->m_szName = a_szName; }
 	string getName(){ return this->m_szName; }
 
+	void setKey(string a_key){ this->m_key = a_key; }
+	string getKey(){ return this->m_key; }
+
 	void setSizeTile(Vec2 a_SizeTile){ m_SizeTile = a_SizeTile; }
 	Vec2 getSizeTile(){ return this->m_SizeTile; }
 
@@ -26,10 +29,14 @@ public:
 	void addPortal(string MapKey, int index,Vec2 point);
 	CObject* getPortal(int index){ return this->portal[index]; }
 
+
 private:
 	CTile *m_tileTable[100][100]; 
 
 	string m_szName; // ∏ ¿« ¿Ã∏ß
+
+	string m_key;
+
 	Vec2 m_startPoint;
 
 	Vec2 m_SizeTile;

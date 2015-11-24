@@ -301,6 +301,8 @@ void StaticContentsContainer::readMapMap()
 		tempMap->setStartPoint(Vec2(
 			atoi(nodeStartPoint.child("x").text().get()),
 			atoi(nodeStartPoint.child("y").text().get())));
+		tempMap->setName(symbolName);
+		tempMap->setKey(nodeMap.child("key").text().as_string());
 
 		xml_node nodePortals = nodeMap.child("portals");  // ¸Ê°£ÀÌµ¿ Æ÷Å» ¼³Á¤ 
 

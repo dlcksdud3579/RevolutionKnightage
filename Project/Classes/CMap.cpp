@@ -10,7 +10,7 @@ CMap::CMap()
 		}
 	}
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		portal[i] = NULL;
 	}
