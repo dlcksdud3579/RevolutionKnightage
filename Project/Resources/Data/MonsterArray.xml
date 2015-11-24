@@ -1,6 +1,6 @@
 <result>
   <monsterArray>
-    <seq>1</seq>
+    <seq>0</seq>
     <key>test1</key>
     <subject>1번맵</subject>
 
@@ -8,8 +8,8 @@
       <seq>1</seq>
       <type>1</type>
       <point>
-        <x>10</x>
-        <y>15</y>
+        <x>15</x>
+        <y>11</y>
       </point>
     </monster>
 
@@ -17,8 +17,8 @@
       <seq>2</seq>
       <type>1</type>
       <point>
-        <x>11</x>
-        <y>16</y>
+        <x>5</x>
+        <y>15</y>
       </point>
     </monster>
 
@@ -26,54 +26,158 @@
       <seq>3</seq>
       <type>1</type>
       <point>
-        <x>13</x>
-        <y>10</y>
+        <x>8</x>
+        <y>13</y>
       </point>
     </monster>
-    
+
+    <monster>
+      <seq>4</seq>
+      <type>1</type>
+      <point>
+        <x>9</x>
+        <y>14</y>
+      </point>
+    </monster>
+
+
+    <monster>
+      <seq>5</seq>
+      <type>1</type>
+      <point>
+        <x>9</x>
+        <y>15</y>
+      </point>
+    </monster>
+
   </monsterArray>
 
-  <monsterArray>
+  3<monsterArray>
     <seq>1</seq>
     <key>test2</key>
     <subject>2번맵</subject>
 
     <monster>
       <seq>0</seq>
-      <type>1</type>
+      <type>3</type>
       <point>
-        <x>10</x>
-        <y>5</y>
+        <x>16</x>
+        <y>11</y>
       </point>
     </monster>
+
+    <monster>
+      <seq>1</seq>
+      <type>4</type>
+      <point>
+        <x>14</x>
+        <y>10</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>1</seq>
+      <type>4</type>
+      <point>
+        <x>13</x>
+        <y>10</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>1</seq>
+      <type>3</type>
+      <point>
+        <x>13</x>
+        <y>6</y>
+      </point>
+    </monster>
+
   </monsterArray>
 
   <monsterArray>
-    <seq>3</seq>
+    <seq>2</seq>
     <key>test3</key>
     <subject>3번맵</subject>
     <monster>
       <seq>0</seq>
-      <type>1</type>
+      <type>2</type>
       <point>
-        <x>10</x>
-        <y>5</y>
+        <x>13</x>
+        <y>8</y>
       </point>
     </monster>
+
+    <monster>
+      <seq>1</seq>
+      <type>2</type>
+      <point>
+        <x>13</x>
+        <y>11</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>2</seq>
+      <type>1</type>
+      <point>
+        <x>6</x>
+        <y>4</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>3</seq>
+      <type>1</type>
+      <point>
+        <x>6</x>
+        <y>15</y>
+      </point>
+    </monster>
+
   </monsterArray>
 
   <monsterArray>
     <seq>3</seq>
     <key>test4</key>
-    <subject>3번맵</subject>
+    <subject>4번맵</subject>
     <monster>
       <seq>0</seq>
-      <type>1</type>
+      <type>5</type>
       <point>
-        <x>10</x>
-        <y>5</y>
+        <x>16</x>
+        <y>15</y>
       </point>
     </monster>
+
+    <monster>
+      <seq>1</seq>
+      <type>2</type>
+      <point>
+        <x>15</x>
+        <y>11</y>
+      </point>
+    </monster>
+
+
+    <monster>
+      <seq>2</seq>
+      <type>2</type>
+      <point>
+        <x>10</x>
+        <y>11</y>
+      </point>
+    </monster>
+
+    <monster>
+      <seq>3</seq>
+      <type>2</type>
+      <point>
+        <x>9</x>
+        <y>8</y>
+      </point>
+    </monster>
+
   </monsterArray>
   
 </result>

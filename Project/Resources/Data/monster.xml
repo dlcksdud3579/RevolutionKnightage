@@ -5,13 +5,15 @@
       <name>bandit</name>
       <spriteRoot>char/bandit.png</spriteRoot>
       <status>
-        <hp>10</hp>
-        <spd>10</spd>
+        <hp>8</hp>
+        <spd>8</spd>
+        <mvp>4</mvp>
         <def>10</def>
         <str>10</str>
         <dex>10</dex>
         <ins>10</ins>
         <kno>10</kno>
+        
       </status>
       <skills>
         <skillKey>1</skillKey>
@@ -19,15 +21,17 @@
 
       <items>
       </items>
-
     </monster>
+    
+    
     <monster>
       <key>2</key>
       <name>darkKnight</name>
       <spriteRoot>char/darkKnight.png</spriteRoot>
       <status>
-        <hp>200</hp>
-        <spd>30</spd>
+        <hp>30</hp>
+        <spd>12</spd>
+        <mvp>5</mvp>
         <def>10</def>
         <str>10</str>
         <dex>10</dex>
@@ -40,7 +44,77 @@
 
       <items>
       </items>
-
     </monster>
+
+    <monster>
+      <key>3</key>
+      <name>bandit1</name>
+      <spriteRoot>char/bandit1.png</spriteRoot>
+      <status>
+        <hp>9</hp>
+        <spd>8</spd>
+        <mvp>4</mvp>
+        <def>10</def>
+        <str>10</str>
+        <dex>10</dex>
+        <ins>10</ins>
+        <kno>10</kno>
+
+      </status>
+      <skills>
+        <skillKey>1</skillKey>
+      </skills>
+
+      <items>
+      </items>
+    </monster>
+
+    <monster>
+      <key>4</key>
+      <name>bandit2</name>
+      <spriteRoot>char/bandit2.png</spriteRoot>
+      <status>
+        <hp>7</hp>
+        <spd>8</spd>
+        <mvp>4</mvp>
+        <def>10</def>
+        <str>10</str>
+        <dex>10</dex>
+        <ins>10</ins>
+        <kno>10</kno>
+
+      </status>
+      <skills>
+        <skillKey>1</skillKey>
+      </skills>
+
+      <items>
+      </items>
+    </monster>
+
+    <monster>
+      <key>5</key>
+      <name>boss</name>
+      <spriteRoot>char/boss1.png</spriteRoot>
+      <status>
+        <hp>25</hp>
+        <spd>10</spd>
+        <mvp>5</mvp>
+        <def>10</def>
+        <str>10</str>
+        <dex>10</dex>
+        <ins>10</ins>
+        <kno>10</kno>
+
+      </status>
+      <skills>
+        <skillKey>1</skillKey>
+      </skills>
+
+      <items>
+      </items>
+    </monster>
+
+
   </monsters>
 </result>
