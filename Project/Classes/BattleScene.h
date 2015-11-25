@@ -7,6 +7,7 @@
 #include "BattleMenuLayer.h"
 #include "BattleControler.h"
 #include "InvenLayer.h"
+#include "effectLayer.h"
 
 USING_NS_CC;
 
@@ -54,6 +55,9 @@ public:
 	void setBattleMenuLayer(BattleMenuLayer *a_battleMenuLayer){ this->m_battleMenuLayer = a_battleMenuLayer; }
 	BattleMenuLayer* getBattleMenuLayer(){ return m_battleMenuLayer; }
 	
+	void setEffectLayer(effectLayer *a_effectLayer){ this->m_effectLayer = a_effectLayer; }
+	effectLayer* getEffectLayer(){ return m_effectLayer; }
+
 	void movedMenu(float delta);
 
 	void checkdie();
@@ -66,6 +70,7 @@ private:
 	BattleLayer* m_battleLayer;  // 배틀 맵 레이어 ( 타일, 몬스터, 캐릭터를 출력)
 	BattleControler * m_battleControler;  // 배틀 컨트롤러 
 	BattleMenuLayer *m_battleMenuLayer;
+	effectLayer *m_effectLayer;
 	Vec2 m_battlePoint;
 };
 

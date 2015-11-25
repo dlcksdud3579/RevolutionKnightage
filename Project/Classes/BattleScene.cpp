@@ -22,7 +22,7 @@ bool BattleScene::init()
 	}
 
 	setBattleControler(new BattleControler());
-
+	
 	this->setBattleLayer(BattleLayer::create());
 	getBattleLayer()->setBattleControler(getBattleControler());
 
@@ -40,7 +40,10 @@ bool BattleScene::init()
 	this->getBattleControler()->setTempPoint(Vec2(getBattleLayer()->getCharacter()->getPoint().x - getBattleLayer()->getViewPoint().x + 5
 		, getBattleLayer()->getCharacter()->getPoint().y - getBattleLayer()->getViewPoint().y + 3));
 
+	setEffectLayer(effectLayer::create());
 
+	getBattleControler()->setEffectLayer(getEffectLayer());
+	addChild(getEffectLayer());
 	return true;
 }
 void BattleScene::onEnter()
@@ -84,6 +87,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 	int movePointX = getBattleControler()->getTempPoint().x * 100 + 140;
 	int movePointY = getBattleControler()->getTempPoint().y * 100 + 60;
 
+
 	if (m_battleControler->getTurnType() == 5)
 	{
 		if (m_battleControler->getCurSkill() == NULL)
@@ -92,7 +96,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 			getBattleControler()->TurnEnd();
 			return false;
 		}
-
+		
 		int r = getBattleControler()->getCurSkill()->getRange();
 
 		if (movePointX - 50 - 100 * r < touchX && touchX < movePointX + 50 + 100 * r && movePointY - 50 - 100 * r < touchY && touchY < movePointY + 50 + 100 * r)
@@ -103,6 +107,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 			getBattleControler()->damageMon(attackPoint);
 			checkdie();
 			log("attack");
+			getEffectLayer()->printAttack(touch->getLocation());
 			endCharacterTurn();
 			getBattleControler()->TurnEnd();
 		}

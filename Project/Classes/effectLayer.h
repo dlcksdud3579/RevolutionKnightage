@@ -13,8 +13,8 @@ class effectLayer : public cocos2d::LayerColor
 public:
 	virtual bool init();
 	void printDice();
-	void printAttack();
-	void changeDice();
+	void printAttack(Vec2 point);
+	void changeDice(int num);
 
 	void removeAttack(float delta);
 	CREATE_FUNC(effectLayer);
@@ -22,7 +22,9 @@ public:
 
 private:
 	LabelTTF * Dice;
+	LabelTTF * DiceNum;
 	LabelTTF * Attack;
+	string m_dicenum;
 };
 
 
