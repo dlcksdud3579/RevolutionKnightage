@@ -2,6 +2,7 @@
 #define _BattleControler__
 #include "cocos2d.h"
 #include "CSkill.h"
+#include "effectLayer.h"
 USING_NS_CC;
 
 class BattleControler
@@ -45,6 +46,9 @@ public:
 
 	void setMonsterDir(int index);
 
+	void setEffectLayer(effectLayer *a_effectLayer){ this->m_effectLayer = a_effectLayer; }
+	effectLayer* getEffectLayer(){ return m_effectLayer; }
+
 private:
 	int CharacterGauge;
 	int MonGauge[10];
@@ -53,6 +57,8 @@ private:
 	Vec2 m_tempPoint;
 	int m_moveCnt;
 	CSkill* m_CurSkill; // 현재 사용할 스킬
+	effectLayer * m_effectLayer;
+
  };
 
 

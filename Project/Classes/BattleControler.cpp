@@ -70,7 +70,7 @@ void  BattleControler::AttackStart(int index)
 void BattleControler::damageMon(Vec2 Point)
 {
 	CMonster* mon[10];
-
+	int dice;
 	for (int i = 0; i < 10; i++)
 	{
 		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
@@ -80,8 +80,11 @@ void BattleControler::damageMon(Vec2 Point)
 		{
 			if (mon[i]->getPoint().x == Point.x + getCurSkill()->getSplash(j).x &&mon[i]->getPoint().y == Point.y + getCurSkill()->getSplash(j).y)
 			{
-				mon[i]->getStatus()->setHp(mon[i]->getStatus()->getHp() - DynamicContentsContainer::getInstance()->getDice()->rollDice(getCurSkill()->getDiceType(), getCurSkill()->getDiceNum()));
+				dice = DynamicContentsContainer::getInstance()->getDice()->rollDice(getCurSkill()->getDiceType(), getCurSkill()->getDiceNum());
+				mon[i]->getStatus()->setHp(mon[i]->getStatus()->getHp() - dice);
 				log("attacked:monseter[%d]", i);
+				getEffectLayer()->changeDice(dice);
+				
 				break;
 			}
 		}
@@ -112,6 +115,7 @@ void BattleControler::monsterAttack(int index)
 			mon->getPoint().y - range<= hero->getPoint().y && hero->getPoint().y <= mon->getPoint().y + range)
 		{
 			hero->getStatus()->setHp(hero->getStatus()->getHp() - rand()%6);
+			getEffectLayer()->printAttack(Vec2(m_tempPoint.x*100 +140, m_tempPoint.y*100+60));
 		}
 
 

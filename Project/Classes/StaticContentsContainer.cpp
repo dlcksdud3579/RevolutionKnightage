@@ -414,7 +414,7 @@ void StaticContentsContainer::readMapMonster()
 		tempPairMonster.second->setStatus(new Status(nodeStatus.child("hp").text().as_int(), 
 			nodeStatus.child("spd").text().as_int(),
 			nodeStatus.child("def").text().as_int(),
-			nodeStatus.child("str").text().as_int(),
+			nodeStatus.child("str").text().as_int(), 
 			nodeStatus.child("dex").text().as_int(),
 			nodeStatus.child("ins").text().as_int(),
 			nodeStatus.child("kno").text().as_int()));
