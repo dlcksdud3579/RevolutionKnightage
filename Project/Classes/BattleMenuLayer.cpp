@@ -3,107 +3,120 @@
 #include "BattleScene.h"
 #include "FieldScene.h"
 
-bool BattleMenuLayer::init()
-{
+bool BattleMenuLayer::init() // 기본 메인 
+{ 
 	if (!BattleMenuLayer::initWithColor(Color4B(0, 0, 0, 0)))
 	{
 		return false;
 	}
-	
-
-
-
 	return true;
 }
-void BattleMenuLayer::printRapidMenu()
-{
-	float r3 = 1.732; //루트 3 
-	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint();
-	
-	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
-	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
 
-	MenuItemFont* moveLable = MenuItemFont::create("MOVE",
-		CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	moveLable->setPosition( 50 * r3,  50);
+void BattleMenuLayer::printNomalMenu() // 노멀  메뉴 구현 
+{
+	BattleMenuLayer::removeMenu();
+	menufalg = 1;
+	float r3 = 1.732; //루트 3 
+	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
+
+	int PointX = getBattleControler()->getTempPoint().x*100+140; // 메뉴 위치  X 
+	int PointY = getBattleControler()->getTempPoint().y*100+60;  // 메뉴 위치 Y
+
+	// 메뉴 "mvoe"
+	MenuItemFont* moveLable = MenuItemFont::create("BlANK",   
+		CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
+	moveLable->setPosition(50 * r3, 50);
 	moveLable->setColor(Color3B(255, 255, 255));
 	moveLable->setTag(10);
-	
-	
-	MenuItemFont* InvenLable = MenuItemFont::create("BAG", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	InvenLable->setPosition( - 50 * r3,  - 50);
+	// 메뉴 "mvoe"
+
+	// 메뉴 "BAG"
+	MenuItemFont* InvenLable = MenuItemFont::create("BAG", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
+	InvenLable->setPosition(-50 * r3, -50);
 	InvenLable->setColor(Color3B(255, 255, 255));
 	InvenLable->setTag(11);
+	// 메뉴 "BAG"
 
-	MenuItemFont* escLable = MenuItemFont::create("ESC", CC_CALLBACK_1(BattleMenuLayer::chooseRapidMenu, this));
-	escLable->setPosition( - 50 * r3,  + 50);
+	// 메뉴 "ESC"
+	MenuItemFont* escLable = MenuItemFont::create("ESC", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
+	escLable->setPosition(-50 * r3, +50);
 	escLable->setColor(Color3B(255, 255, 255));
 	escLable->setTag(12);
+	// 메뉴 "ESC"
 
-	auto pMenu = Menu::create(moveLable, InvenLable, escLable, NULL);
-	pMenu->setPosition(PointX , PointY);
-	pMenu->setTag(100);
-	addChild(pMenu);
-}
-
-void BattleMenuLayer::printNomalMenu()
-{
-	float r3 = 1.732; //루트 3 
-	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint();
-
-	int PointX = getBattleControler()->getTempPoint().x*100+140;
-	int PointY = getBattleControler()->getTempPoint().y*100+60;
-
-
-
+	// 메뉴 "ACTION"
 	MenuItemFont* actionLable = MenuItemFont::create("ACTION", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	actionLable->setPosition( + 50 * r3,  - 50);
 	actionLable->setColor(Color3B(255, 255, 255));
-	actionLable->setTag(20);
+	actionLable->setTag(13);
+	// 메뉴 "ACTION"
 
+	// 메뉴 "ATTACK"
 	MenuItemFont* attakLable = MenuItemFont::create("ATTACK", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	attakLable->setPosition(0,  + 100);
 	attakLable->setColor(Color3B(255, 255, 255));
-	attakLable->setTag(21);
+	attakLable->setTag(14);
+	// 메뉴 "ATTACK"
 
+	// 메뉴 "END"
 	MenuItemFont* endLable = MenuItemFont::create("END", CC_CALLBACK_1(BattleMenuLayer::chooseNomalMenu, this));
 	endLable->setPosition(0,  - 100);
 	endLable->setColor(Color3B(255, 255, 255));
-	endLable->setTag(22);
+	endLable->setTag(15);
+	// 메뉴 "END"
 
-	auto pMenu = Menu::create(actionLable, attakLable, endLable, NULL);
+	//메뉴 구현 
+	auto pMenu = Menu::create(moveLable, InvenLable, escLable, actionLable, attakLable, endLable, NULL); 
 	pMenu->setPosition(PointX, PointY);
 	pMenu->setTag(200);
 	addChild(pMenu);
-
-}
-void  BattleMenuLayer::removeRapidMenu()
-{
-	this->removeChildByTag(100);
+	//메뉴 구현 
 
 
 }
-void  BattleMenuLayer::removeNomalMenu()
+
+void BattleMenuLayer::removeMenu()
 {
+	switch (menufalg)
+	{
+	case 0:
+		break;
+	case 1:
+		void removeNomalMenu();// 기본 행동 메뉴제거 
+		break;
+	case 2:	
+		void removeActionMenu(); // 액션 메뉴 제거 
+		break;
+	case 3:
+		void removeAttackMenu(); // 공격 메뉴 제거 
+		break;
+	default:
+		break;
+	}
+	menufalg = 0;
+}
+
+void  BattleMenuLayer::removeNomalMenu() // 메뉴 제거 
+{
+	menufalg = 0;
 	this->removeChildByTag(200);
 
 }
-void  BattleMenuLayer::printActionMenu()
+
+void  BattleMenuLayer::printActionMenu() // 액션 메뉴 구현 
 {
 	float r3 = 1.732; //루트 3 
-
+	menufalg = 2;
 	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
 	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
 
-
-
 	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
-	action1Lable->setPosition(+50 * r3, -50);
+	action1Lable->setPosition(50 * r3, 50);
 	action1Lable->setColor(Color3B(255, 255, 255));
 	action1Lable->setTag(30);
 
 	MenuItemFont* action2Lable = MenuItemFont::create("ACTION2", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
-	action2Lable->setPosition(+50 * r3, +50);
+	action2Lable->setPosition(-50 * r3, -50);
 	action2Lable->setColor(Color3B(255, 255, 255));
 	action2Lable->setTag(31);
 
@@ -113,24 +126,38 @@ void  BattleMenuLayer::printActionMenu()
 	action3Lable->setTag(32);
 
 	MenuItemFont* action4Lable = MenuItemFont::create("ACTION4", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
-	action4Lable->setPosition(-50 * r3, -50);
+	action4Lable->setPosition(+50 * r3, -50);
 	action4Lable->setColor(Color3B(255, 255, 255));
 	action4Lable->setTag(33);
 
-	auto pMenu = Menu::create(action1Lable, action2Lable, action3Lable, action4Lable, NULL);
+	MenuItemFont* action5Lable = MenuItemFont::create("ACTION5", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
+	action4Lable->setPosition(0, 100);
+	action4Lable->setColor(Color3B(255, 255, 255));
+	action4Lable->setTag(34);
+
+	MenuItemFont* BackLable = MenuItemFont::create("BACK", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
+	action4Lable->setPosition(0, -100);
+	action4Lable->setColor(Color3B(255, 255, 255));
+	action4Lable->setTag(35);
+
+
+	auto pMenu = Menu::create(action1Lable, action2Lable, action3Lable, action4Lable, action5Lable, BackLable, NULL);
 	pMenu->setPosition(PointX, PointY);
 	pMenu->setTag(300);
 	addChild(pMenu);
 }
-void  BattleMenuLayer::removeActionMenu()
+
+void  BattleMenuLayer::removeActionMenu()// 액션 메뉴 제거 
 {
+	menufalg = 0;
 	this->removeChildByTag(300);
 
 }
-void  BattleMenuLayer::printAttackMenu()
+
+void  BattleMenuLayer::printAttackMenu()// 공격 메뉴 구현 
 {
 	float r3 = 1.732; //루트 3 
-
+	menufalg = 3;
 	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
 	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
 	CSkill* skill[6];
@@ -192,61 +219,38 @@ void  BattleMenuLayer::printAttackMenu()
 		addChild(pMenu);
 	}
 }
-void  BattleMenuLayer::removeAttackMenu()
+
+void  BattleMenuLayer::removeAttackMenu() // 공격 메뉴 삭제 
 {
+	menufalg = 0;
 	this->removeChildByTag(400); 
 }
 
-void BattleMenuLayer::chooseRapidMenu(Object* pSender)
+void BattleMenuLayer::chooseNomalMenu(Object* pSender) // 메뉴를 선택 했을 때 불려지는 함수 
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
 	Scene* fieldScene = NULL;
-	removeRapidMenu();
+	removeNomalMenu();
+	
 	switch (index)
 	{
-	case 10:
-		m_battleControler->setTurnType(3); // move
+	case 10:// 
 		break;
-	case 11:
-		m_battleControler->setTurnType(2); // 가방
-
+	case 11:// 가방
 		break;
-	case 12:
-		m_battleControler->setTurnType(1); //도망
+	case 12://도망
 		fieldScene = FieldScene::createScene();
 		Director::getInstance()->replaceScene(fieldScene);
 		break;
-	default:
-		return;
-		break;
-	}
-	
-}
-
-void BattleMenuLayer::chooseNomalMenu(Object* pSender)
-{
-
-	auto item = (MenuItem*)pSender;
-	int index = item->getTag();
-
-	removeRapidMenu();
-	removeNomalMenu();
-	switch (index)
-	{
-	case 20:
-
-		m_battleControler->setTurnType(4); // 액션
+	case 13:// 액션
 		printActionMenu();
 		return;
-	case 21:
+	case 14:
 		this->printAttackMenu();
-
 		break;
-	case 22:
-		m_battleControler->setTurnType(0); // 종료
-		m_battleControler->TurnEnd();
-		m_battleControler->setStopFlag(0);
+
+	case 15:// 종료
 
 		break;
 	default:
@@ -256,8 +260,7 @@ void BattleMenuLayer::chooseNomalMenu(Object* pSender)
 
 }
 
-
-void  BattleMenuLayer::chooseActionMenu(Object* pSender)
+void  BattleMenuLayer::chooseActionMenu(Object* pSender) // 액션 에서 메뉴 사용시 불려지는함수 
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
@@ -265,20 +268,24 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender)
 
 	switch (index)
 	{
-	case 30:
-
-		m_battleControler->setTurnType(7); //
+	case 30:// 액션 1
 
 		break;
-	case 31:
-		m_battleControler->setTurnType(8); //
+	case 31:// 액션 2
+
 
 		break;
-	case 32:
-		m_battleControler->setTurnType(9); // 
+	case 32:// 액션 3
+
+
 		break;
-	case 33:
-		m_battleControler->setTurnType(10); // 
+	case 33:// 액션 4
+
+		break;
+	case 34:// 액션 5
+
+	case 35:// BACK
+		printNomalMenu();
 		break;
 	default:
 		return;
@@ -286,49 +293,52 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender)
 	}
 	m_battleControler->TurnEnd();
 }
-void  BattleMenuLayer::chooseAttackMenu(Object* pSender)
+
+void  BattleMenuLayer::chooseAttackMenu(Object* pSender) // 공격 메뉴 에서 불려  지는 함수 
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
 	m_battleControler->setTurnType(5); //공격
 	removeAttackMenu();
-	int i=0;
+	int skillIndex=0;// 스킬 넘버 
+
 	switch (index)
 	{
 	case 40:
-		i = index - 40;
-		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		skillIndex = index - 40; // 0번 스킬 
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
 		break;
 	case 41:
 
-		i = index - 40;
-		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		skillIndex = index - 40; // 1번 스킬 
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
 		break;
 	case 42:
 	
-		i = index - 40;
-		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		skillIndex = index - 40; //2번 스킬
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
 		break;
 	case 43:
 
 
-		i = index - 40;
-		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		skillIndex = index - 40; //3번 스킬
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
 
 		break;
 	case 44:
-		i = index - 40;
-		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		skillIndex = index - 40; //4번 스킬
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
 		break;
 	case 45:
-		i = index - 40;
-		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(i));
+		skillIndex = index - 40; //BACK
+
+		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
+			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
 		break;
 	default:
 		return;

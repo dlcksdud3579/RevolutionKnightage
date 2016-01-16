@@ -45,6 +45,7 @@ bool FieldScene::init()
 
 	return true;
 }
+
 void FieldScene::onEnter()
 {
 	Layer::onEnter();
@@ -69,8 +70,6 @@ void FieldScene::onExit()
 
 bool FieldScene::onTouchBegan(Touch* touch, Event* event)
 {
-
-	
 
 	Size winSize = CCDirector::getInstance()->getVisibleSize();
 	int tileSiz = this->getFieldLayer()->getMap()->atTile(Vec2(0, 0))->getSize().x;

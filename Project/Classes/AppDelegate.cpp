@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "FieldScene.h"
+#include "NFieldScene.h"
 #include "StaticContentsContainer.h"
 #include "DynamicContentsContainer.h"
 
@@ -60,8 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//DynamicContentsContainer::getInstance()->getMap()->setStartPoint(Vec2(10, 9));
 	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
 
-	auto fieldScene = FieldScene::createScene();  // 테스트를 위한 씬 
-
+	auto fieldScene = NFieldScene::createScene();  // 테스트를 위한 씬 
 	director->runWithScene(fieldScene);      // 처음으로 불러올 씬을 부름 
 
     return true;

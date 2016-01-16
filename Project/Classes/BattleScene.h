@@ -69,9 +69,11 @@ private:
 	InvenLayer* m_invenLayer; // 인벤토리 창 메뉴아이템
 	BattleLayer* m_battleLayer;  // 배틀 맵 레이어 ( 타일, 몬스터, 캐릭터를 출력)
 	BattleControler * m_battleControler;  // 배틀 컨트롤러 
-	BattleMenuLayer *m_battleMenuLayer;
+	
 	effectLayer *m_effectLayer;
 	Vec2 m_battlePoint;
+
+
 };
 
 

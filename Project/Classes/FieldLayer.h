@@ -1,4 +1,4 @@
-#ifndef _FIELDLAYER_H_
+#ifndef _FIELDLAYER_H_ 
 #define _FIELDLAYER_H_
 
 #include "cocos2d.h"
@@ -8,33 +8,44 @@
 
 using namespace std;
 
-class FieldLayer: public cocos2d::LayerColor
+class FieldLayer: public cocos2d::LayerColor // 필드와 몬스터 그리고 플레이어블 캐릭터등 을 구현 하는 레이어 
 {
 public:
-	FieldLayer();
+	FieldLayer(); // 생성자 
+	CREATE_FUNC(FieldLayer); // craete함수
+	virtual bool init(); // 메인 함수 
 
-	virtual bool init();
+	virtual void onEnter(); // 레이서 생성시 불려지는 함수  
+	virtual void onExit();// 레이서 종료시 불려지는 함수 
 
-	virtual void printTileField();
-	virtual void removeTileField();
+	virtual void printTileField(); // 타일을 그려주는 함수 
+	virtual void removeTileField(); // 타일을 지워주는 함수 
 
-	void printCharacter();
-	void removeCharacter();
+	void printCharacter(); // 캐리터를 그려주는 함수 
+	void removeCharacter(); // 캐릭터를 지워 주는함수 
 
-	CREATE_FUNC(FieldLayer);
+	void moveCharacter(); // 캐릭터 이동 함수 
+	 void moveCharacter(Vec2 a_Point);
 
-	void moveCharacter();
 
-	void moveRight();
-	void moveLeft();
-	void moveUp();
-	void moveDown();
+	void moveLayerPoint(Vec2 a_Point); // 레이어 를 이동 
 
-	virtual void onEnter();
-	virtual void onExit();
+
+	void moveRight(); //  오른쪽으로 이동 
+	void moveLeft(); //  왼쪽으로 이동 
+	void moveUp();  //  위로 이동
+	void moveDown(); // 아래로 이동
+
+
 	
-	void changeMap(string MapKey);
-	void checkPortal();
+	void changeMap(string MapKey);  //맵 면경 
+	void checkPortal(); // 포탈인지 체크 
+	
+	
+
+	void viewControl(); // 보이지 않는곳을 스프라이트 안뛰우고 보이는곳만 보이게하는 함수
+
+
 
 	// get set 함수 
 	
@@ -49,16 +60,13 @@ public:
 
 	void setMapControler(CMapControler* a_MapControler){ this->m_MapControler = a_MapControler; }
 	CMapControler* getMapControler(){ return this->m_MapControler; }
+	
+		void setCharacterSprite(Sprite* a_characterSprite){ this->m_characterSprite = a_characterSprite; }
+	Sprite* getCharacterSprite(){ return this->m_characterSprite; }
 	// /get set 함수
 
-	
-	void moveCharacter(Vec2 a_Point);
-	void moveLayerPoint(Vec2 a_Point);
 
-	void viewControl(); // 보이지 않는곳을 스프라이트 안뛰우고 보이는곳만 보이게하는 함수
 
-	void setCharacterSprite(Sprite* a_characterSprite){ this->m_characterSprite = a_characterSprite; }
-	Sprite* getCharacterSprite(){ return this->m_characterSprite; }
 	
 private:
 	Vec2 m_viewPoint;

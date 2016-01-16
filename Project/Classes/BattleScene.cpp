@@ -122,6 +122,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
 
 void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰임 
 {
+	/*
 	int touchX = touch->getLocation().x;
 	int touchY = touch->getLocation().y;
 
@@ -179,7 +180,7 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)  // 이동구현으로만 쓰
 			return;
 		}
 	}
-
+	*/
 }
 
 void BattleScene::onTouchEnded(Touch* touch, Event* event)
@@ -194,7 +195,7 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
 	}
 }
 
-void BattleScene::run(float delta) // 0.2초마다
+void BattleScene::run(float delta)
 {
 	if (m_battleControler->isStopFlag() == 1)
 		return;
