@@ -52,8 +52,8 @@ public:
 	void setBattlePoint(Vec2 a_BattlePoint){ this->m_battlePoint = a_BattlePoint; }
 	Vec2 getBattlepoint(){ return this->m_battlePoint; }
 
-	void setBattleMenuLayer(BattleMenuLayer *a_battleMenuLayer){ this->m_battleMenuLayer = a_battleMenuLayer; }
-	BattleMenuLayer* getBattleMenuLayer(){ return m_battleMenuLayer; }
+//	void setBattleMenuLayer(BattleMenuLayer *a_battleMenuLayer){ this->m_battleMenuLayer = a_battleMenuLayer; }
+//	BattleMenuLayer* getBattleMenuLayer(){ return m_battleMenuLayer; }
 	
 	void setEffectLayer(effectLayer *a_effectLayer){ this->m_effectLayer = a_effectLayer; }
 	effectLayer* getEffectLayer(){ return m_effectLayer; }

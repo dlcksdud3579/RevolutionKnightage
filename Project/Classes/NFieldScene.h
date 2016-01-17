@@ -7,6 +7,8 @@
 #include "FrameLayer.h"
 #include "MenuLayer.h"
 #include "BattleMenuLayer.h"
+#include "TurnControler.h"
+
 
 USING_NS_CC;
 
@@ -41,9 +43,10 @@ public:
 	void setBattleMenuLayer(BattleMenuLayer *a_battleMenuLayer){ this->m_battleMenuLayer = a_battleMenuLayer; }
 	BattleMenuLayer* getBattleMenuLayer(){ return m_battleMenuLayer; }
 
+	void setTurnControler(TurnControler *a_turnControler){ this->m_turnControler = a_turnControler; }
+	TurnControler* getTurnControler(){ return this->m_turnControler; }
+
 	// ~~ set get 함수 모음여기까지  
-
-
 
 private:
 
@@ -51,6 +54,8 @@ private:
 	FrameLayer* m_frameLayer; // 화면을 약간 가려줄 프레임을 가진 레이어 가장 위에 뛰울 것 
 	MenuLayer* m_menuLayer; // 메뉴 를 뛰워줄 함수 프레임 함수 보다 위로 
     BattleMenuLayer *m_battleMenuLayer; // 캐릭터 행동 메뉴를 뛰워줄 함수 일단 잴 위?
+	TurnControler* m_turnControler; //턴을 관리 해줄 우리의 턴 컨트롤러 
+
 
 };
 #endif

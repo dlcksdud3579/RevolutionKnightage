@@ -19,41 +19,48 @@ bool MenuLayer::init()
 	
 	MenuPanel->setPosition(winSize.width + (80 / 2), winSize.height - (720 / 2));
 	this->addChild(MenuPanel,1);
+	// 메뉴 판을 띄웠다
 
 	// 메뉴판위 메뉴들
+
 	Inven = MenuItemFont::create("inven",
 		CC_CALLBACK_1(MenuLayer::clickMenu, this));
 	Inven->setTag(1);
 	Inven->setPosition(winSize.width/2 + (150 / 2), winSize.height*2/5 * 3 / 5);
 	Inven->setScale(1.5);
 	Inven->setColor(Color3B(0,0,0));
+
 	status = MenuItemFont::create("status",
 		CC_CALLBACK_1(MenuLayer::clickMenu, this));
 	status->setPosition(winSize.width / 2 + (150 / 2), winSize.height * 2 / 5 * 1 / 5);
 	status->setTag(2);
 	status->setScale(1.5);
 	status->setColor(Color3B(0, 0, 0));
+
 	skill = MenuItemFont::create("skill",
 		CC_CALLBACK_1(MenuLayer::clickMenu, this));
 	skill->setPosition(winSize.width / 2 + (150 / 2), winSize.height * 2 / 5 * -1 / 5);
 	skill->setTag(3);
 	skill->setScale(1.5);
 	skill->setColor(Color3B(0, 0, 0));
+
 	setUp = MenuItemFont::create("option",
 		CC_CALLBACK_1(MenuLayer::clickMenu, this));
 	setUp->setTag(4);
 	setUp->setPosition(winSize.width / 2 + (150 / 2), winSize.height * 2 / 5 * -3 / 5);
 	setUp->setScale(1.5);
 	setUp->setColor(Color3B(0, 0, 0));
+	// ~메뉴판위 메뉴들
 
 	auto pMenu = Menu::create(Inven, status, skill, setUp, NULL);
 	// 메뉴들
-	this->addChild(pMenu,2);
+	this->addChild(pMenu,2); // 자녀 추가 
 
 
 	this->setInvenLayer(InvenLayer::create());  // 인벤 레이어 
-
 	addChild(getInvenLayer(),3);
+
+
 
 	return true;
 }

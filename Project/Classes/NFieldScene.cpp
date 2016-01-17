@@ -22,6 +22,7 @@ bool NFieldScene::init()
 	}
 
 
+	this->setTurnControler(new TurnControler());
 	// ÇÊµå·¹ÀÌ¾î 
 	this->setFieldLayer(FieldLayer::create());
 	this->getFieldLayer()->setPosition(90, 10);
@@ -34,10 +35,18 @@ bool NFieldScene::init()
 	this->addChild(this->getFrameLayer(), 2);
 	// È­¸é Æ² ·¹ÀÌ¾î
 
+	// Çàµ¿ ¸Þ´º ·¹ÀÌ¾î ¶ç¿ì±â
+	this->setBattleMenuLayer(BattleMenuLayer::create());
+	this->getBattleMenuLayer()->setPosition(0, 0);
+	this->getBattleMenuLayer()->setTurnControler(this->getTurnControler());
+	this->addChild(this->getBattleMenuLayer(), 3);
+	// Çàµ¿ ¸Þ´º ·¹ÀÌ¾î ¶ç¿ì±â
+
 	//  ¸Þ´º ·¹ÀÌ¾î ¶ç¿ì±â 
-	this->m_menuLayer = MenuLayer::create();
-	this->m_menuLayer->setPosition(0, 0);
-	this->addChild(m_menuLayer, 3);
+	this->setMenuLayer(MenuLayer::create());
+	this->getMenuLayer()->setPosition(0, 0);
+	this->getMenuLayer()->setTurnControler(this->getTurnControler());;
+	this->addChild(this->getMenuLayer(), 3);
 	//  ¸Þ´º ·¹ÀÌ¾î ¶ç¿ì±â 
 
 	return true;
@@ -76,7 +85,6 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  ÅÍÄ¡ ½ÃÀÛ½Ã ºÒ·ÁÁ
 	int y = tileSiz / 2 + 10 + (getFieldLayer()->getCharacter()->getPoint().y - getFieldLayer()->getViewPoint().y + 3) * tileSiz; // ÅÍÄ¡ ÀÔ·Â½Ã Ä³¸¯ÅÍ À§Ä¡ Y
 
 	int root3 = sqrt(3); // tan ±âÁØÀ¸·Î 30µµ¿¡°æ¿ì 1/root3  60ÀÎ°æ¿ì root3À» °öÇÑ´Ù.
-	//log("%d %d, %f, %f",x,
 
 	//log("%f, %f ", touch->getLocation().x, winSize.width - 90);
 	if (this->getMenuLayer()->isOpenFlag() == false)
@@ -95,7 +103,7 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  ÅÍÄ¡ ½ÃÀÛ½Ã ºÒ·ÁÁ
 				touch->getLocation().y < y + tileSiz / 2) // ÇöÀç Å¸ÀÏÀ» °¡¸£Å´ 
 			{
 				//	log("stop");
-				getBattleMenuLayer()->printNomalMenu();
+				getBattleMenuLayer()->printNomalMenu();  // ±âº» ¸Þ´º¸¦ ¶Ù¿öÁØ´Ù.
 
 			}
 			else if (touch->getLocation().x > x &&       // ¿À¸¥ÂÊ ´ë°¢¼±À¸·Î °¢µµ°¡ 30µµ°¡ ´­·ÁÁö¸é °É¸²  
@@ -147,10 +155,12 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  ÅÍÄ¡ ½ÃÀÛ½Ã ºÒ·ÁÁ
 	return true;
 
 }
-void NFieldScene::onTouchMoved(Touch* touch, Event* event)
+
+void NFieldScene::onTouchMoved(Touch* touch, Event* event) // ÅÍÄ¡ÀÌµ¿ ÀÏ¶§ ºÒ·ÁÁö´ÂÇÔ¼ö 
 {
 }
-void NFieldScene::onTouchEnded(Touch* touch, Event* event)
+
+void NFieldScene::onTouchEnded(Touch* touch, Event* event) // ÅÍÄ¡°¡ ³¡ÀÌ ³¯¶§ ºÒ·ÁÁö´ÂÇÔ¼ö 
 {
 }
 

@@ -14,7 +14,6 @@ bool FieldLayer::init()
 
 	setCharacterSprite(Sprite::create(getCharacter()->getSpriteRoot()));
 
-
 	printTileField();
 	printCharacter();
 
@@ -27,8 +26,6 @@ FieldLayer::FieldLayer()
 	this->setMapControler(new CMapControler()); // 맵 컨트롤러 생성 
 
 }
-
-
 
 void FieldLayer::printTileField()// 맵 구현 
 {
@@ -148,7 +145,7 @@ void FieldLayer::onExit()
 void FieldLayer::moveLayerPoint(Vec2 a_Point)
 {
 	int tileSiz = getMap()->atTile(Vec2(0, 0))->getSize().x; // 타일 크기 
-	this->runAction(MoveTo::create(0.1f, Vec2(590 - tileSiz * (a_Point.x),310 - tileSiz * (a_Point.y)))); 이동 
+	this->runAction(MoveTo::create(0.1f, Vec2(590 - tileSiz * (a_Point.x),310 - tileSiz * (a_Point.y)))); //이동 
 }
 
 void FieldLayer::setViewPoint(Vec2 a_viewPoint) 

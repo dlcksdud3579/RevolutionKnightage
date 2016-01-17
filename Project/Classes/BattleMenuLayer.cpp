@@ -19,8 +19,8 @@ void BattleMenuLayer::printNomalMenu() // 노멀  메뉴 구현
 	float r3 = 1.732; //루트 3 
 	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
 
-	int PointX = getBattleControler()->getTempPoint().x*100+140; // 메뉴 위치  X 
-	int PointY = getBattleControler()->getTempPoint().y*100+60;  // 메뉴 위치 Y
+	int PointX = Point.x * 100 + 140; // 메뉴 위치  X 
+	int PointY = Point.y * 100 + 60;  // 메뉴 위치 Y
 
 	// 메뉴 "mvoe"
 	MenuItemFont* moveLable = MenuItemFont::create("BlANK",   
@@ -107,8 +107,10 @@ void  BattleMenuLayer::printActionMenu() // 액션 메뉴 구현
 {
 	float r3 = 1.732; //루트 3 
 	menufalg = 2;
-	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
-	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
+	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
+
+	int PointX = Point.x * 100 + 140; // 메뉴 위치  X 
+	int PointY = Point.y * 100 + 60;  // 메뉴 위치 Y
 
 	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action1Lable->setPosition(50 * r3, 50);
@@ -158,8 +160,11 @@ void  BattleMenuLayer::printAttackMenu()// 공격 메뉴 구현
 {
 	float r3 = 1.732; //루트 3 
 	menufalg = 3;
-	int PointX = getBattleControler()->getTempPoint().x * 100 + 140;
-	int PointY = getBattleControler()->getTempPoint().y * 100 + 60;
+	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
+
+	int PointX = Point.x * 100 + 140; // 메뉴 위치  X 
+	int PointY = Point.y * 100 + 60;  // 메뉴 위치 Y
+
 	CSkill* skill[6];
 	std::string  skillName[6];
 	for (int i = 0; i < 6; i++)
@@ -298,7 +303,6 @@ void  BattleMenuLayer::chooseAttackMenu(Object* pSender) // 공격 메뉴 에서 불려 
 {
 	auto item = (MenuItem*)pSender;
 	int index = item->getTag();
-	m_battleControler->setTurnType(5); //공격
 	removeAttackMenu();
 	int skillIndex=0;// 스킬 넘버 
 

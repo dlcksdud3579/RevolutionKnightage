@@ -2,7 +2,7 @@
 #define _BATTLEMENULAYER_H_
 
 #include "cocos2d.h"
-#include "BattleControler.h"
+#include "TurnControler.h"
 USING_NS_CC;
 
 using namespace std;
@@ -36,14 +36,14 @@ public:
 	void removeMenu();
 
 	// set get 모임 
-	void setBattleControler(BattleControler *a_battleControler){ m_battleControler = a_battleControler; }
-	BattleControler *getBattleControler(){ return m_battleControler; }
+	void setTurnControler(TurnControler *a_turnControler){ m_turnControler = a_turnControler; }
+	TurnControler *getTurnControler(){ return m_turnControler; }
 	// set get 모임 
 private:
 	
 	bool menufalg = 0; // 0 - 안켜짐 , 1 - 노말, 2 - 액션, 3 - 공격
 
-	BattleControler * m_battleControler;  // 배틀 컨트롤러 
+	TurnControler * m_turnControler;  // 턴컨트롤러 
 };
 
 
