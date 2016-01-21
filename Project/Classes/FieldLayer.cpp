@@ -1,7 +1,7 @@
 #include "FieldLayer.h"
 #include "math.h"
-#include "FieldScene.h"
 #include "StaticContentsContainer.h"
+#include "NFieldScene.h"
 
 USING_NS_CC;
 
@@ -67,6 +67,8 @@ void FieldLayer::moveRight()
 		if (getCharacter()->getPoint().x > 5) // 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x + 1, getViewPoint().y)); // 레이어 이동 
 	}
+	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+		, getCharacter()->getPoint().y - getViewPoint().y + 3));
 }
 void FieldLayer::moveLeft()
 {
@@ -82,6 +84,8 @@ void FieldLayer::moveLeft()
 		if (getCharacter()->getPoint().x < getMap()->getSizeTile().x - 6)// 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x - 1, getViewPoint().y)); // 레이어 이동 
 	}
+	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+		, getCharacter()->getPoint().y - getViewPoint().y + 3));
 }
 void FieldLayer::moveUp()
 {
@@ -96,6 +100,8 @@ void FieldLayer::moveUp()
 		if (getCharacter()->getPoint().y > 3)// 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x, getViewPoint().y + 1));// 레이어 이동
 	}
+	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+		, getCharacter()->getPoint().y - getViewPoint().y + 3));
 }
 void FieldLayer::moveDown()
 {
@@ -112,6 +118,8 @@ void FieldLayer::moveDown()
 		if (getCharacter()->getPoint().y < getMap()->getSizeTile().y - 4)// 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x, getViewPoint().y - 1));// 레이어 이동
 	}
+	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+		, getCharacter()->getPoint().y - getViewPoint().y + 3));
 }
 
 void FieldLayer::printCharacter()
@@ -133,6 +141,8 @@ void FieldLayer::onEnter()
 	
 	this->setViewPoint(getCharacter()->getPoint());// 레이어의 시작 포인크를 설정 
 	viewControl(); //뷰포인 설정 
+	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+		, getCharacter()->getPoint().y - getViewPoint().y + 3));
 
 }
 
@@ -146,6 +156,7 @@ void FieldLayer::moveLayerPoint(Vec2 a_Point)
 {
 	int tileSiz = getMap()->atTile(Vec2(0, 0))->getSize().x; // 타일 크기 
 	this->runAction(MoveTo::create(0.1f, Vec2(590 - tileSiz * (a_Point.x),310 - tileSiz * (a_Point.y)))); //이동 
+
 }
 
 void FieldLayer::setViewPoint(Vec2 a_viewPoint) 
@@ -197,7 +208,7 @@ void FieldLayer::changeMap(string MapKey) // 맵체인지
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
 	DynamicContentsContainer::getInstance()->setMap(map);
 	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint());
-	auto	fieldScene = FieldScene::createScene();
+	auto	fieldScene = NFieldScene::createScene();
 	Director::getInstance()->replaceScene(fieldScene);
 	for (int i = 0; i < 10; i++)
 	{
@@ -207,6 +218,7 @@ void FieldLayer::changeMap(string MapKey) // 맵체인지
 		DynamicContentsContainer::getInstance()->setMonster(NULL, i);
 	}
 }
+
 void FieldLayer::checkPortal() // 포탈 위치와 히어로 
 {
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();

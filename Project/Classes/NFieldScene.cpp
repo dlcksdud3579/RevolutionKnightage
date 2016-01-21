@@ -21,12 +21,15 @@ bool NFieldScene::init()
 		return false;
 	}
 
-
+	// 턴 컨트롤러 
 	this->setTurnControler(new TurnControler());
+	// 턴 컨트롤러 
+
 	// 필드레이어 
 	this->setFieldLayer(FieldLayer::create());
 	this->getFieldLayer()->setPosition(90, 10);
-	this->addChild(this->getFieldLayer(), 1); 
+	this->getFieldLayer()->setTurnControler(this->getTurnControler());
+	this->addChild(this->getFieldLayer(), 1);
 	// 필드레이어 
 
 	// 화면 틀 레이어
@@ -46,7 +49,7 @@ bool NFieldScene::init()
 	this->setMenuLayer(MenuLayer::create());
 	this->getMenuLayer()->setPosition(0, 0);
 	this->getMenuLayer()->setTurnControler(this->getTurnControler());;
-	this->addChild(this->getMenuLayer(), 3);
+	this->addChild(this->getMenuLayer(), 4);
 	//  메뉴 레이어 띄우기 
 
 	return true;
@@ -102,7 +105,7 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  터치 시작시 불려�
 				touch->getLocation().y > y - tileSiz / 2 &&
 				touch->getLocation().y < y + tileSiz / 2) // 현재 타일을 가르킴 
 			{
-				//	log("stop");
+				log("stop");
 				getBattleMenuLayer()->printNomalMenu();  // 기본 메뉴를 뛰워준다.
 
 			}

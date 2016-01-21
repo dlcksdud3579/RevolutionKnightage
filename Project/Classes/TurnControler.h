@@ -9,8 +9,14 @@ class TurnControler
 public:
 	TurnControler(); // »ý¼ºÀÚ
 
-private:
+	//set get 
+	void setMenuPoint(Vec2 a_menuPoint){ this->m_menuPoint = a_menuPoint; }
+	Vec2 getMenuPoint(){ return this->m_menuPoint; }
+	//set get
 
+
+private:
+	Vec2 m_menuPoint;
 };
 
 

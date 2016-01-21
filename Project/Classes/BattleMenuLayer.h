@@ -38,12 +38,14 @@ public:
 	// set get 모임 
 	void setTurnControler(TurnControler *a_turnControler){ m_turnControler = a_turnControler; }
 	TurnControler *getTurnControler(){ return m_turnControler; }
+
 	// set get 모임 
 private:
 	
 	bool menufalg = 0; // 0 - 안켜짐 , 1 - 노말, 2 - 액션, 3 - 공격
 
 	TurnControler * m_turnControler;  // 턴컨트롤러 
+	
 };
 
 

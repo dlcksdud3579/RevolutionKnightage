@@ -1,7 +1,5 @@
 #include "BattleMenuLayer.h"
 #include "DynamicContentsContainer.h"
-#include "BattleScene.h"
-#include "FieldScene.h"
 
 bool BattleMenuLayer::init() // 기본 메인 
 { 
@@ -17,10 +15,10 @@ void BattleMenuLayer::printNomalMenu() // 노멀  메뉴 구현
 	BattleMenuLayer::removeMenu();
 	menufalg = 1;
 	float r3 = 1.732; //루트 3 
-	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
+	//Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
 
-	int PointX = Point.x * 100 + 140; // 메뉴 위치  X 
-	int PointY = Point.y * 100 + 60;  // 메뉴 위치 Y
+	int PointX = this->getTurnControler()->getMenuPoint().x * 100 + 140; // 메뉴 위치  X 
+	int PointY = this->getTurnControler()->getMenuPoint().y * 100 + 60;  // 메뉴 위치 Y
 
 	// 메뉴 "mvoe"
 	MenuItemFont* moveLable = MenuItemFont::create("BlANK",   
@@ -245,7 +243,6 @@ void BattleMenuLayer::chooseNomalMenu(Object* pSender) // 메뉴를 선택 했을 때 불
 	case 11:// 가방
 		break;
 	case 12://도망
-		fieldScene = FieldScene::createScene();
 		Director::getInstance()->replaceScene(fieldScene);
 		break;
 	case 13:// 액션
@@ -296,7 +293,6 @@ void  BattleMenuLayer::chooseActionMenu(Object* pSender) // 액션 에서 메뉴 사용�
 		return;
 		break;
 	}
-	m_battleControler->TurnEnd();
 }
 
 void  BattleMenuLayer::chooseAttackMenu(Object* pSender) // 공격 메뉴 에서 불려  지는 함수 
@@ -306,43 +302,44 @@ void  BattleMenuLayer::chooseAttackMenu(Object* pSender) // 공격 메뉴 에서 불려 
 	removeAttackMenu();
 	int skillIndex=0;// 스킬 넘버 
 
+
 	switch (index)
 	{
 	case 40:
 		skillIndex = index - 40; // 0번 스킬 
 		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
+			//getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex)); // 스킬 사용 
 		break;
 	case 41:
 
 		skillIndex = index - 40; // 1번 스킬 
 		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
+			//getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));// 스킬 사용 
 		break;
 	case 42:
 	
 		skillIndex = index - 40; //2번 스킬
 		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
+			//getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));// 스킬 사용 
 		break;
 	case 43:
 
 
 		skillIndex = index - 40; //3번 스킬
 		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
+			//getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));// 스킬 사용 
 
 		break;
 	case 44:
 		skillIndex = index - 40; //4번 스킬
 		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
+			//getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));// 스킬 사용 
 		break;
 	case 45:
 		skillIndex = index - 40; //BACK
 
 		if (DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex) != NULL)
-			getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));
+			//getBattleControler()->setCurSkill(DynamicContentsContainer::getInstance()->getCharacter()->getSkill(skillIndex));// 스킬 사용 
 		break;
 	default:
 		return;

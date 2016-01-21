@@ -5,7 +5,7 @@
 #include "DynamicContentsContainer.h"
 #include "CMapControler.h"
 #include "CCharacterControler.h"
-
+#include "TurnControler.h"
 using namespace std;
 
 class FieldLayer: public cocos2d::LayerColor // 필드와 몬스터 그리고 플레이어블 캐릭터등 을 구현 하는 레이어 
@@ -63,16 +63,22 @@ public:
 	
 		void setCharacterSprite(Sprite* a_characterSprite){ this->m_characterSprite = a_characterSprite; }
 	Sprite* getCharacterSprite(){ return this->m_characterSprite; }
+
+	void setTurnControler(TurnControler *a_turnControler){ m_turnControler = a_turnControler; }
+	TurnControler *getTurnControler(){ return m_turnControler; }
 	// /get set 함수
 
 
 
 	
 private:
-	Vec2 m_viewPoint;
-	CCharacterControler* m_CharacterControler;
-	CMapControler* m_MapControler;
-	Sprite* m_characterSprite;
+	Vec2 m_viewPoint; // 눈에 보이는 캐릭터의 위치 
+	CCharacterControler* m_CharacterControler; // 캐릭터이동을 당담하는 컨트롤러 
+	CMapControler* m_MapControler; // 맵 을 담당하는 컨트롤러 
+	Sprite* m_characterSprite; // 캐릭터 스프라이트 
+
+	TurnControler *m_turnControler; // 턴을 컨롤할  친규 
+
 };
 
 
