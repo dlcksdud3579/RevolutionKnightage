@@ -9,13 +9,14 @@ public:
 	CCharacterControler(CCharacter *a_Character);
 	~CCharacterControler();
 
-	bool moveUp();
-	bool moveDown();
-	bool moveLeft();
-	bool moveRight();
+	bool moveUp(); // 위로이동 
+	bool moveDown(); // 아래로 이동 
+	bool moveLeft(); // 왼쪽으로 이동 
+	bool moveRight(); // 오른쪽으로 이동 
 
-	bool checkMoveable(Vec2 a_checkPoint);
-	CCharacter* getCharacter(){ return m_Character; }
+	bool checkMoveable(Vec2 a_checkPoint); // 이동이 가능함을 체크 한다. 
+
+	CCharacter* getCharacter(){ return m_Character; }   // 캐릭터 갯 
 
 	
 

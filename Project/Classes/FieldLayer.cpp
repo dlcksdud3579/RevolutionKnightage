@@ -12,10 +12,12 @@ bool FieldLayer::init()
 		return false;
 	}
 
-	setCharacterSprite(Sprite::create(getCharacter()->getSpriteRoot()));
+	setCharacterSprite(Sprite::create(getCharacter()->getSpriteRoot())); // 캐릭토ㅓ 이미지 출력
 
-	printTileField();
-	printCharacter();
+	printTileField();// 
+	printCharacter(); // 캐릭터 프린트 
+	makeMonster(); // 몬스터 
+	printMonster(); // 프린트 몬스터 
 
 	return true;
 }
@@ -53,29 +55,32 @@ void  FieldLayer::removeTileField()// 맵 제거
 	}
 }
 
-
-void FieldLayer::moveRight()
+bool FieldLayer::moveRight()
 {
 	checkPortal(); // 포탈인지 체크 
 
-	if (getCharacter()->getPoint().x >= getMap()->getSizeTile().x-1) //  이동 불가 지역인지 체크 
-		return;  
+	if (getCharacter()->getPoint().x >= getMap()->getSizeTile().x - 1) //  이동 불가 지역인지 체크 // 맵사잉즈 이상 불가 체크 
+		return false;
 
 	if (this->getCharacterControler()->moveRight()) // 무브 가능 체크 ? 
 	{
 		moveCharacter(getCharacter()->getPoint()); // 이동 
 		if (getCharacter()->getPoint().x > 5) // 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x + 1, getViewPoint().y)); // 레이어 이동 
+		this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+			, getCharacter()->getPoint().y - getViewPoint().y + 3));
+
+		return true;
 	}
-	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
-		, getCharacter()->getPoint().y - getViewPoint().y + 3));
+	return false;
 }
-void FieldLayer::moveLeft()
+
+bool FieldLayer::moveLeft()
 {
 	checkPortal();// 포탈인지 체크 
 
 	if (getCharacter()->getPoint().x <= 0) //  이동 불가 지역인지 체크 
-		return;
+		return false;
 	if (this->getCharacterControler()->moveLeft()) // 무브 가능 체크 ?
 	{
 
@@ -83,32 +88,40 @@ void FieldLayer::moveLeft()
 
 		if (getCharacter()->getPoint().x < getMap()->getSizeTile().x - 6)// 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x - 1, getViewPoint().y)); // 레이어 이동 
+		this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+			, getCharacter()->getPoint().y - getViewPoint().y + 3));
+
+		return true;
 	}
-	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
-		, getCharacter()->getPoint().y - getViewPoint().y + 3));
+	return false;
 }
-void FieldLayer::moveUp()
+
+bool FieldLayer::moveUp()
 {
 	checkPortal();// 포탈인지 체크 
 
 	if (getCharacter()->getPoint().y >= getMap()->getSizeTile().y-1) //  이동 불가 지역인지 체크 
-		return;
+		return false;
 	if (this->getCharacterControler()->moveUp())// 무브 가능 체크 ?
 	{
 
 		moveCharacter(getCharacter()->getPoint());// 이동 
 		if (getCharacter()->getPoint().y > 3)// 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x, getViewPoint().y + 1));// 레이어 이동
+		this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+			, getCharacter()->getPoint().y - getViewPoint().y + 3));
+
+		return true;
 	}
-	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
-		, getCharacter()->getPoint().y - getViewPoint().y + 3));
+	return false;
 }
-void FieldLayer::moveDown()
+
+bool FieldLayer::moveDown()
 {
 	checkPortal();// 포탈인지 체크 
 
 	if (getCharacter()->getPoint().y <= 0)//  이동 불가 지역인지 체크
-		return;
+		return false;
 
 	if (this->getCharacterControler()->moveDown())// 무브 가능 체크 ?
 	{
@@ -117,9 +130,12 @@ void FieldLayer::moveDown()
 
 		if (getCharacter()->getPoint().y < getMap()->getSizeTile().y - 4)// 레이어 이동 체크 
 			setViewPoint(Vec2(getViewPoint().x, getViewPoint().y - 1));// 레이어 이동
+		this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
+			, getCharacter()->getPoint().y - getViewPoint().y + 3));
+
+		return true;
 	}
-	this->getTurnControler()->setMenuPoint(Vec2(getCharacter()->getPoint().x - getViewPoint().x + 5
-		, getCharacter()->getPoint().y - getViewPoint().y + 3));
+	return false;
 }
 
 void FieldLayer::printCharacter()
@@ -231,4 +247,127 @@ void FieldLayer::checkPortal() // 포탈 위치와 히어로
 		if (hero->getPoint() == map->getPortal(i)->getPoint())  // 같은 위치임을 체크
 			changeMap(map->getPortal(i)->getName());
 	}
+}
+
+void FieldLayer::printMonster()
+{
+	CMonster* mon[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
+			continue;
+		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+		mon[i]->getSprite()->setPosition(Vec2(mon[i]->getPoint().x * 100 + 50, mon[i]->getPoint().y * 100 + 50));
+		addChild(mon[i]->getSprite());
+	}
+}
+void FieldLayer::removeMonster()
+{
+	CMonster* mon[10];
+	for (int i = 0; i < 10; i++)
+	{
+		mon[i] = DynamicContentsContainer::getInstance()->getMonster(i);
+		removeChild(mon[i]->getSprite());
+	}
+}
+
+void FieldLayer::removeMonster(int index)
+{
+	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	removeChild(mon->getSprite());
+}
+
+void FieldLayer::monstermove(int index)
+{
+	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	CMap* map = DynamicContentsContainer::getInstance()->getMap();
+	Vec2 a_Point;
+
+
+	Vec2 moveVec2 = mon->getMove();
+	if (mon->getPoint().x + moveVec2.x >= map->getSizeTile().x - 1 ||
+		mon->getPoint().y + moveVec2.y >= map->getSizeTile().y - 1 ||
+		mon->getPoint().x + moveVec2.x <= 0 || mon->getPoint().y + moveVec2.y <= 0)
+		return;
+
+	CCharacterControler *monCon = new CCharacterControler(mon);
+	switch ((int)moveVec2.x)
+	{
+	case 1:
+		if (moveVec2.y == 0)
+			monCon->moveRight();
+		break;
+	case 0:
+		switch ((int)moveVec2.y)
+		{
+		case 1:
+			monCon->moveUp();
+			break;
+		case 0:
+			break;
+		case -1:
+			monCon->moveDown();
+			break;
+		default:
+			break;
+		}
+		break;
+	case -1:
+		if (moveVec2.y == 0)
+			monCon->moveLeft();
+		break;
+	default:
+		break;
+	}
+	a_Point = mon->getPoint();
+	int tileSiz = 100;
+	mon->getSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
+
+}
+
+void FieldLayer::makeMonster() // 몬스터 출력 
+{
+	CMap *map = DynamicContentsContainer::getInstance()->getMap(); //현재 맵 
+	string mapKey = map->getKey(); // 맵의 키번호를 받아옴
+
+	CMonster *temp; 
+	CMonster *monster[10]; // 10마리 몬스터 소환
+	CObject **object = StaticContentsContainer::getMapMonsterArray()->find(mapKey)->second; // 여기담긴 내용을로 
+
+	CSkill* tempSkill; //몬스터 스킬?
+	int skillNum = 0;
+	;
+	for (int i = 0; i < 10; i++) // 총 10마리의 먼스터 
+	{
+		if (object[i] == NULL)
+			break;
+
+		temp = StaticContentsContainer::getMapMonster()->find(object[i]->getName())->second; // 몬스터다 
+
+		monster[i] = new CMonster(temp->getName(), temp->getSpriteRoot()); //몬스터 생성자 
+		monster[i]->setStatus(new Status(temp->getStatus()->getHp(), // 몬스터 스테이터스 
+			temp->getStatus()->getSpeed(),
+			temp->getStatus()->getDef(),
+			temp->getStatus()->getStr(),
+			temp->getStatus()->getDex(),
+			temp->getStatus()->getIns(),
+			temp->getStatus()->getKno()));
+
+
+		// 수정 사항 몬스터 스킬 여러개 가능 하도록 합시다.//
+		tempSkill = new CSkill(temp->getSkill(skillNum)->getName(), //몬스터 스킬 
+			temp->getSkill(skillNum)->getRange(),
+			temp->getSkill(skillNum)->getDiceType(),
+			temp->getSkill(skillNum)->getDiceNum(),
+			temp->getSkill(skillNum)->getAttribute(),
+			temp->getSkill(skillNum)->getAccuracyRate());
+		for (int j = 0; temp->getSkill(skillNum)->getSplash(j) != Vec2(0, 0); j++)
+			tempSkill->setSplash(temp->getSkill(skillNum)->getSplash(j), j);
+		monster[i]->setSkill(tempSkill, skillNum);
+		monster[i]->setPoint(object[i]->getPoint());
+		monster[i]->setDir(2);
+		DynamicContentsContainer::getInstance()->setMonster(monster[i], i);
+	}
+
 }

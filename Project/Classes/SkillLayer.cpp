@@ -9,8 +9,6 @@ bool SkillLayer::init()
 	}
 	setOpenFlag(false);
 
-
-
 	return true;
 }
 
@@ -37,7 +35,7 @@ void SkillLayer::Open()
 	int w = winSize.width - 200;
 	int h = winSize.height - 20;
 	m_panel = Sprite::create("Menu/panel.png");  // 
-	m_panel->setPosition(w * 1 / 4, h * 1 / 4);
+	m_panel->setPosition(w * 1 / 4, h * 3 / 4);
 	addChild(m_panel);
 
 	setOpenFlag(true);

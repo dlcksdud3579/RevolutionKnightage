@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 #include "InvenLayer.h"
+#include "SkillLayer.h"
+#include "SetUpLayer.h"
+#include "StatusLayer.h"
 #include "TurnControler.h"
 
 USING_NS_CC;
@@ -32,6 +35,15 @@ public:
 	void setInvenLayer(InvenLayer* a_invenLayer){ this->m_invenLayer = a_invenLayer; }
 	InvenLayer* getInvenLayer(){ return this->m_invenLayer; }
 
+	void setSkillLayer(SkillLayer* a_skillLayer){ this->m_skillLayer = a_skillLayer; }
+	SkillLayer* getSkillLayer(){ return this->m_skillLayer; }
+
+	void setSetupLayer(SetUpLayer* a_setupLayer){ this->m_setupLayer = a_setupLayer; }
+	SetUpLayer* getSetupLayer(){ return this->m_setupLayer; }
+
+	void setStatusLayer(StatusLayer* a_statusLayer){ this->m_statusLayer = a_statusLayer; }
+	StatusLayer* getStatusLayer(){ return this->m_statusLayer; }
+
 	bool isOpenFlag(){ return m_OpenFlag; }
 	void setOpenFlag(bool a_OpenFlag) { this->m_OpenFlag = a_OpenFlag; }
 
@@ -43,6 +55,7 @@ private:
 
 	bool m_OpenFlag; // 매뉴가 열린건지 플레그 
 	Sprite* MenuPanel;  // 메뉴판 이미지
+	Menu* pMenu; // 메뉴들의 모음 
 
 	MenuItemFont* Inven; // 인벤토리 창 메뉴아이템
 	MenuItemFont* status; // 스테이터스 창 메뉴 아이템 
@@ -50,6 +63,11 @@ private:
 	MenuItemFont* setUp; // 설정창 메뉴 아이템
 
 	InvenLayer* m_invenLayer;  // 인벤토리 창 레이어
+	SkillLayer* m_skillLayer;  // 스킬 창 레이어
+	SetUpLayer* m_setupLayer;  // 설정 창 레이어
+	StatusLayer* m_statusLayer;  // 스테이터스 창 레이어
+
+
 	TurnControler * m_turnControler;  // 턴컨트롤러 
 
 

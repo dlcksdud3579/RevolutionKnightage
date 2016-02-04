@@ -52,12 +52,16 @@ bool MenuLayer::init()
 	setUp->setColor(Color3B(0, 0, 0));
 	// ~메뉴판위 메뉴들
 
-	auto pMenu = Menu::create(Inven, status, skill, setUp, NULL);
+	pMenu = Menu::create(Inven, status, skill, setUp, NULL);
 	// 메뉴들
-	this->addChild(pMenu,2); // 자녀 추가 
+	this->addChild(pMenu, 2); // 자녀 추가 
 
 
 	this->setInvenLayer(InvenLayer::create());  // 인벤 레이어 
+	this->setSetupLayer(SetUpLayer::create());  // setUp 레이어 
+	this->setSkillLayer(SkillLayer::create());  // skill 레이어 
+	this->setStatusLayer(StatusLayer::create());  // 스텟 레이어 
+
 	addChild(getInvenLayer(),3);
 
 
@@ -81,8 +85,10 @@ void MenuLayer::Open()
 {
 	if (isOpenFlag() == true)
 		return;
-	auto move = MoveBy::create(0.5, Vec2(-370 / 2, 0));
-	this->runAction(move);
+	auto move1 = MoveBy::create(0.5, Vec2(-370 / 2, 0));
+	auto move2 = MoveBy::create(0.5, Vec2(-370 / 2, 0));
+	MenuPanel->runAction(move1);
+	pMenu->runAction(move2);
 	setOpenFlag(true);
 	
 }
@@ -90,9 +96,20 @@ void MenuLayer::Close()
 {
 	if (isOpenFlag() == false)
 		return;
-	auto move = MoveBy::create(0.5, Vec2(-370 / 2, 0));
-	
-	this->runAction(move->reverse());
+	if (getInvenLayer()->isOpenFlag() == true)
+		return;
+	if (getSetupLayer()->isOpenFlag() == true)
+		return;
+	if (getStatusLayer()->isOpenFlag() == true)
+		return;
+	if (getSkillLayer()->isOpenFlag() == true)
+		return;
+
+	auto move1 = MoveBy::create(0.5, Vec2(370 / 2, 0));
+	auto move2 = MoveBy::create(0.5, Vec2(370 / 2, 0));
+
+	MenuPanel->runAction(move1);
+	pMenu->runAction(move2);
 	setOpenFlag(false);
 }
 void MenuLayer::clickMenu(Object* pSender)
@@ -130,18 +147,46 @@ void  MenuLayer::openInven()
 	}
 }
 
+
 void  MenuLayer::openStatus()
 {
-
+	if (getStatusLayer()->isOpenFlag() == false)
+	{
+		log("open");
+		getStatusLayer()->Open();
+	}
+	else if (getStatusLayer()->isOpenFlag() == true)
+	{
+		log("close");
+		getStatusLayer()->Close();
+	}
 }
 
 void  MenuLayer::openSkill()
 {
-
+	if (getSkillLayer()->isOpenFlag() == false)
+	{
+		log("open");
+		getSkillLayer()->Open();
+	}
+	else if (getSkillLayer()->isOpenFlag() == true)
+	{
+		log("close");
+		getSkillLayer()->Close();
+	}
 }
 
 void  MenuLayer::openOption()
 {
-
+	if (getSetupLayer()->isOpenFlag() == false)
+	{
+		log("open");
+		getSetupLayer()->Open();
+	}
+	else if (getSetupLayer()->isOpenFlag() == true)
+	{
+		log("close");
+		getSetupLayer()->Close();
+	}
 }
 

@@ -14,6 +14,10 @@ public:
 	CCharacter();
 	~CCharacter();
 
+
+
+
+	// get set 
 	void setSprite(Sprite* a_sprite){ this->m_sprite = a_sprite; }
 	Sprite* getSprite(){ return this->m_sprite; }
 
@@ -34,13 +38,14 @@ public:
 
 	void setName(std::string a_name){ this->m_name = a_name; }
 	std::string getName(){return this->m_name; }
+	// get set 
 private:
-	std::string m_name;
-	Vec2 m_Point;
-	std::string m_spriteRoot;
-	Sprite* m_sprite;
-	Status*  m_status;
-	CSkill* m_skill[6];
-	CItem* m_item[10];
+	std::string m_name; // 이름 
+	Vec2 m_Point; // 위치 
+	std::string m_spriteRoot; // 이미지 위치 
+	Sprite* m_sprite; // 이미지 
+	Status*  m_status; //스텟
+	CSkill* m_skill[6]; //  스킬 
+	CItem* m_item[10]; // 아이템
 };
 #endif

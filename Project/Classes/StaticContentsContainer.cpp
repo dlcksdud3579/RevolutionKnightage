@@ -419,7 +419,6 @@ void StaticContentsContainer::readMapMonster()
 			nodeStatus.child("ins").text().as_int(),
 			nodeStatus.child("kno").text().as_int()));
 
-		tempPairMonster.second->getStatus()->setMvp(nodeStatus.child("mvp").text().as_int()); // mvp  Æ÷ÀÎÆ® 
 
 		 xml_node nodeSkills = nodemonster.child("skills");
 		 cnt = 0;

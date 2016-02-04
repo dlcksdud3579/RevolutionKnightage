@@ -10,8 +10,16 @@
           <y>0</y>
         </splash>
       </splashs>
-      <diceType>6</diceType>
-      <diceNum>1</diceNum>
+      <dices>
+        <dice>
+          <diceType>6</diceType>
+          <diceNum>1</diceNum>
+        </dice>
+        <dice>
+          <diceType>6</diceType>
+          <diceNum>1</diceNum>
+        </dice>
+      </dices>
       <attribute>0</attribute>
       <accuracyRate>100</accuracyRate>
     </skill>

@@ -7,6 +7,7 @@ bool BattleMenuLayer::init() // 기본 메인
 	{
 		return false;
 	}
+	menufalg = 0;
 	return true;
 }
 
@@ -15,7 +16,7 @@ void BattleMenuLayer::printNomalMenu() // 노멀  메뉴 구현
 	BattleMenuLayer::removeMenu();
 	menufalg = 1;
 	float r3 = 1.732; //루트 3 
-	//Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
+
 
 	int PointX = this->getTurnControler()->getMenuPoint().x * 100 + 140; // 메뉴 위치  X 
 	int PointY = this->getTurnControler()->getMenuPoint().y * 100 + 60;  // 메뉴 위치 Y
@@ -75,18 +76,19 @@ void BattleMenuLayer::printNomalMenu() // 노멀  메뉴 구현
 
 void BattleMenuLayer::removeMenu()
 {
+
 	switch (menufalg)
 	{
 	case 0:
 		break;
 	case 1:
-		void removeNomalMenu();// 기본 행동 메뉴제거 
+		removeNomalMenu();// 기본 행동 메뉴제거 
 		break;
 	case 2:	
-		void removeActionMenu(); // 액션 메뉴 제거 
+		removeActionMenu(); // 액션 메뉴 제거 
 		break;
 	case 3:
-		void removeAttackMenu(); // 공격 메뉴 제거 
+		removeAttackMenu(); // 공격 메뉴 제거 
 		break;
 	default:
 		break;
@@ -105,10 +107,10 @@ void  BattleMenuLayer::printActionMenu() // 액션 메뉴 구현
 {
 	float r3 = 1.732; //루트 3 
 	menufalg = 2;
-	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
+	
 
-	int PointX = Point.x * 100 + 140; // 메뉴 위치  X 
-	int PointY = Point.y * 100 + 60;  // 메뉴 위치 Y
+	int PointX = this->getTurnControler()->getMenuPoint().x * 100 + 140; // 메뉴 위치  X 
+	int PointY = this->getTurnControler()->getMenuPoint().y * 100 + 60;  // 메뉴 위치 Y
 
 	MenuItemFont* action1Lable = MenuItemFont::create("ACTION1", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
 	action1Lable->setPosition(50 * r3, 50);
@@ -131,17 +133,17 @@ void  BattleMenuLayer::printActionMenu() // 액션 메뉴 구현
 	action4Lable->setTag(33);
 
 	MenuItemFont* action5Lable = MenuItemFont::create("ACTION5", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
-	action4Lable->setPosition(0, 100);
-	action4Lable->setColor(Color3B(255, 255, 255));
-	action4Lable->setTag(34);
+	action5Lable->setPosition(0, 100);
+	action5Lable->setColor(Color3B(255, 255, 255));
+	action5Lable->setTag(34);
 
-	MenuItemFont* BackLable = MenuItemFont::create("BACK", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
-	action4Lable->setPosition(0, -100);
-	action4Lable->setColor(Color3B(255, 255, 255));
-	action4Lable->setTag(35);
+	MenuItemFont* action6Lable = MenuItemFont::create("ACTION6", CC_CALLBACK_1(BattleMenuLayer::chooseActionMenu, this));
+	action6Lable->setPosition(0, -100);
+	action6Lable->setColor(Color3B(255, 255, 255));
+	action6Lable->setTag(35);
 
 
-	auto pMenu = Menu::create(action1Lable, action2Lable, action3Lable, action4Lable, action5Lable, BackLable, NULL);
+	auto pMenu = Menu::create(action1Lable, action2Lable, action3Lable, action4Lable, action5Lable, action6Lable, NULL);
 	pMenu->setPosition(PointX, PointY);
 	pMenu->setTag(300);
 	addChild(pMenu);
@@ -158,10 +160,11 @@ void  BattleMenuLayer::printAttackMenu()// 공격 메뉴 구현
 {
 	float r3 = 1.732; //루트 3 
 	menufalg = 3;
-	Vec2 Point = DynamicContentsContainer::getInstance()->getCharacter()->getPoint(); // 현재 캐릭터 위치 
 
-	int PointX = Point.x * 100 + 140; // 메뉴 위치  X 
-	int PointY = Point.y * 100 + 60;  // 메뉴 위치 Y
+
+
+	int PointX = this->getTurnControler()->getMenuPoint().x * 100 + 140; // 메뉴 위치  X 
+	int PointY = this->getTurnControler()->getMenuPoint().y * 100 + 60;  // 메뉴 위치 Y
 
 	CSkill* skill[6];
 	std::string  skillName[6];

@@ -29,6 +29,10 @@ public:
 	virtual void onTouchMoved(Touch* touch, Event* event); // 터치 무브 할때 함수 
 	virtual void onTouchEnded(Touch* touch, Event* event); // 터치 끝날때 불려 지는 함수 
 
+	void monstermove(int index); // 몬스터 이동을 구현 
+	void monsterTurn(); // 몬스터 턴이 되었다.
+
+	void endTurn();
 	
 	 // set get 함수 모음 
 	void setFieldLayer(FieldLayer* a_fieldLayer){ this->m_fieldLayer = a_fieldLayer; }

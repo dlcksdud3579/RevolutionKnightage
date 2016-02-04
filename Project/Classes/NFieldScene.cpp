@@ -90,12 +90,12 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  ÅÍÄ¡ ½ÃÀÛ½Ã ºÒ·ÁÁ
 	int root3 = sqrt(3); // tan ±âÁØÀ¸·Î 30µµ¿¡°æ¿ì 1/root3  60ÀÎ°æ¿ì root3À» °öÇÑ´Ù.
 
 	//log("%f, %f ", touch->getLocation().x, winSize.width - 90);
-	if (this->getMenuLayer()->isOpenFlag() == false)
+	if (this->getMenuLayer()->isOpenFlag() == false) // ¸Þ´º ÆÇÀÌ ³ª¿Â »óÅÂ°¡ ¾Æ´Ô 
 	{
-		if (touch->getLocation().x > winSize.width - 90) 
+
+		if (touch->getLocation().x > winSize.width - 90)  // ¸Å´ºÆÇÀ» ²¨³»¿À´Â À§Ä¡ 
 		{
 			getMenuLayer()->Open(); //¸Þ´º ÆÇÀ» ²¨³×¾î ¿Â´Ù 
-
 			return true;
 		}
 		else
@@ -114,24 +114,51 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  ÅÍÄ¡ ½ÃÀÛ½Ã ºÒ·ÁÁ
 				touch->getLocation().y > y - (1 / root3)*(touch->getLocation().x - x))
 			{
 				//log("right");
-				getFieldLayer()->moveRight(); // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ 
-				getFieldLayer()->viewControl(); // »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿ 
+				if (getFieldLayer()->moveRight())// ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ 
+				{
+					getFieldLayer()->viewControl(); // ÀÌµ¿ ¼º°ø½Ã »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿  
+					getBattleMenuLayer()->removeMenu(); // ÀÌµ¿½Ã ¸Þ´º »ç¶óÁü 
+					this->getTurnControler()->setUsedActionPoint(1.0);
+					endTurn();
+				}
+				else
+				{
+
+				}
 			}
 			else if (touch->getLocation().x < x &&  // ¿ÞÂÊÀ» Å¬¸¯µÇ¸é °É¸² 
 				touch->getLocation().y < y + (1 / root3)*(x - touch->getLocation().x) &&
 				touch->getLocation().y > y - (1 / root3)*(x - touch->getLocation().x))
 			{
 				//log("left");
-				getFieldLayer()->moveLeft(); // ¿ÞÂÊÀ¸·Î ÀÌµ¿ 
-				getFieldLayer()->viewControl(); // »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿
+				if (getFieldLayer()->moveLeft())// ¿ÞÂÊÀ¸·Î ÀÌµ¿ 
+				{
+					getFieldLayer()->viewControl(); //ÀÌµ¿ ¼º°ø½Ã »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿
+					getBattleMenuLayer()->removeMenu(); // ÀÌµ¿½Ã ¸Þ´º »ç¶óÁü 
+					this->getTurnControler()->setUsedActionPoint(1.0);
+					endTurn();
+				}
+				else
+				{
+
+				}
 			}
 			else if (touch->getLocation().y > y && // À§ 60µµ °É¸²
 				touch->getLocation().x < x + (root3)*(touch->getLocation().y - y) &&
 				touch->getLocation().x > x - (root3)*(touch->getLocation().y - y))
 			{
 				//	log("up");
-				getFieldLayer()->moveUp(); //À§·Î ÀÌµ¿ 
-				getFieldLayer()->viewControl(); // »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿
+				if (getFieldLayer()->moveUp()) //À§·Î ÀÌµ¿ 
+				{
+					getFieldLayer()->viewControl(); //ÀÌµ¿ ¼º°ø½Ã »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿
+					getBattleMenuLayer()->removeMenu(); // ÀÌµ¿½Ã ¸Þ´º »ç¶óÁü 
+					this->getTurnControler()->setUsedActionPoint(1.0);
+					endTurn();
+				}
+				else
+				{
+
+				}
 			}
 			else if (touch->getLocation().y < y && //¾Æ·¡ °É¸²
 				touch->getLocation().x < x + (root3)*(y - touch->getLocation().y) &&
@@ -139,12 +166,23 @@ bool NFieldScene::onTouchBegan(Touch* touch, Event* event) //  ÅÍÄ¡ ½ÃÀÛ½Ã ºÒ·ÁÁ
 
 			{
 				//	log("down");
-				getFieldLayer()->moveDown(); // ¾Æ·¡·Î ÀÌµ¿ 
-				getFieldLayer()->viewControl(); // »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿ 
+				if (getFieldLayer()->moveDown()) // ¾Æ·¡·Î ÀÌµ¿ 
+				{
+					getFieldLayer()->viewControl(); //ÀÌµ¿ ¼º°ø½Ã »ç¿ëÀÚ ½ÃÁ¡ ÀÌµ¿
+					getBattleMenuLayer()->removeMenu(); // ÀÌµ¿½Ã ¸Þ´º »ç¶óÁü 
+					this->getTurnControler()->setUsedActionPoint(1.0);
+					endTurn();
+					
+				}
+				else
+				{
+
+				}
+
 			}
 		}
 	}
-	else if (this->getMenuLayer()->isOpenFlag() == true)
+	else if (this->getMenuLayer()->isOpenFlag() == true)// ¸Þ´º ÆÇÀÌ ³ª¿Â »óÅÂÀÓ
 	{
 		if (touch->getLocation().x < winSize.width - 290) // ¸Þ´ºÆÇÀÌ ³ª¿Â »óÅÂ¿¡¼­ ´Ù¸¥°÷ ÅÍÄ¡½Ã Á¾·á 
 		{
@@ -167,3 +205,66 @@ void NFieldScene::onTouchEnded(Touch* touch, Event* event) // ÅÍÄ¡°¡ ³¡ÀÌ ³¯¶§ º
 {
 }
 
+void NFieldScene::monsterTurn()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		if (this->getTurnControler()->getMonActionPoint(i) >= 1.0)
+			monstermove(i);
+	}
+}
+
+
+void NFieldScene::monstermove(int index)
+{
+	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
+	CMap* map = DynamicContentsContainer::getInstance()->getMap();
+	Vec2 a_Point;
+
+
+	Vec2 moveVec2 = mon->getMove();
+	if (mon->getPoint().x + moveVec2.x >= map->getSizeTile().x - 1 ||
+		mon->getPoint().y + moveVec2.y >= map->getSizeTile().y - 1 ||
+		mon->getPoint().x + moveVec2.x <= 0 || mon->getPoint().y + moveVec2.y <= 0)
+		return;
+
+	CCharacterControler *monCon = new CCharacterControler(mon);
+	switch ((int)moveVec2.x)
+	{
+	case 1:
+		if (moveVec2.y == 0)
+			monCon->moveRight();
+		break;
+	case 0:
+		switch ((int)moveVec2.y)
+		{
+		case 1:
+			monCon->moveUp();
+			break;
+		case 0:
+			break;
+		case -1:
+			monCon->moveDown();
+			break;
+		default:
+			break;
+		}
+		break;
+	case -1:
+		if (moveVec2.y == 0)
+			monCon->moveLeft();
+		break;
+	default:
+		break;
+	}
+	a_Point = mon->getPoint();
+	int tileSiz = 100;
+	mon->getSprite()->runAction(MoveTo::create(0.1, Vec2(tileSiz / 2 + tileSiz * a_Point.x, tileSiz / 2 + tileSiz * a_Point.y)));
+
+}
+void NFieldScene::endTurn()
+{
+	
+	this->getTurnControler()->CharacterTurnEnd();
+	monsterTurn();
+}

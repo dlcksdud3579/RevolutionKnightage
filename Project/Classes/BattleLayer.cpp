@@ -10,6 +10,7 @@ bool BattleLayer::init()
 	makeMap();
 	printTileField(); // 필드 소환 
 	printCharacter(); // 캐릭터 소환
+
 	printMonster();
 	MovequeMax=0;
 	MovequeMIn=0;
@@ -144,12 +145,12 @@ void BattleLayer::removeMonster(int index)
 	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
 	removeChild(mon->getSprite());
 }
+
 void BattleLayer::monstermove(int index)
 {
 	CMonster*mon = DynamicContentsContainer::getInstance()->getMonster(index);
 	CMap* map = DynamicContentsContainer::getInstance()->getMap();
 	Vec2 a_Point;
-
 
 
 	Vec2 moveVec2 = mon->getMove();

@@ -9,8 +9,6 @@ bool InvenLayer::init()
 	}
 	setOpenFlag(false);
 
-
-
 	return true;
 }
 
@@ -18,8 +16,6 @@ void InvenLayer::onEnter()
 {
 	Layer::onEnter();
 	setOpenFlag(false);
-
-
 }
 
 void InvenLayer::onExit()

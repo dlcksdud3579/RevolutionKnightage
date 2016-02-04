@@ -14,6 +14,9 @@ public:
 	void timeUp(); //  // 시간이 올라는 함수요 
 
 	void MonsterTurn(int index);
+	void AttackStart(int index);
+	void damageMon(Vec2 Point);
+
 
 	void setTurnType(int turnType);
 	int getTurnType(){ return this->turnType; }
@@ -35,8 +38,7 @@ public:
 	void setMoveCnt(int a_moveCnt){ this->m_moveCnt = a_moveCnt; }
 	int getMoveCnt(){ return this->m_moveCnt; }
 
-	void AttackStart(int index);
-	void damageMon(Vec2 Point);
+
 
 	void setCurSkill(CSkill* a_CurSkill){ this->m_CurSkill = a_CurSkill; }
 	CSkill* getCurSkill(){ return this->m_CurSkill; }

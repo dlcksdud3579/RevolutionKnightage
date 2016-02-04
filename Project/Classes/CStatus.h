@@ -29,15 +29,14 @@ public:
 	void setKno(int kno){ this->kno = kno; }
 	int getKno(){ return kno; }
 
-	void setMvp(int mvp){ this->mvp = mvp; }
-	int getMvp(){ return this->mvp;}
+	void setXsp(int xsp){ this->xsp = xsp; }
+	int getXsp(){ return this->xsp; }
 
 private:
 	int hp;
 	int spd;
-	int mvp;
+	int xsp;
 	int def;
-
 	int str; //Èû
 	int dex;// ¹ÎÃ¸
 	int ins; // instint º»´É 
