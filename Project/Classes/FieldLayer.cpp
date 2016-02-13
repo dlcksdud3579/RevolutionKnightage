@@ -145,6 +145,7 @@ void FieldLayer::printCharacter()
 	getCharacterSprite()->setPosition(Vec2(tileSiz / 2 + getCharacter()->getPoint().x * tileSiz, tileSiz / 2 + getCharacter()->getPoint().y * tileSiz)); //캐릭터위치 설정 
 	this->addChild(getCharacterSprite(), 1); // 구현 
 }
+
 void FieldLayer::removeCharacter()
 {
 	this->removeChild(getCharacterSprite()); //지움 
@@ -224,15 +225,11 @@ void FieldLayer::changeMap(string MapKey) // 맵체인지
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
 	DynamicContentsContainer::getInstance()->setMap(map);
 	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint());
+	deleteMonster();
+
 	auto	fieldScene = NFieldScene::createScene();
 	Director::getInstance()->replaceScene(fieldScene);
-	for (int i = 0; i < 10; i++)
-	{
-		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
-			break;
-	///	delete(DynamicContentsContainer::getInstance()->getMonster(i));
-		DynamicContentsContainer::getInstance()->setMonster(NULL, i);
-	}
+
 }
 
 void FieldLayer::checkPortal() // 포탈 위치와 히어로 
@@ -262,6 +259,7 @@ void FieldLayer::printMonster()
 		addChild(mon[i]->getSprite());
 	}
 }
+
 void FieldLayer::removeMonster()
 {
 	CMonster* mon[10];
@@ -341,7 +339,7 @@ void FieldLayer::makeMonster() // 몬스터 출력
 	for (int i = 0; i < 10; i++) // 총 10마리의 먼스터 
 	{
 		if (object[i] == NULL)
-			break;
+			continue;
 
 		temp = StaticContentsContainer::getMapMonster()->find(object[i]->getName())->second; // 몬스터다 
 
@@ -368,6 +366,14 @@ void FieldLayer::makeMonster() // 몬스터 출력
 		monster[i]->setPoint(object[i]->getPoint());
 		monster[i]->setDir(2);
 		DynamicContentsContainer::getInstance()->setMonster(monster[i], i);
+	}
+
+}
+void FieldLayer::deleteMonster() // 몬스타를 삭제
+{
+	for (int i = 0; i < 10; i++)
+	{
+		DynamicContentsContainer::getInstance()->setMonster(NULL, i);
 	}
 
 }

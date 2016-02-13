@@ -45,11 +45,12 @@ public:
 
 	void viewControl(); // 보이지 않는곳을 스프라이트 안뛰우고 보이는곳만 보이게하는 함수
 
-	void printMonster(); // 몬스터 를 소환 하는 함수 임 
-	void removeMonster(); // 몬스터를 모두 지우는 함수 
+	void printMonster(); // 몬스터 를 그리는 함수
+	void removeMonster(); // 그려진 몬스터를 지우는 함수 
 	void removeMonster(int index); // 몬스터를 한마리 지움 
 	void monstermove(int index); // 몬스터 이동 인덱스에 
-	void makeMonster(); // 몬스타를 만들자 만들자
+	void makeMonster(); // 몬스터를 생성한  
+	void deleteMonster(); // 몬스타를 삭제
 
 	// get set 함수 
 	

@@ -81,6 +81,7 @@ private:
 	static void readMapSkill(); 
 	static void readMapCondition(); 
 	static void readMapMap(); 
+	static void readMapMap(int index);
 	static void readMapScenario();  
 	static void readMapDice(); 
 	static void readMapMonster();

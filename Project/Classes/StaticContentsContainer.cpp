@@ -10,6 +10,7 @@ std::map<string, CSpecialty*>* StaticContentsContainer::m_mapSpecialty = new std
 std::map<string, CItem*>* StaticContentsContainer::m_mapItem = new std::map<string, CItem*>(); // 아이템 
 std::map<string, CSkill*>* StaticContentsContainer::m_mapSkill = new std::map<string, CSkill*>(); // 스킬 
 std::map<string, CCondition*>* StaticContentsContainer::m_mapCondition = new std::map<string, CCondition*>(); // 상태?
+
 std::map<string, CMap*>* StaticContentsContainer::m_mapMap = new std::map<string, CMap*>(); // 맵
 std::map<string, CScenario*>* StaticContentsContainer::m_mapScenario = new std::map<string, CScenario*>();  // 시나리오 
 std::map<string, CDice*>* StaticContentsContainer::m_mapDice = new std::map<string, CDice*>(); // 주사위
@@ -272,6 +273,71 @@ void StaticContentsContainer::readMapMap()
 
 	xml_document xmlDoc;
 	int portalNum=0;
+
+
+	xml_parse_result resultDoc = xmlDoc.load_file("data/map.xml");
+
+	if (!resultDoc)
+	{
+		log("Error description: %s", resultDoc.description());
+		log("Error offset: %d", resultDoc.offset);
+		return;
+	}
+	// 파일이 열였는지 확인 
+
+	// map 을 읽어노는 부분 
+	xml_node nodeResult = xmlDoc.child("result");
+
+	xml_node nodeMaps = nodeResult.child("maps");
+
+	//Type 1
+	for (xml_node nodeMap = nodeMaps.child("map"); nodeMap; nodeMap = nodeMap.next_sibling("map"))
+	{
+		CMap *tempMap = new CMap();
+		int Xsize = 0, Ysize = 0;
+		std::string symbolSubject = nodeMap.child("subject").text().get();
+		std::string symbolName = nodeMap.child("name").text().get();
+
+		xml_node nodeStartPoint = nodeMap.child("startPoint");
+		tempMap->setStartPoint(Vec2(
+			atoi(nodeStartPoint.child("x").text().get()),
+			atoi(nodeStartPoint.child("y").text().get())));
+		tempMap->setName(symbolName);
+		tempMap->setKey(nodeMap.child("key").text().as_string());
+
+		xml_node nodePortals = nodeMap.child("portals");  // 맵간이동 포탈 설정 
+
+		for (xml_node nodePortal = nodePortals.child("portal"); nodePortal; nodePortal = nodePortal.next_sibling("portal"))
+			tempMap->addPortal(nodePortal.child("key").text().as_string(), portalNum++, Vec2(nodePortal.child("x").text().as_int(), nodePortal.child("y").text().as_int()));
+		xml_node nodeRows = nodeMap.child("rows");
+		for (xml_node nodeRow = nodeRows.child("row"); nodeRow; nodeRow = nodeRow.next_sibling("row"))
+		{
+			xml_node nodeTiles = nodeRow.child("tiles");
+			Ysize++;
+			Xsize = 0;
+			for (xml_node nodeTile = nodeTiles.child("tile"); nodeTile; nodeTile = nodeTile.next_sibling("tile"))
+			{
+				Xsize++;
+				tempMap->addTile(Vec2(atoi(nodeTile.child("seq").text().get()), atoi(nodeRow.child("seq").text().get())),
+					new CTile(
+					getMapTile()->find(nodeTile.child("kind").text().get())->second,
+					Vec2(atoi(nodeTile.child("seq").text().get()), atoi(nodeRow.child("seq").text().get())),
+					NULL,
+					NULL
+					));
+			}
+		}
+		tempMap->setSizeTile(Vec2(Xsize, Ysize));
+
+		pair<string, CMap*> tempPairMap(nodeMap.child("key").text().get(), tempMap);
+		getMapMap()->insert(tempPairMap);
+	}
+}
+void StaticContentsContainer::readMapMap(int index)
+{
+
+	xml_document xmlDoc;
+	int portalNum = 0;
 
 
 	xml_parse_result resultDoc = xmlDoc.load_file("data/map.xml");

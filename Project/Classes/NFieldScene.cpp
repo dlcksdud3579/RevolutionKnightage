@@ -209,6 +209,8 @@ void NFieldScene::monsterTurn()
 {
 	for (int i = 0; i < 10; i++)
 	{
+		if (DynamicContentsContainer::getInstance()->getMonster(i) == NULL)
+			break;
 		if (this->getTurnControler()->getMonActionPoint(i) >= 1.0)
 			monstermove(i);
 	}
