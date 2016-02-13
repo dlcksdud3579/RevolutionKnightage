@@ -22,6 +22,7 @@ void effectLayer::printDice()
 	addChild(Dice);
 	addChild(DiceNum);
 }
+
 void effectLayer::printAttack(Vec2 point)
 {
 	Attack = LabelTTF::create("ATTACK", "fonts/arial.ttf", 40);
@@ -30,12 +31,14 @@ void effectLayer::printAttack(Vec2 point)
 	addChild(Attack);
 	scheduleOnce(schedule_selector(effectLayer::removeAttack), 1.0f);
 }
+
 void effectLayer::changeDice(int num)
 {
 	string a = string(itoa(num,NULL,2));
 	DiceNum->setString(a);
 
 }
+
 void effectLayer::removeAttack(float delta)
 {
 	removeChild(Attack);

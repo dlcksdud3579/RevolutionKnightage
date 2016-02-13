@@ -18,6 +18,7 @@ bool BattleLayer::init()
 
 	return true;
 }
+
 void BattleLayer::printTileField()
 {
 	int tileSiz = getMap()->atTile(Vec2(0, 0))->getSize().x;
@@ -130,6 +131,7 @@ void BattleLayer::printMonster()
 		addChild(mon[i]->getSprite());
 	}
 }
+
 void BattleLayer::removeMonster()
 {
 	CMonster* mon[10];
