@@ -54,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	
 	StaticContentsContainer::readxml();  // 처음 파일을 읽는다. 
 
-	CMap* tempMap = StaticContentsContainer::getMapMap()->find("test1")->second;
+	CMap* tempMap = StaticContentsContainer::readMapMap("test1");
 	DynamicContentsContainer::getInstance()->setMap(tempMap);
 
 	//DynamicContentsContainer::getInstance()->getMap()->setStartPoint(Vec2(10, 9));

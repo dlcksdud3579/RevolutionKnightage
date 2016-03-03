@@ -11,7 +11,7 @@ std::map<string, CItem*>* StaticContentsContainer::m_mapItem = new std::map<stri
 std::map<string, CSkill*>* StaticContentsContainer::m_mapSkill = new std::map<string, CSkill*>(); // 스킬 
 std::map<string, CCondition*>* StaticContentsContainer::m_mapCondition = new std::map<string, CCondition*>(); // 상태?
 
-std::map<string, CMap*>* StaticContentsContainer::m_mapMap = new std::map<string, CMap*>(); // 맵
+//std::map<string, CMap*>* StaticContentsContainer::m_mapMap = new std::map<string, CMap*>(); // 맵
 std::map<string, CScenario*>* StaticContentsContainer::m_mapScenario = new std::map<string, CScenario*>();  // 시나리오 
 std::map<string, CDice*>* StaticContentsContainer::m_mapDice = new std::map<string, CDice*>(); // 주사위
 std::map<string, CTile*>* StaticContentsContainer::m_mapTile = new std::map<string, CTile*>(); // 타일;
@@ -30,7 +30,7 @@ void StaticContentsContainer::readxml()
 	StaticContentsContainer::readMapItem();
 	StaticContentsContainer::readMapSkill();
 	StaticContentsContainer::readMapCondition();
-	StaticContentsContainer::readMapMap();
+	//StaticContentsContainer::readMapMap();
 	StaticContentsContainer::readMapScenario();
 	StaticContentsContainer::readMapDice();
 	StaticContentsContainer::readMapMonster();
@@ -267,7 +267,7 @@ void StaticContentsContainer::readMapTile()
 		
 	}
 }
-
+/*
 void StaticContentsContainer::readMapMap()
 {
 
@@ -333,7 +333,9 @@ void StaticContentsContainer::readMapMap()
 		getMapMap()->insert(tempPairMap);
 	}
 }
-void StaticContentsContainer::readMapMap(int index)
+*/
+
+CMap* StaticContentsContainer::readMapMap(string key)
 {
 
 	xml_document xmlDoc;
@@ -346,7 +348,7 @@ void StaticContentsContainer::readMapMap(int index)
 	{
 		log("Error description: %s", resultDoc.description());
 		log("Error offset: %d", resultDoc.offset);
-		return;
+		return NULL;
 	}
 	// 파일이 열였는지 확인 
 
@@ -358,6 +360,10 @@ void StaticContentsContainer::readMapMap(int index)
 	//Type 1
 	for (xml_node nodeMap = nodeMaps.child("map"); nodeMap; nodeMap = nodeMap.next_sibling("map"))
 	{
+
+		if (strcmp(key.c_str(), nodeMap.child("key").text().get()) != 0)
+			continue;
+
 		CMap *tempMap = new CMap();
 		int Xsize = 0, Ysize = 0;
 		std::string symbolSubject = nodeMap.child("subject").text().get();
@@ -394,8 +400,7 @@ void StaticContentsContainer::readMapMap(int index)
 		}
 		tempMap->setSizeTile(Vec2(Xsize, Ysize));
 
-		pair<string, CMap*> tempPairMap(nodeMap.child("key").text().get(), tempMap);
-		getMapMap()->insert(tempPairMap);
+		return tempMap;
 	}
 }
 

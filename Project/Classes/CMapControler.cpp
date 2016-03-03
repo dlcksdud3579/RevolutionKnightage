@@ -21,7 +21,7 @@ void CMapControler::mapChange(int a_changeMapNum)
 	string index;
 	index = to_string(a_changeMapNum);
 	
-	CMap* changeMap = StaticContentsContainer::getMapMap()->find(index)->second;
+	CMap* changeMap = StaticContentsContainer::readMapMap(index);
 
 	DynamicContentsContainer::getInstance()->setMap(changeMap);
 }

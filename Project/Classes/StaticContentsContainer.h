@@ -33,8 +33,8 @@ public:
 	static std::map<string, CCondition*>* getMapCondition(){ return m_mapCondition; }
 	static void setMapCondition(std::map<string, CCondition*>* a_mapCondition){ m_mapCondition = a_mapCondition; }
 
-	static std::map<string, CMap*>* getMapMap(){ return m_mapMap; }
-	static void setMapMap(std::map<string, CMap*>* a_mapMap){ m_mapMap = a_mapMap; }
+	//static std::map<string, CMap*>* getMapMap(){ return m_mapMap; }
+	//static void setMapMap(std::map<string, CMap*>* a_mapMap){ m_mapMap = a_mapMap; }
 
 	static std::map<string, CScenario*>* getMapScenario(){ return m_mapScenario; }
 	static void setMapScenario(std::map<string, CScenario*>* a_mapScenario){ m_mapScenario = a_mapScenario; }
@@ -55,7 +55,7 @@ public:
 	static void setMapObject(std::map<string, CObject**>* a_mapMonsterArray){ m_mapMonsterArray = a_mapMonsterArray; }
 
 	static void readxml();
-
+	static CMap* readMapMap(string key);
 private:
 	static std::map<string, CKind*>* m_mapKind; //종족
 	static std::map<string, CJob*>* m_mapJob; // 직업 
@@ -63,7 +63,7 @@ private:
 	static std::map<string, CItem*>* m_mapItem; // 아이템 
 	static std::map<string, CSkill*>* m_mapSkill; // 스킬 
 	static std::map<string, CCondition*>* m_mapCondition; // 상태?
-	static std::map<string, CMap*>* m_mapMap; // 맵
+	//static std::map<string, CMap*>* m_mapMap; //맵
 	static std::map<string, CScenario*>* m_mapScenario;  // 시나리오 
 	static std::map<string, CDice*>* m_mapDice; // 주사위
 	static std::map<string, CTile*>* m_mapTile; // 타일
@@ -80,8 +80,8 @@ private:
 	static void readMapItem(); 
 	static void readMapSkill(); 
 	static void readMapCondition(); 
-	static void readMapMap(); 
-	static void readMapMap(int index);
+	//static void readMapMap(); 
+	
 	static void readMapScenario();  
 	static void readMapDice(); 
 	static void readMapMonster();

@@ -219,16 +219,17 @@ void FieldLayer::viewControl()
 	}
 }
 
-void FieldLayer::changeMap(string MapKey) // ¸ÊÃ¼ÀÎÁö
+void FieldLayer::changeMap(string MapKey) // ¸Ê¸ÊÃ¼ÀÎÁö
 {
-	CMap * map = StaticContentsContainer::getMapMap()->find(MapKey)->second;
+	CMap * map = StaticContentsContainer::readMapMap(MapKey); // ¸®µå¸Ê¸Ê
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
 	DynamicContentsContainer::getInstance()->setMap(map);
-	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint());
-	deleteMonster();
+	DynamicContentsContainer::getInstance()->getCharacter()->
+		setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint()); // ½Ã°¢Æ÷ÀÎÆ® ¼³Á¤ 
+	deleteMonster(); // ¸ó½ºÅ¸ Á¦°Å
 
-	auto	fieldScene = NFieldScene::createScene();
-	Director::getInstance()->replaceScene(fieldScene);
+	auto	fieldScene = NFieldScene::createScene(); // »õ¾À 
+	Director::getInstance()->replaceScene(fieldScene); // ¾À±³Ã¼
 
 }
 
