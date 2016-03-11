@@ -57,8 +57,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	CMap* tempMap = StaticContentsContainer::readMapMap("test1");
 	DynamicContentsContainer::getInstance()->setMap(tempMap);
 
-	//DynamicContentsContainer::getInstance()->getMap()->setStartPoint(Vec2(10, 9));
-	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint()); // 케릭터를 시작 위치로 설정
+	DynamicContentsContainer::getInstance()->setStartingPoint(Vec2(7, 3));
+	DynamicContentsContainer::getInstance()->getCharacter()->setPoint(DynamicContentsContainer::getInstance()->getStartingPoint()); // 케릭터를 시작 위치로 설정
 
 	auto fieldScene = NFieldScene::createScene();  // 테스트를 위한 씬 
 	director->runWithScene(fieldScene);      // 처음으로 불러올 씬을 부름 

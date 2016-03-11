@@ -219,13 +219,18 @@ void FieldLayer::viewControl()
 	}
 }
 
-void FieldLayer::changeMap(string MapKey) // ¸Ê¸ÊÃ¼ÀÎÁö
+void FieldLayer::changeMap(int PortalIndex) // ¸Ê¸ÊÃ¼ÀÎÁö
 {
-	CMap * map = StaticContentsContainer::readMapMap(MapKey); // ¸®µå¸Ê¸Ê
+	
+	CMap * map = StaticContentsContainer::readMapMap(DynamicContentsContainer::getInstance()->getMap()->getPortal(PortalIndex)->getLinkedMapKey()); // ¸®µå¸Ê¸Ê
+	DynamicContentsContainer::getInstance()->setStartingPoint(DynamicContentsContainer::getInstance()->getMap()->getPortal(PortalIndex)->getLinkedPoint()); // ½ÃÀÛÆ÷ÀÎÆ® º¯°æ 
+
 	CCharacter * hero = DynamicContentsContainer::getInstance()->getCharacter();
-	DynamicContentsContainer::getInstance()->setMap(map);
+	DynamicContentsContainer::getInstance()->setMap(map); // »õ¸Ê¸Ê Àû¿ë 
+
 	DynamicContentsContainer::getInstance()->getCharacter()->
-		setPoint(DynamicContentsContainer::getInstance()->getMap()->getStartPoint()); // ½Ã°¢Æ÷ÀÎÆ® ¼³Á¤ 
+		setPoint(DynamicContentsContainer::getInstance()->getStartingPoint()); // ½Ã°¢Æ÷ÀÎÆ® ¼³Á¤ 
+
 	deleteMonster(); // ¸ó½ºÅ¸ Á¦°Å
 
 	auto	fieldScene = NFieldScene::createScene(); // »õ¾À 
@@ -243,7 +248,7 @@ void FieldLayer::checkPortal() // Æ÷Å» À§Ä¡¿Í È÷¾î·Î
 		if (map->getPortal(i) == NULL) //  ºóÆ÷Å» Ã¼Å© 
 			continue;
 		if (hero->getPoint() == map->getPortal(i)->getPoint())  // °°Àº À§Ä¡ÀÓÀ» Ã¼Å©
-			changeMap(map->getPortal(i)->getName());
+			changeMap(i);
 	}
 }
 

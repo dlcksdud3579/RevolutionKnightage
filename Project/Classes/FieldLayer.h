@@ -38,7 +38,7 @@ public:
 
 
 	
-	void changeMap(string MapKey);  //맵 면경 
+	void changeMap(int PortalIndex);  //맵 면경 
 	void checkPortal(); // 포탈인지 체크 
 	
 	

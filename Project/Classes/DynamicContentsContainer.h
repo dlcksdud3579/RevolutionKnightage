@@ -41,6 +41,9 @@ public:
 	CDice* getDice(){ return this->m_dice; }
 	void setDice(CDice* a_dice){ this->m_dice = a_dice; }
 
+	Vec2 getStartingPoint(){ return this->m_startingPoint; }
+	void setStartingPoint(Vec2 a_startingPoint){ this->m_startingPoint = a_startingPoint; }
+
 private:
 
 	static DynamicContentsContainer* instance; // 싱글턴 인스턴스
@@ -58,6 +61,8 @@ private:
 
 	CSkill *m_skill[10]; // 사용 가능 스킬 배열 
 	CMonster *m_monster[10];  // 필드위 몬스터  배열
+
+	Vec2 m_startingPoint;
 
 };
 

@@ -30,9 +30,9 @@ CTile* CMap::atTile(Vec2 a_index)
 
 	return this->m_tileTable[y][x];
 }
-void CMap::addPortal(string MapKey, int index, Vec2 point)
+void CMap::addPortal(int index,Vec2 Point,string name,string LinkedMapKey,  Vec2 Linkedpoint)
 {
-	portal[index] = new CObject();
-	portal[index]->setName(MapKey);
-	portal[index]->setPoint(point);
+	CPortal* tempPortal =  new CPortal(name, false, 1, LinkedMapKey, Linkedpoint);
+	portal[index] = tempPortal;
+	portal[index]->setPoint(Point);
 }

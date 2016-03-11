@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "CTile.h"
+#include "CPortal.h"
 
 using namespace std;
 class CMap
@@ -20,27 +21,23 @@ public:
 	void setSizeTile(Vec2 a_SizeTile){ m_SizeTile = a_SizeTile; }
 	Vec2 getSizeTile(){ return this->m_SizeTile; }
 
-	void setStartPoint(Vec2 a_startPoint){ m_startPoint = a_startPoint; }
-	Vec2 getStartPoint(){ return this->m_startPoint; }
-
 	void addTile(Vec2 a_index,CTile* a_Tile);
 	CTile* atTile(Vec2 a_index);
 
-	void addPortal(string MapKey, int index,Vec2 point);
-	CObject* getPortal(int index){ return this->portal[index]; }
+	void addPortal(int index, Vec2 Point, string name, string LinkedMapKey, Vec2 Linkedpoint);
+
+	CPortal* getPortal(int index){ return this->portal[index]; }
 
 
 private:
-	CTile *m_tileTable[100][100]; 
+	CTile *m_tileTable[100][100];  // 타일의 구조 ? 
 
 	string m_szName; // 맵의 이름
 
-	string m_key;
+	string m_key; //  맵을 찾을 키 
 
-	Vec2 m_startPoint;
+	Vec2 m_SizeTile; //맵을  타일로 본 크기 
 
-	Vec2 m_SizeTile;
-
-	CObject* portal[10];  // 포탈구현 
+	CPortal* portal[10];  // 포탈구현 
 };
 #endif

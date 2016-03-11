@@ -267,6 +267,7 @@ void StaticContentsContainer::readMapTile()
 		
 	}
 }
+
 /*
 void StaticContentsContainer::readMapMap()
 {
@@ -370,16 +371,14 @@ CMap* StaticContentsContainer::readMapMap(string key)
 		std::string symbolName = nodeMap.child("name").text().get();
 
 		xml_node nodeStartPoint = nodeMap.child("startPoint");
-		tempMap->setStartPoint(Vec2(
-			atoi(nodeStartPoint.child("x").text().get()),
-			atoi(nodeStartPoint.child("y").text().get())));
 		tempMap->setName(symbolName);
 		tempMap->setKey(nodeMap.child("key").text().as_string());
 
 		xml_node nodePortals = nodeMap.child("portals");  // ¸Ê°£ÀÌµ¿ Æ÷Å» ¼³Á¤ 
 
 		for (xml_node nodePortal = nodePortals.child("portal"); nodePortal; nodePortal = nodePortal.next_sibling("portal"))
-			tempMap->addPortal(nodePortal.child("key").text().as_string(), portalNum++, Vec2(nodePortal.child("x").text().as_int(), nodePortal.child("y").text().as_int()));
+			tempMap->addPortal(portalNum++, Vec2(nodePortal.child("x").text().as_int(), nodePortal.child("y").text().as_int()), nodePortal.child("Name").text().as_string(),
+			nodePortal.child("key").text().as_string(), Vec2(nodePortal.child("LinkX").text().as_int(), nodePortal.child("LinkY").text().as_int()));
 		xml_node nodeRows = nodeMap.child("rows");
 		for (xml_node nodeRow = nodeRows.child("row"); nodeRow; nodeRow = nodeRow.next_sibling("row"))
 		{
