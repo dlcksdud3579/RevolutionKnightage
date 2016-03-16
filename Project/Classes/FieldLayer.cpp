@@ -59,7 +59,7 @@ bool FieldLayer::moveRight()
 {
 	checkPortal(); // 포탈인지 체크 
 
-	if (getCharacter()->getPoint().x >= getMap()->getSizeTile().x - 1) //  이동 불가 지역인지 체크 // 맵사잉즈 이상 불가 체크 
+	if (getCharacter()->getPoint().x >= getMap()->getSizeTile().x - 1) //  이동 불가 지역인지 체크 // 맵사잉즈 이상 불가 체크     
 		return false;
 
 	if (this->getCharacterControler()->moveRight()) // 무브 가능 체크 ? 
