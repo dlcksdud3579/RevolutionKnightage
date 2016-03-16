@@ -34,7 +34,7 @@ void SkillLayer::Open()
 	// 메뉴창 틀 띄우기
 	int w = winSize.width - 200;
 	int h = winSize.height - 20;
-	m_panel = Sprite::create("Menu/panel.png");  // 
+	m_panel = Sprite::create("Menu/Skill.png");
 	m_panel->setPosition(w * 1 / 4, h * 3 / 4);
 	addChild(m_panel);
 

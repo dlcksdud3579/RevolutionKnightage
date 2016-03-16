@@ -63,7 +63,9 @@ bool MenuLayer::init()
 	this->setStatusLayer(StatusLayer::create());  // ½ºÅÝ ·¹ÀÌ¾î 
 
 	addChild(getInvenLayer(),3);
-
+	addChild(getSetupLayer(), 3);
+	addChild(getSkillLayer(), 3);
+	addChild(getStatusLayer(), 3);
 
 
 	return true;
@@ -123,10 +125,13 @@ void MenuLayer::clickMenu(Object* pSender)
 		openInven();
 		break;
 	case 2:
+		openStatus();
 		break;
 	case 3:
+		openSkill();
 		break;
 	case 4:
+		openOption();
 		  break;
 	default:
 		break;
